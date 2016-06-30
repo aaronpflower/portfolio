@@ -28,7 +28,7 @@ a {
   background-color: #10293f;
 }
 .about-container {
-  background-color: #de4406;
+  background-color: $oran;
 }
 .work-container {
   background-color: #c4ced4;
