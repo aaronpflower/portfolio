@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "smoothscroll": "^0.2.2"
+  },
+  "devDependencies": {
+    "mithril": "^0.2.5"
   }
 }

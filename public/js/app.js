@@ -1,37 +1,8 @@
-var Portfolio = {};
+var SmootScroll = require('./smoothScroll.js')
+var CurrentWeather = require('./currentWeather.js')
+var m = require('mithril')
 
-Portfolio.controller = {
-	init: function() {
-		Portfolio.view.init();
-	}
-};
 
-Portfolio.view = {
-	init: function() {
-		Portfolio.view.render()
-	},
-	render: function() {
-		var smoothScroll = require('smoothscroll')
-		var aboutAnchor = document.getElementById('about')
-		var workAnchor = document.getElementById('work')
-		var contactAnchor = document.getElementById('contact')
-		var aboutSection = document.getElementById('about-section')
-		var workSection = document.getElementById('work-section')
-		var contactSection = document.getElementById('contact-section')
+SmootScroll.controller.init();
+m.mount(document.getElementById('current-weather'), m.component(CurrentWeather));
 
-		var handleClick = function(el) {
-			console.log(el)
-			return function(e) {
-				e.preventDefault();
-				smoothScroll(el);
-			}
-		}
-
-		aboutAnchor.addEventListener('click', handleClick(aboutSection))
-		workAnchor.addEventListener('click', handleClick(workSection))
-		contactAnchor.addEventListener('click', handleClick(contactSection))
-
-	}
-};
-
-Portfolio.controller.init();
