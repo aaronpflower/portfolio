@@ -22,7 +22,6 @@ SmootScroll.view = {
 		var contactSection = document.getElementById('contact-section')
 
 		var handleClick = function(el) {
-			console.log(el)
 			return function(e) {
 				e.preventDefault();
 				smoothScroll(el);

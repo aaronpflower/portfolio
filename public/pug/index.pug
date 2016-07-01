@@ -7,9 +7,12 @@ include ./header.pug
 section.header-container#top
 	div.header-top
 		h1 Aaron Flower
-		//- Title, Boulder current weather animation use unicode
-		div#current-weather
+		h2 Web Developer
+		h2 Boulder, CO
 	div.header-bottom
+		.boulder-svg
+			include ../svg/boulder.svg
+		div#current-weather.current-weather-mount
 		ul.nav-list#nav-list
 			li
 				a#about About

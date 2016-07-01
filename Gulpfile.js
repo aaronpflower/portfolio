@@ -25,8 +25,8 @@ gulp.task('css', function(){
 	return gulp.src('public/styl/*.styl')
 		.pipe(plumber())
 		.pipe(order([
-			'variables.styl',
-			'main.styl'
+			'main.styl',
+			'current-weather.styl'
 		]))
 		.pipe(concat('styles.styl'))
 		.pipe(stylus({errors: true, 'include css': true}))
@@ -57,8 +57,8 @@ gulp.task('build', function(){
 	return gulp.src('public/styl/*.styl')
 		.pipe(plumber())
 		.pipe(order([
-			'variables.styl',
-			'main.styl'
+			'main.styl',
+			'current-weather.styl'
 		]))
 		.pipe(concat('styles.styl'))
 		.pipe(stylus({errors: true, 'include css': true}))

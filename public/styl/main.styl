@@ -1,14 +1,33 @@
-$navy = #10293F
-$orange = #DE4406
-$gray = #C4CED4
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700'
+
+$navy = #0d3a59
+$beige = #fff7ec
+$cream = #fff6eb
+$brown = #e5d5be
+$grey = #cfd8df
+$ltGreen = #b6e293
+$green = #b6e293
+$yellowGreen = #c3ca6b
+$yellow = #feeb75
+$salmon = #f8928e
+$red = #f0576b
+$ltBlue = #50bdc4
+$blue = #0899b4
 $white = #fafafa
 
+*
+	font-family 'Open Sans'
+	outline none
+	box-sizing border-box
+	
 html, body
 	width 100%
 	height 100%
+	font-size 12px
+
+html, body, h1, h2, h3, p, ul
 	margin 0px
 	padding 0px
-	font-size 17px
 	
 ul
 	list-style-type none
@@ -27,6 +46,10 @@ h3
 
 p, a
 	font-size 1.5em
+
+svg
+	path
+		fill $white
 	
 .header-container, 
 .about-container,
@@ -40,19 +63,21 @@ p, a
 	font-size 1.5rem
 	
 .header-container
-	background-color $white
-	color $navy
+	background-color $blue
+	color $white
 	border-bottom 4px solid $navy
 	height 99.7%
 	
 .about-container
-	background-color $gray
+	background-color $beige
+	color $navy
 
 .work-container
-	background-color $orange
+	background-color $red
 
 .contact-container
-	background-color $navy
+	background-color $green
+
 	
 .header-top
 	display flex
@@ -71,8 +96,23 @@ p, a
 	justify-content flex-end
 	width 100%
 	height 50%
-
+	position relative
+	
+.boulder-svg
+	width 66%
+	position absolute
+	top 0
+	bottom 0
+	left 0
+	right 0
+	margin auto
+	
+.current-weather-mount
+	width 100%
+	height 90%
+	
 .nav-list
 	display flex
 	flex-flow row nowrap
 	justify-content space-around
+	z-index 1
