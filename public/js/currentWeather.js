@@ -5,43 +5,43 @@ var CurrentWeather = {};
 CurrentWeather.conditions = {
 	icons: [{
 		icon: 'clear-day',
-		img: './assets/boulder-sunny.jpg'
+		img: './assets/cloud.svg'
 	},
 	{
 		icon: 'clear-night',
-		img: './assets/boulder-sunny.jpg'	
+		img: './assets/cloud.svg'	
 	},
 	{
 		icon: 'rain',
-		img: './assets/boulder-sunny.jpg'
+		img: './assets/cloud.svg'
 	},
 	{
 		icon: 'snow',
-		img: './assets/boulder-sunny.jpg'
+		img: './assets/cloud.svg'
 	},
 	{
 		icon: 'sleet',
-		img: './assets/boulder-sunny.jpg'
+		img: './assets/cloud.svg'
 	},
 	{
 		icon: 'wind',
-		img: './assets/boulder-sunny.jpg'
+		img: './assets/cloud.svg'
 	},
 	{
 		icon: 'fog',
-		img: './assets/boulder-sunny.jpg'
+		img: './assets/cloud.svg'
 	},
 	{
 		icon: 'cloudy',
-		img: './assets/boulder-sunny.jpg'
+		img: './assets/cloud.svg'
 	},
 	{
 		icon: 'partly-cloudy-day',
-		img: './assets/boulder-sunny.jpg'
+		img: './assets/cloud.svg'
 	},
 	{
 		icon: 'partly-cloudy-night',
-		img: './assets/boulder-sunny.jpg'
+		img: './assets/cloud.svg'
 	}]
 }
 
@@ -59,25 +59,26 @@ CurrentWeather.controller = function() {
 	var that = this;
 	this.currentTemp = m.prop();
 	this.currentIcon = m.prop();
+	this.currentSummary = m.prop()
 
 	CurrentWeather.API.getCurrentConditions().then(function(data) {	
-		var currentSummary = CurrentWeather.conditions.icons.map(function(condition, i) {
+		var iconMap = CurrentWeather.conditions.icons.map(function(condition, i) {
 			if (condition.icon === data.currently.icon) {
 				that.currentIcon(condition.img)
 			}
 		})
+		console.log(data)
 		that.currentTemp(data.currently.apparentTemperature);
+		that.currentSummary(data.currently.summary)
 	})
 }
 
 CurrentWeather.view = function(ctrl) {
-	return m('div.currently-container', {
-			// config: function(el) {
-			// 	return el.style.backgroundImage = 'url("'+ctrl.currentIcon()+'")'
-			// }
-		},
+	return m('div.currently-container',
 		m('h3', "Currently in Boulder"),
-		m('p', ctrl.currentTemp(), " °F")
+		m('p', ctrl.currentTemp(), " °F"),
+		m('p', ctrl.currentSummary()),
+		m("img.current-icon[src='"+ctrl.currentIcon()+"']")
 	)
 }
 
