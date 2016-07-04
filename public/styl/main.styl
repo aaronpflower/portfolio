@@ -36,16 +36,16 @@ a
 	cursor pointer
 
 h1
-	font-size 3em
-
-h2 
 	font-size 2.5em
 
-h3
+h2 
 	font-size 2em
 
-p, a
+h3
 	font-size 1.5em
+
+p, a
+	font-size 1.2em
 
 svg
 	path
@@ -78,34 +78,31 @@ svg
 .contact-container
 	background-color $green
 
-	
-.header-top
-	display flex
-	width 100%
-	height 50%
-
-.header-top
-	display flex
-	flex-flow column nowrap
-	justify-content center
-	align-items center
-	
+.header-top,
+.header-middle,
 .header-bottom
 	display flex
+	justify-content center
 	flex-flow column nowrap
-	justify-content flex-end
+	align-items center
 	width 100%
-	height 50%
+	height 33.3%
+	
+.header-bottom
+	flex-flow row nowrap
+	justify-content space-around
+	align-items flex-end
 	position relative
 	
 .boulder-svg
-	width 66%
 	position absolute
-	top 0
+	top -80%
 	bottom 0
 	left 0
 	right 0
-	margin auto
+	margin auto 
+	width 75%
+	z-index 1
 	
 .current-weather-mount
 	width 100%
@@ -116,3 +113,4 @@ svg
 	flex-flow row nowrap
 	justify-content space-around
 	z-index 1
+	width 100%

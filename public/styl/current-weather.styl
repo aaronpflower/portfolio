@@ -14,14 +14,18 @@
 	left 0
 	right 0
 	margin 130px auto
-	animation nudge 5s linear infinite alternate
+	animation nudge 8s linear infinite
+	z-index 2
 
 @keyframes nudge
-	0%, 100%
-		transform translate(0, 0)
-
-	50%
-		transform: translate(150px, 0)
-
-	80%
-		transform: translate(-150px, 0)
+	0% 
+		transform translate(-250%, 0)
+		opacity 0
+	10%
+		opacity 1
+	90%
+		opacity .9
+	100%
+		transform: translate(350%, 0)
+		opacity 0
+		
