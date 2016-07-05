@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "sendgrid": "^3.0.6",
     "smoothscroll": "^0.2.2"
   },
   "devDependencies": {
-    "mithril": "^0.2.5"
+    "mithril": "^0.2.5",
+    "nodemon": "^1.9.2"
   }
 }

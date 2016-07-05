@@ -50,7 +50,8 @@ CurrentWeather.API = {
 	getCurrentConditions: function() {
 		return m.request({
 			dataType: "jsonp",
-			url: 'https://api.forecast.io/forecast/963c2a286c46883b606d0962897eeef7/40.0150,-105.2705'
+			// url: "https://api.forecast.io/forecast/"+ process.env.FORECAST_API_KEY +"/40.0150,-105.2705"
+			url: "https://api.forecast.io/forecast/963c2a286c46883b606d0962897eeef7/40.0150,-105.2705"
 		})
 	}
 }

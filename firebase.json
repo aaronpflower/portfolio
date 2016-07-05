@@ -1,0 +1,18 @@
+{
+  "hosting": {
+    "public": "dist",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "redirects": [
+		{
+			"source": "/app",
+			"destination": "https://portfolio-9c917.firebaseapp.com",
+			"type": 302
+		}
+	]
+  }
+}

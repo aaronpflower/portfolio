@@ -25,8 +25,10 @@ gulp.task('css', function(){
 	return gulp.src('public/styl/*.styl')
 		.pipe(plumber())
 		.pipe(order([
+			'variables.styl',
 			'main.styl',
-			'current-weather.styl'
+			'current-weather.styl',
+			'contact-section.styl'
 		]))
 		.pipe(concat('styles.styl'))
 		.pipe(stylus({errors: true, 'include css': true}))
