@@ -23,5 +23,5 @@ app.listen(port, function () {
 
 app.set('view engine', 'pug');
 app.set('views', './public/pug');
-// app.use(express.static('dist'))
-app.use("/dist", express.static(__dirname + '/dist'));
+app.use(express.static('dist'))
+// app.use("/dist", express.static(__dirname + '/dist'));
