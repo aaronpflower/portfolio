@@ -32,8 +32,8 @@ ContactForm.controller = function() {
 }
 
 ContactForm.view = function(ctrl) {
-	return m('form',
-			m('.form-input-wrapper',
+	return m('div.contact-container',
+			m('form',
 				m('input.form-input', {
 					oninput: m.withAttr('value', ctrl.senderName),
 					placeholder: 'Enter name...'
@@ -50,7 +50,7 @@ ContactForm.view = function(ctrl) {
 					oninput: m.withAttr('value', ctrl.emailBody),
 					placeholder: 'Enter email body...'
 				}),
-				m('button.form-button[type="button"]', {
+				m('button.form-button[type="button"]', "Submit", {
 					onclick: function (e) {
 						ContactForm.Model.senderName(ctrl.senderName)
 						ContactForm.Model.senderEmail(ctrl.senderEmail)
@@ -59,8 +59,16 @@ ContactForm.view = function(ctrl) {
 						ContactForm.API.sendEmail()
 					}
 				})
+			),
+			m('.icons-container',
+				m('a.icon-item[href="https://www.linkedin.com/in/aaron-flower-20748339"], [target="_blank"]',
+					m('img', {src: "./assets/linkedin.svg"})
+				),
+				m('a.icon-item[href="https://github.com/aaronpflower"], [target="_blank"]',
+					m('img', {src: "./assets/github.svg"})
+				)
 			)
-		)
+		) 
 }
 
 module.exports = ContactForm;
