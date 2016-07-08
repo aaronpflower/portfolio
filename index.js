@@ -7,7 +7,7 @@ var port = process.env.PORT || 3000;
 
 app.use(cors())
 app.set('view engine', 'pug');
-app.set('views', './public/pug');
+app.set('views', './dist/index.html');
 app.use(express.static('dist'))
 app.use(bodyParser.urlencoded({limit : "50mb", extended: false }))
 app.use(bodyParser.json({limit : "50mb"}))
