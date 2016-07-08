@@ -13,11 +13,11 @@ app.use(bodyParser.json({limit : "50mb"}))
 require('./server/routes/sendEmail.js')(app)
 
 app.get('/', function (req, res) {
-  res.send('index');
+  res.render('index');
 });
 
 app.listen(port, function () {
 	var host = this.address().address;
 	var x = this.address().port;
-  console.log('Example app listening on port', host, x);
+	console.log('Example app listening on port', host, x);
 });
