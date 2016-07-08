@@ -9,11 +9,12 @@ app.use(cors())
 app.use(express.static('dist'))
 app.use(bodyParser.urlencoded({limit : "50mb", extended: false }))
 app.use(bodyParser.json({limit : "50mb"}))
+// app.set('view engine', 'pug');
 
 require('./server/routes/sendEmail.js')(app)
 
 app.get('/', function (req, res) {
-  res.render('index');
+  res.render('./index.html');
 });
 
 app.listen(port, function () {

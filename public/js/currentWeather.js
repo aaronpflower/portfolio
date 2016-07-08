@@ -48,6 +48,7 @@ CurrentWeather.conditions = {
 
 CurrentWeather.API = {
 	getCurrentConditions: function() {
+		console.log(process.env.FORECAST_API_KEY)
 		return m.request({
 			dataType: "jsonp",
 			// url: "https://api.forecast.io/forecast/"+ process.env.FORECAST_API_KEY +"/40.0150,-105.2705"
