@@ -14,7 +14,7 @@ app.use(bodyParser.json({limit : "50mb"}))
 require('./server/routes/sendEmail.js')(app)
 
 app.get('/', function (req, res) {
-  res.render('./index.html');
+  res.render('index');
 });
 
 app.listen(port, function () {
