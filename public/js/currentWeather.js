@@ -48,7 +48,6 @@ CurrentWeather.conditions = {
 
 CurrentWeather.API = {
 	getCurrentConditions: function() {
-		console.log(process.env.FORECAST_API_KEY)
 		return m.request({
 			dataType: "jsonp",
 			// url: "https://api.forecast.io/forecast/"+ process.env.FORECAST_API_KEY +"/40.0150,-105.2705"
@@ -61,7 +60,7 @@ CurrentWeather.controller = function() {
 	var that = this;
 	this.currentTemp = m.prop();
 	this.currentIcon = m.prop();
-	this.currentSummary = m.prop()
+	this.currentSummary = m.prop();
 
 	CurrentWeather.API.getCurrentConditions().then(function(data) {	
 		var iconMap = CurrentWeather.conditions.icons.map(function(condition, i) {
