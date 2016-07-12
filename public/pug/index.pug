@@ -4,40 +4,39 @@
 
 include ./header.pug
 
-section.header-container#top
-	div.header-top
-		h1 Aaron Flower
-		h3 Web Developer
-		h3 Boulder, CO
-	div.header-middle
-		div#current-weather.current-weather-mount
-	div.header-bottom
-		.boulder-svg
-			include ../svg/boulder.svg
-		ul.nav-list#nav-list
-			li
-				a#about About
-			li
-				a#work Work
-			li
-				a#contact Contact
+.site-wrapper
+	section.header-container#top
+		div.header-top
+			h1 Aaron Flower
+			h3 Web Developer
+			h3 Boulder, CO
+		div.header-middle
+			div#current-weather.current-weather-mount
+		div.header-bottom
+			.boulder-svg
+				include ../svg/boulder.svg
+		nav.nav#nav
+			ul.nav-list#nav-list
+				li
+					a#about About
+				li
+					a#work Work
+				li
+					a#contact Contact
 
-//- About
-section.about-container#about-section
-	h1 About
-
-
-//- Work
-section.work-container#work-section
-	h1 Work
+	//- About
+	section.about-container#about-section
+		h1.section-title About
 
 
-//- Contact
-section.contact-container#contact-section
-	h1 Contact
-	div.form-mount#contact-form
-	div.twitter-mount#twitter-worker
+	//- Work
+	section.work-container#work-section
+		h1.section-title Work
 
-script.
+
+	//- Contact
+	section.contact-container#contact-section
+		div.form-mount#contact-form
+		div.twitter-mount#twitter-worker
 
 include ./footer.pug

@@ -2269,6 +2269,7 @@ ContactForm.controller = function() {
 
 ContactForm.view = function(ctrl) {
 	return m('div.contact-container',
+			m('h1.section-title', "Contact"),
 			m('form',
 				m('input.form-input', {
 					oninput: m.withAttr('value', ctrl.senderName),

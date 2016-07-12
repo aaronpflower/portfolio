@@ -38,7 +38,7 @@ var twitterStream = new twitter({
 });
 var stream = null;
 var users = [];
-var hashtag = '#ColdSpringsFire'
+var hashtag = '#ColdSpringsFire, #CoWx, #mlb'
 
 io.on("connection", function(socket) {
 	if(users.indexOf(socket.id) === -1) {

@@ -1,6 +1,6 @@
 .form-mount
 	width 100%
-	height 66.6%
+	height 50%
 
 .contact-container
 	display flex
@@ -14,17 +14,29 @@ form
 	justify-content space-around
 	align-items center
 	width 100%
-	height 75%
+	height 90%
 
 .form-input
 	width 50%
 	height 45px
-	background linear-gradient(to right, $beige, $white)
-
+	background-color $white
+	border none
+	border-bottom 1px solid $navy
+	text-align center
+	color $navy
+	
+.form-input::placeholder,
+.form-textarea::placeholder
+	text-align center
+	color $navy
+	
 .form-textarea
 	width 50%
 	height 200px
-	background linear-gradient($beige, $white)
+	background-color $white
+	border none
+	border-bottom 1px solid $navy
+	color $navy
 	
 .form-button
 	width 30%
@@ -43,15 +55,15 @@ form
 	
 .icons-container
 	display flex
-	justify-content center
+	justify-content space-around
 	align-content center
-	width 100%
-	height 25%
+	width 50%
+	height 10%
 
 .icon-item
 	display flex
 	justify-content center
-	width 80px
+	width 50px
 	img
 		transform scale(1)
 		transition all .2s ease-in

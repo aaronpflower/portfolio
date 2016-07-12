@@ -48122,15 +48122,17 @@ var SmootScroll = require('./smoothScroll.js');
 var CurrentWeather = require('./currentWeather.js');
 var ContactForm = require('./contact-form.js');
 var TwitterWorker = require('./twitter-worker.js');
+var Nav = require('./nav.js')
 var m = require('mithril');
 
 SmootScroll.controller.init();
+Nav.controller.init();
 m.mount(document.getElementById('current-weather'), m.component(CurrentWeather));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
 m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
 
 
-},{"./contact-form.js":184,"./currentWeather.js":185,"./smoothScroll.js":186,"./twitter-worker.js":187,"mithril":96}],184:[function(require,module,exports){
+},{"./contact-form.js":184,"./currentWeather.js":185,"./nav.js":186,"./smoothScroll.js":187,"./twitter-worker.js":188,"mithril":96}],184:[function(require,module,exports){
 var m = require('mithril')
 var ContactForm = {};
 
@@ -48166,6 +48168,7 @@ ContactForm.controller = function() {
 
 ContactForm.view = function(ctrl) {
 	return m('div.contact-container',
+			m('h1.section-title', "Contact"),
 			m('form',
 				m('input.form-input', {
 					oninput: m.withAttr('value', ctrl.senderName),
@@ -48296,6 +48299,32 @@ module.exports = CurrentWeather;
 
 
 },{"mithril":96}],186:[function(require,module,exports){
+var Nav = {};
+
+Nav.controller = {
+	init: function() {
+		Nav.view.init();
+	}
+};
+
+Nav.view = {
+	init: function() {
+		Nav.view.render()
+	},
+
+	render: function() {
+		window.addEventListener('scroll', function(){
+			var nav = document.getElementById('nav');
+			nav.classList.add('nav-scroll')
+			if(window.pageYOffset == 0) {
+				nav.classList.remove('nav-scroll')
+			}
+		})
+	}
+};
+
+module.exports = Nav;
+},{}],187:[function(require,module,exports){
 // SmoothScroll
 var SmootScroll = {};
 
@@ -48334,7 +48363,7 @@ SmootScroll.view = {
 };
 
 module.exports = SmootScroll;
-},{"smoothscroll":135}],187:[function(require,module,exports){
+},{"smoothscroll":135}],188:[function(require,module,exports){
 var m = require ('mithril');
 var Twitter = require('twitter');
 var socket = io();
@@ -48346,6 +48375,7 @@ TwitterWorker.controller = function() {
 	this.currentTweet = m.prop();
 
 	(function () {
+		that.currentTweet("Waiting for lastest tweets...")
 		socket.on("tweet", function(data) {
 			try { 
 				if (data) {
@@ -48367,8 +48397,8 @@ TwitterWorker.view = function(ctrl) {
 			console.log(ctrl.currentTweet())
 		}
 	},
-		m('h1', "Twitter Intrests"), 
-		m('h3.tweet', ctrl.currentTweet())
+		m('h2', "Twitter Intrests"), 
+		m('p.tweet', ctrl.currentTweet())
 	)
 }
 

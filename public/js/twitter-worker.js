@@ -9,6 +9,7 @@ TwitterWorker.controller = function() {
 	this.currentTweet = m.prop();
 
 	(function () {
+		that.currentTweet("Waiting for lastest tweets...")
 		socket.on("tweet", function(data) {
 			try { 
 				if (data) {
@@ -30,8 +31,8 @@ TwitterWorker.view = function(ctrl) {
 			console.log(ctrl.currentTweet())
 		}
 	},
-		m('h1', "Twitter Intrests"), 
-		m('h3.tweet', ctrl.currentTweet())
+		m('h2', "Twitter Intrests"), 
+		m('p.tweet', ctrl.currentTweet())
 	)
 }
 

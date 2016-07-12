@@ -25,6 +25,9 @@ button {
   margin: 0px;
   padding: 0px;
 }
+body {
+  position: relative;
+}
 ul {
   list-style-type: none;
 }
@@ -47,6 +50,14 @@ a {
 svg path {
   fill: #fafafa;
 }
+.fade-in-content {
+  -webkit-animation: fade-in 0.6s ease-out;
+          animation: fade-in 0.6s ease-out;
+}
+.site-wrapper {
+  background: -webkit-linear-gradient(#0899b4, #f7fdff);
+  background: linear-gradient(#0899b4, #f7fdff);
+}
 .header-container,
 .about-container,
 .work-container,
@@ -61,21 +72,23 @@ svg path {
   color: #fafafa;
   font-size: 1.5rem;
 }
+.section-title {
+  margin: 25px;
+  text-align: center;
+}
 .header-container {
-  background-color: #0899b4;
   color: #fafafa;
-  border-bottom: 4px solid #0d3a59;
-  height: 99.7%;
+  height: 100%;
+  position: relative;
 }
 .about-container {
-  background-color: #fff7ec;
-  color: #0d3a59;
+  color: #fafafa;
 }
 .work-container {
-  background-color: #f0576b;
+  color: #0d3a59;
 }
 .contact-container {
-  background-color: #b6e293;
+  color: #0d3a59;
 }
 .header-top,
 .header-middle,
@@ -119,7 +132,24 @@ svg path {
   width: 100%;
   height: 90%;
 }
+.nav {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  -webkit-animation: fade-in 2s ease-out;
+          animation: fade-in 2s ease-out;
+}
+.nav-scroll {
+  position: fixed;
+  top: 0px;
+  bottom: auto;
+  -webkit-animation: fade-in 2s ease-out;
+          animation: fade-in 2s ease-out;
+  color: #0d3a59;
+}
 .nav-list {
+  z-index: 1;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -127,8 +157,6 @@ svg path {
       flex-flow: row nowrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  z-index: 1;
-  width: 100%;
 }
 .currently-container {
   display: -webkit-box;
@@ -155,7 +183,7 @@ svg path {
 }
 .form-mount {
   width: 100%;
-  height: 66.6%;
+  height: 50%;
 }
 .contact-container {
   display: -webkit-box;
@@ -182,19 +210,44 @@ form {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 75%;
+  height: 90%;
 }
 .form-input {
   width: 50%;
   height: 45px;
-  background: -webkit-linear-gradient(left, #fff7ec, #fafafa);
-  background: linear-gradient(to right, #fff7ec, #fafafa);
+  background-color: #fafafa;
+  border: none;
+  border-bottom: 1px solid #0d3a59;
+  text-align: center;
+  color: #0d3a59;
+}
+.form-input::-webkit-input-placeholder,
+.form-textarea::-webkit-input-placeholder {
+  text-align: center;
+  color: #0d3a59;
+}
+.form-input::-moz-placeholder,
+.form-textarea::-moz-placeholder {
+  text-align: center;
+  color: #0d3a59;
+}
+.form-input:-ms-input-placeholder,
+.form-textarea:-ms-input-placeholder {
+  text-align: center;
+  color: #0d3a59;
+}
+.form-input::placeholder,
+.form-textarea::placeholder {
+  text-align: center;
+  color: #0d3a59;
 }
 .form-textarea {
   width: 50%;
   height: 200px;
-  background: -webkit-linear-gradient(#fff7ec, #fafafa);
-  background: linear-gradient(#fff7ec, #fafafa);
+  background-color: #fafafa;
+  border: none;
+  border-bottom: 1px solid #0d3a59;
+  color: #0d3a59;
 }
 .form-button {
   width: 30%;
@@ -217,13 +270,12 @@ form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -ms-flex-line-pack: center;
       align-content: center;
-  width: 100%;
-  height: 25%;
+  width: 50%;
+  height: 10%;
 }
 .icon-item {
   display: -webkit-box;
@@ -232,7 +284,7 @@ form {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 80px;
+  width: 50px;
 }
 .icon-item img {
   -webkit-transform: scale(1);
@@ -250,7 +302,7 @@ form {
 }
 .twitter-mount {
   width: 100%;
-  height: 33.3%;
+  height: 50%;
 }
 .tweet-wrapper {
   display: -webkit-box;
@@ -265,9 +317,27 @@ form {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  height: 100%;
 }
 .tweet {
   width: 66.6%;
+  text-align: center;
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @-webkit-keyframes nudge {
   0% {
