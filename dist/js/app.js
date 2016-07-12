@@ -48345,10 +48345,20 @@ TwitterWorker.controller = function() {
 	var that = this;
 	this.currentTweet = m.prop();
 
-	socket.on("tweet", function(data) {
-		that.currentTweet(data);
-		console.log(data)
-	})
+	(function () {
+		socket.on("tweet", function(data) {
+			try { 
+				if (data) {
+					that.currentTweet(data);
+					m.redraw(true)
+				}
+			} catch (e) {
+				alert("There is a problem: ", e);
+			} finally {
+				console.log(data)
+			}
+		});
+	}) ();
 
 }
 
@@ -48358,7 +48368,7 @@ TwitterWorker.view = function(ctrl) {
 			console.log(ctrl.currentTweet())
 		}
 	},
-		m('h1', "Twitter Stream: ", ctrl.currentTweet())	
+		m('h1', "Twitter Stream: ", ctrl.currentTweet())
 	)
 }
 
