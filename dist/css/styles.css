@@ -153,10 +153,9 @@ svg path {
           animation: nudge 8s linear infinite;
   z-index: 2;
 }
-.form-mount,
-.twitter-mount {
+.form-mount {
   width: 100%;
-  height: 50%;
+  height: 66.6%;
 }
 .contact-container {
   display: -webkit-box;
@@ -248,6 +247,27 @@ form {
           transform: scale(1.5);
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+}
+.twitter-mount {
+  width: 100%;
+  height: 33.3%;
+}
+.tweet-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.tweet {
+  width: 66.6%;
 }
 @-webkit-keyframes nudge {
   0% {

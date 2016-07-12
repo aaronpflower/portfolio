@@ -48025,16 +48025,16 @@ TwitterWorker.controller = function() {
 			}
 		});
 	}) ();
-
 }
 
 TwitterWorker.view = function(ctrl) {
-	return m('div', {
+	return m('div.tweet-wrapper', {
 		config: function() {
 			console.log(ctrl.currentTweet())
 		}
 	},
-		m('h1', "Twitter Stream: ", ctrl.currentTweet())
+		m('h1', "Twitter Intrests"), 
+		m('h3.tweet', ctrl.currentTweet())
 	)
 }
 

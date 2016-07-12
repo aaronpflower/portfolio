@@ -28,7 +28,8 @@ gulp.task('css', function(){
 			'variables.styl',
 			'main.styl',
 			'current-weather.styl',
-			'contact-section.styl'
+			'contact-section.styl',
+			'twitter-worker.styl'
 		]))
 		.pipe(concat('styles.styl'))
 		.pipe(stylus({errors: true, 'include css': true}))
@@ -60,7 +61,9 @@ gulp.task('build', function(){
 		.pipe(plumber())
 		.pipe(order([
 			'main.styl',
-			'current-weather.styl'
+			'current-weather.styl',
+			'contact-section.styl',
+			'twitter-worker.styl'
 		]))
 		.pipe(concat('styles.styl'))
 		.pipe(stylus({errors: true, 'include css': true}))

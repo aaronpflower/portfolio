@@ -48195,7 +48195,7 @@ ContactForm.view = function(ctrl) {
 			),
 			m('.icons-container',
 				m('a.icon-item[href="https://www.linkedin.com/in/aaron-flower-20748339"], [target="_blank"]',
-					m('img', {src: "./assets/linkedin.svg"})
+					m('img', {src: "./assets/linkedIn.svg"})
 				),
 				m('a.icon-item[href="https://github.com/aaronpflower"], [target="_blank"]',
 					m('img', {src: "./assets/github.svg"})
@@ -48359,16 +48359,16 @@ TwitterWorker.controller = function() {
 			}
 		});
 	}) ();
-
 }
 
 TwitterWorker.view = function(ctrl) {
-	return m('div', {
+	return m('div.tweet-wrapper', {
 		config: function() {
 			console.log(ctrl.currentTweet())
 		}
 	},
-		m('h1', "Twitter Stream: ", ctrl.currentTweet())
+		m('h1', "Twitter Intrests"), 
+		m('h3.tweet', ctrl.currentTweet())
 	)
 }
 
