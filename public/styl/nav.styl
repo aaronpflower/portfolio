@@ -1,0 +1,80 @@
+@keyframes nav-animation
+	0%
+		transform translate(0%, 97%)
+		width 100%
+	100%
+		transform translate(0%, 0%)
+		width 25%
+
+@keyframes nav-animation-2
+	0%
+		transform translate(0%, 0%)
+	100%
+		transform translate(0%, 97%)
+
+@keyframes reset-nav-items
+	0%
+		transform translate(0%, 0%)
+	100%
+		transform translate(0%, 0%)
+
+@keyframes about-li
+	0%
+		transform translate(0%, 0%)
+	100%
+		transform translate(0%, 0%)
+
+@keyframes work-li
+	0%
+		transform translate(0%, 0%)
+	100%
+		transform translate(0%, 0%)
+		
+@keyframes contact-li
+	0%
+		transform translate(0%, 0%)
+	100%
+		transform translate(-1750%, 500%)
+
+.nav-wrapper
+	height 100vh
+	width 100vw
+	position fixed
+	background transparent
+	z-index 100
+
+.nav
+	display flex
+	flex-flow row nowrap
+	justify-content space-around
+	z-index 1
+	height 100%
+	width 100%
+	animation nav-animation-2 2s ease-out
+	position relative
+	transform translate(0%, 97%)
+	
+.nav-scroll
+	position fixed
+	animation nav-animation 2s ease-out
+	width 25%
+	color $navy
+	transform translate(0%, 0%)
+	flex-flow column nowrap
+	justify-content flex-start
+
+.about-li,
+.work-li,
+.contact-li
+	transform translate(0%, 0%)
+	animation reset-nav-items 2s ease-out
+
+.about-li-animate
+	animation about-li 2s ease-out
+	transform translate(0%, 0%)
+.work-li-animate
+	animation work-li 2s ease-out
+	transform translate(0%, 0%)
+.contact-li-animate
+	// animation contact-li 2s ease-out
+	transform translate(-1750%, 500%)

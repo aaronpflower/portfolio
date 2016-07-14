@@ -40,33 +40,33 @@ var stream = null;
 var users = [];
 var hashtag = '#ColdSpringsFire, #CoWx, #mlb'
 
-io.on("connection", function(socket) {
-	if(users.indexOf(socket.id) === -1) {
-		users.push(socket.id)
-		logConnectedUsers()
-	}
+// io.on("connection", function(socket) {
+// 	if(users.indexOf(socket.id) === -1) {
+// 		users.push(socket.id)
+// 		logConnectedUsers()
+// 	}
 
-	socket.on("disconnect", function(o) {
-		var index = users.indexOf(socket.id);
-		if(index != -1) {
-			users.splice(index, 1);
-			logConnectedUsers();
-		}
-	});
+// 	socket.on("disconnect", function(o) {
+// 		var index = users.indexOf(socket.id);
+// 		if(index != -1) {
+// 			users.splice(index, 1);
+// 			logConnectedUsers();
+// 		}
+// 	});
 
 
-	twitterStream.stream('statuses/filter', { track: hashtag }, function(stream) {
-		stream.on('data', function (data) {
-			io.sockets.emit('tweet', data.text);
-			console.log(data.text);
-		});
-		stream.on('error', function(error) {
-	    	console.log(error);
-		}); 
-	});
-});
+// 	twitterStream.stream('statuses/filter', { track: hashtag }, function(stream) {
+// 		stream.on('data', function (data) {
+// 			io.sockets.emit('tweet', data.text);
+// 			console.log(data.text);
+// 		});
+// 		stream.on('error', function(error) {
+// 	    	console.log(error);
+// 		}); 
+// 	});
+// });
 
-// // A log function for debugging purposes
-function logConnectedUsers() {
-    console.log("CONNECTED USERS " + users.length);
-}
+// // // A log function for debugging purposes
+// function logConnectedUsers() {
+//     console.log("CONNECTED USERS " + users.length);
+// }

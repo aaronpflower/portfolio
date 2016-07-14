@@ -46,7 +46,7 @@ h2
 h3
 	font-size 1.5em
 
-p, a
+p, a, li
 	font-size 1.2em
 
 svg
@@ -62,9 +62,10 @@ svg
 	to
 		opacity 1
 
+
 .site-wrapper
 	background linear-gradient($blue, $ltBlue)
-
+	position relative
 
 .header-container, 
 .about-container,
@@ -123,24 +124,3 @@ svg
 .current-weather-mount
 	width 100%
 	height 90%
-
-.nav
-	position absolute
-	bottom 0px
-	width 100%
-	animation fade-in 2s ease-out
-	
-
-.nav-scroll
-	position fixed
-	top 0px
-	bottom auto
-	animation fade-in 2s ease-out
-	color $navy
-	
-.nav-list
-	z-index 1
-	width 100%
-	display flex
-	flex-flow row nowrap
-	justify-content space-around

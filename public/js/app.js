@@ -9,5 +9,5 @@ SmootScroll.controller.init();
 Nav.controller.init();
 m.mount(document.getElementById('current-weather'), m.component(CurrentWeather));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
-m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
+// m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
 

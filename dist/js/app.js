@@ -48129,7 +48129,7 @@ SmootScroll.controller.init();
 Nav.controller.init();
 m.mount(document.getElementById('current-weather'), m.component(CurrentWeather));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
-m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
+// m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
 
 
 },{"./contact-form.js":184,"./currentWeather.js":185,"./nav.js":186,"./smoothScroll.js":187,"./twitter-worker.js":188,"mithril":96}],184:[function(require,module,exports){
@@ -48315,9 +48315,20 @@ Nav.view = {
 	render: function() {
 		window.addEventListener('scroll', function(){
 			var nav = document.getElementById('nav');
+			var aboutLi = document.getElementById('about-li');
+			var workLi = document.getElementById('work-li');
+			var contactLi = document.getElementById('contact-li');
+
 			nav.classList.add('nav-scroll')
+			// aboutLi.classList.add('about-li-animate')
+			// workLi.classList.add('work-li-animate')
+			// contactLi.classList.add('contact-li-animate')
+
 			if(window.pageYOffset == 0) {
 				nav.classList.remove('nav-scroll')
+				// aboutLi.classList.remove('about-li-animate')
+				// workLi.classList.remove('work-li-animate')
+				// contactLi.classList.remove('contact-li-animate')
 			}
 		})
 	}

@@ -1,10 +1,14 @@
-//- Design ideas for the site
-//- * A scroll to timeline about me, why I do web development
-//- http://melaniedaveid.com/
-
 include ./header.pug
 
 .site-wrapper
+	nav.nav-wrapper
+		ul.nav#nav
+			li#about-li.about-li
+				a#about About
+			li#work-li.work-li
+				a#work Work
+			li#contact-li.contact-li
+				a#contact Contact
 	section.header-container#top
 		div.header-top
 			h1 Aaron Flower
@@ -15,14 +19,6 @@ include ./header.pug
 		div.header-bottom
 			.boulder-svg
 				include ../svg/boulder.svg
-		nav.nav#nav
-			ul.nav-list#nav-list
-				li
-					a#about About
-				li
-					a#work Work
-				li
-					a#contact Contact
 
 	//- About
 	section.about-container#about-section
