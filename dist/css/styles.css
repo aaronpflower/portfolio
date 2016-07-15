@@ -310,56 +310,67 @@ form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-flow: row nowrap;
-      flex-flow: row nowrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  margin: auto;
   z-index: 1;
   height: 100%;
   width: 100%;
-  -webkit-animation: nav-animation-2 2s ease-out;
-          animation: nav-animation-2 2s ease-out;
+  -webkit-animation: nav-animation-2 0.5s ease-out;
+          animation: nav-animation-2 0.5s ease-out;
   position: relative;
   -webkit-transform: translate(0%, 97%);
           transform: translate(0%, 97%);
 }
 .nav-scroll {
-  position: fixed;
-  -webkit-animation: nav-animation 2s ease-out;
-          animation: nav-animation 2s ease-out;
-  width: 25%;
+  -webkit-animation: nav-animation 0.5s ease-out;
+          animation: nav-animation 0.5s ease-out;
   color: #0d3a59;
   -webkit-transform: translate(0%, 0%);
           transform: translate(0%, 0%);
   -ms-flex-flow: column nowrap;
       flex-flow: column nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
 }
 .about-li,
 .work-li,
 .contact-li {
   -webkit-transform: translate(0%, 0%);
           transform: translate(0%, 0%);
-  -webkit-animation: reset-nav-items 2s ease-out;
-          animation: reset-nav-items 2s ease-out;
+  text-align: center;
+}
+.about-li {
+  -webkit-animation: about-li-2 0.5s ease-out;
+          animation: about-li-2 0.5s ease-out;
+  width: 33.3%;
+}
+.work-li {
+  -webkit-animation: work-li-2 0.5s ease-out;
+          animation: work-li-2 0.5s ease-out;
+  width: 33.3%;
+}
+.contact-li {
+  -webkit-animation: contact-li-2 0.5s ease-out;
+          animation: contact-li-2 0.5s ease-out;
+  width: 33.3%;
 }
 .about-li-animate {
-  -webkit-animation: about-li 2s ease-out;
-          animation: about-li 2s ease-out;
-  -webkit-transform: translate(0%, 0%);
-          transform: translate(0%, 0%);
+  -webkit-animation: about-li 0.5s ease-out;
+          animation: about-li 0.5s ease-out;
+  -webkit-transform: translate(0%, 5%);
+          transform: translate(0%, 5%);
+  width: 10%;
 }
 .work-li-animate {
-  -webkit-animation: work-li 2s ease-out;
-          animation: work-li 2s ease-out;
-  -webkit-transform: translate(0%, 0%);
-          transform: translate(0%, 0%);
+  -webkit-animation: work-li 0.5s ease-out;
+          animation: work-li 0.5s ease-out;
+  -webkit-transform: translate(0%, 10%);
+          transform: translate(0%, 10%);
+  width: 10%;
 }
 .contact-li-animate {
-  -webkit-transform: translate(-1750%, 500%);
-          transform: translate(-1750%, 500%);
+  -webkit-animation: contact-li 0.5s ease-out;
+          animation: contact-li 0.5s ease-out;
+  -webkit-transform: translate(0%, 15%);
+          transform: translate(0%, 15%);
+  width: 10%;
 }
 @-webkit-keyframes fade-in {
   from {
@@ -417,24 +428,23 @@ form {
   0% {
     -webkit-transform: translate(0%, 97%);
             transform: translate(0%, 97%);
-    width: 100%;
   }
   100% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
-    width: 25%;
+    flex-flow: column nowrap;
   }
 }
 @keyframes nav-animation {
   0% {
     -webkit-transform: translate(0%, 97%);
             transform: translate(0%, 97%);
-    width: 100%;
   }
   100% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
-    width: 25%;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
   }
 }
 @-webkit-keyframes nav-animation-2 {
@@ -457,83 +467,147 @@ form {
             transform: translate(0%, 97%);
   }
 }
-@-webkit-keyframes reset-nav-items {
-  0% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-}
-@keyframes reset-nav-items {
-  0% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-}
 @-webkit-keyframes about-li {
   0% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
+    width: 100%;
   }
   100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
+    -webkit-transform: translate(0%, 5%);
+            transform: translate(0%, 5%);
+    width: 10%;
   }
 }
 @keyframes about-li {
   0% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
+    width: 100%;
   }
   100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
+    -webkit-transform: translate(0%, 5%);
+            transform: translate(0%, 5%);
+    width: 10%;
   }
 }
 @-webkit-keyframes work-li {
   0% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
+    width: 100%;
   }
   100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
+    -webkit-transform: translate(0%, 10%);
+            transform: translate(0%, 10%);
+    width: 10%;
   }
 }
 @keyframes work-li {
   0% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
+    width: 100%;
   }
   100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
+    -webkit-transform: translate(0%, 10%);
+            transform: translate(0%, 10%);
+    width: 10%;
   }
 }
 @-webkit-keyframes contact-li {
   0% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
+    width: 100%;
   }
   100% {
-    -webkit-transform: translate(-1750%, 500%);
-            transform: translate(-1750%, 500%);
+    -webkit-transform: translate(0%, 15%);
+            transform: translate(0%, 15%);
+    width: 10%;
   }
 }
 @keyframes contact-li {
   0% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
+    width: 100%;
   }
   100% {
-    -webkit-transform: translate(-1750%, 500%);
-            transform: translate(-1750%, 500%);
+    -webkit-transform: translate(0%, 15%);
+            transform: translate(0%, 15%);
+    width: 10%;
+  }
+}
+@-webkit-keyframes about-li-2 {
+  0% {
+    -webkit-transform: translate(0%, 5%);
+            transform: translate(0%, 5%);
+    width: 10%;
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+    width: 100%;
+  }
+}
+@keyframes about-li-2 {
+  0% {
+    -webkit-transform: translate(0%, 5%);
+            transform: translate(0%, 5%);
+    width: 10%;
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+    width: 100%;
+  }
+}
+@-webkit-keyframes work-li-2 {
+  0% {
+    -webkit-transform: translate(0%, 10%);
+            transform: translate(0%, 10%);
+    width: 10%;
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+    width: 100%;
+  }
+}
+@keyframes work-li-2 {
+  0% {
+    -webkit-transform: translate(0%, 10%);
+            transform: translate(0%, 10%);
+    width: 10%;
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+    width: 100%;
+  }
+}
+@-webkit-keyframes contact-li-2 {
+  0% {
+    -webkit-transform: translate(0%, 15%);
+            transform: translate(0%, 15%);
+    width: 10%;
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+    width: 100%;
+  }
+}
+@keyframes contact-li-2 {
+  0% {
+    -webkit-transform: translate(0%, 15%);
+            transform: translate(0%, 15%);
+    width: 10%;
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+    width: 100%;
   }
 }
