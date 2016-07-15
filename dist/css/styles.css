@@ -70,7 +70,7 @@ svg path {
   -ms-flex-flow: column nowrap;
       flex-flow: column nowrap;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   color: #fafafa;
   font-size: 1.5rem;
 }
@@ -80,7 +80,6 @@ svg path {
 }
 .header-container {
   color: #fafafa;
-  height: 100%;
   position: relative;
 }
 .about-container {
@@ -92,9 +91,7 @@ svg path {
 .contact-container {
   color: #0d3a59;
 }
-.header-top,
-.header-middle,
-.header-bottom {
+.header-top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -110,29 +107,17 @@ svg path {
   height: 33.3%;
 }
 .header-bottom {
-  -ms-flex-flow: row nowrap;
-      flex-flow: row nowrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-              -ms-grid-row-align: flex-end;
-          align-items: flex-end;
-  position: relative;
-}
-.boulder-svg {
-  position: absolute;
-  top: -80%;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 75%;
-  z-index: 1;
+  height: 66.6%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
 }
 .current-weather-mount {
   width: 100%;
-  height: 90%;
+  height: 100%;
 }
 .currently-container {
   display: -webkit-box;
@@ -140,22 +125,39 @@ svg path {
   display: flex;
   -ms-flex-flow: column nowrap;
       flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   width: 100%;
   height: 100%;
   position: relative;
 }
+.current-icon-wrapper {
+  position: relative;
+  width: 100%;
+}
 .current-icon {
   position: absolute;
   width: 9%;
-  top: 0;
-  bottom: 0;
+  top: 25%;
   left: 0;
   right: 0;
-  margin: 130px auto;
+  margin: auto;
   -webkit-animation: nudge 8s linear infinite;
           animation: nudge 8s linear infinite;
   z-index: 2;
+}
+.currently-container object {
+  width: 80%;
+  z-index: 1;
+}
+object svg {
+  height: 100%;
+  width: 100%;
 }
 .form-mount {
   width: 100%;

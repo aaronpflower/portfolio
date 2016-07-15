@@ -2315,7 +2315,10 @@ CurrentWeather.view = function(ctrl) {
 		m('h3', "Currently in Boulder"),
 		m('p', ctrl.currentTemp(), " °F"),
 		m('p', ctrl.currentSummary()),
-		m("img.current-icon[src='"+ctrl.currentIcon()+"']")
+		m('.current-icon-wrapper',
+			m("img.current-icon[src='"+ctrl.currentIcon()+"']")
+		),
+		m("object.boulder-svg[type='image/svg+xml'], [data='../assets/boulder.svg']")
 	)
 }
 
