@@ -2251,19 +2251,19 @@ var Data = {
 		img: ""
 	}],
 	projects: [{
-		company: "Human Design",
+		company_id: "Human Design",
 		project: "Racing Extinction",
 		specs: "Squarespace, CSS, HTML, jQuery",
 		about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
 	},
 	{
-		company: "Human Design",
+		company_id: "Human Design",
 		project: "Human Design Site",
 		specs: "Node, Firebase, CSS, HTML, JavaScript",
 		about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
 	},
 	{
-		company: "Human Design",
+		company_id: "Human Design",
 		project: "Social Action Machine",
 		specs: "Node, Express, MongoDB, MithrilJS, CSS, Jade, JavaScript",
 		about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
@@ -2296,9 +2296,7 @@ Work.controller = function() {
 Work.view = function() {
 	return [ 
 		m('.work-component', [
-			Data.projects.filter(function(project) {
-				return console.log(project.company === "Human Design")
-			}).map(function(project, i) {
+			Data.projects.map(function(project, i) {
 				return ('.company-work-wrapper', [
 					m('h3', project.project),
 					m('p', project.specs),

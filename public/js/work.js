@@ -21,9 +21,7 @@ Work.controller = function() {
 Work.view = function() {
 	return [ 
 		m('.work-component', [
-			Data.projects.filter(function(project) {
-				return console.log(project.company === "Human Design")
-			}).map(function(project, i) {
+			Data.projects.map(function(project, i) {
 				return ('.company-work-wrapper', [
 					m('h3', project.project),
 					m('p', project.specs),
