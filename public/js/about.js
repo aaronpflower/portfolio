@@ -1,3 +1,5 @@
+// Idea: For desktop have line animation with dude growing up and looping through
+
 var m = require('mithril');
 var Data = require('./Data.js');
 

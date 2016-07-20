@@ -2273,56 +2273,42 @@ var Data = {
 
 module.exports = Data;
 },{}],3:[function(require,module,exports){
-// Idea: For desktop have line animation with dude growing up and looping through
+// What's a scalable way to present this? 
+//  RE, SAM, HD site
 
-var m = require('mithril');
-var Data = require('./Data.js');
+var m = require('mithril')
+var Data = require('./Data.js')
 
-var About = {};
+var Work = {};
 
-About.vm = (function() {
+Work.vm = (function() {
 	var vm = {}
-	vm.init = function () {
-		vm.sliderOver = m.prop();
-		vm.slideRight = function() {
-			if(vm.sliderOver() == "right-one-third") {
-				vm.sliderOver('right-two-thirds')
-			} else if (vm.sliderOver() == "right-two-thirds") {
-				vm.sliderOver('right-three-thirds')
-			} else if (vm.sliderOver() == "right-three-thirds") {
-				vm.sliderOver('')
-			} else {
-				vm.sliderOver('right-one-third')
-			}
-		};
+	vm.init = function() {
+		console.log("hello world")
 	}
 	return vm
 }())
 
-About.controller = function() {
-	About.vm.init();
+Work.controller = function() {
+	Work.vm.init()
 }
 
-About.view = function(ctrl) {
-	return [
-		m('.about-component-wrapper', [
-			m('a.next-slide.right', { onclick: About.vm.slideRight}, [
-				m('img', {src: "./assets/forward-arrow.png" })
-			]),
-			m('.slide-container', {class: About.vm.sliderOver()}, [			
-				Data.about.map(function(slide, i){
-					console.log(i)
-					return m('div.slide-wrapper', 
-						m('h3', slide.header),
-						m('p', slide.body)
-					)
-				})
-			])
+Work.view = function() {
+	return [ 
+		m('.work-component', [
+			Data.projects.filter(function(project) {
+				return console.log(project.company === "Human Design")
+			}).map(function(project, i) {
+				return ('.company-work-wrapper', [
+					m('h3', project.project),
+					m('p', project.specs),
+					m('p', project.about)
+				])
+			})
 		])
+
 	]
 }
 
-module.exports = About;
-
-
+module.exports = Work;
 },{"./Data.js":2,"mithril":1}]},{},[3])

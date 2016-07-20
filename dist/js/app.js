@@ -48133,12 +48133,32 @@ var Data = {
 		header: "Quality Assurance to Web Development",
 		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
 		img: ""
+	}],
+	projects: [{
+		company: "Human Design",
+		project: "Racing Extinction",
+		specs: "Squarespace, CSS, HTML, jQuery",
+		about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
+	},
+	{
+		company: "Human Design",
+		project: "Human Design Site",
+		specs: "Node, Firebase, CSS, HTML, JavaScript",
+		about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
+	},
+	{
+		company: "Human Design",
+		project: "Social Action Machine",
+		specs: "Node, Express, MongoDB, MithrilJS, CSS, Jade, JavaScript",
+		about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
 	}]
 }
 
 
 module.exports = Data;
 },{}],184:[function(require,module,exports){
+// Idea: For desktop have line animation with dude growing up and looping through
+
 var m = require('mithril');
 var Data = require('./Data.js');
 
@@ -48197,6 +48217,7 @@ var ContactForm = require('./contact-form.js');
 var TwitterWorker = require('./twitter-worker.js');
 var About = require('./about.js')
 var Nav = require('./nav.js')
+var Work = require('./work.js')
 
 SmootScroll.controller.init();
 Nav.controller.init();
@@ -48204,8 +48225,8 @@ m.mount(document.getElementById('current-weather'), m.component(CurrentWeather))
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
 m.mount(document.getElementById('about-mount'), m.component(About));
 m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
-
-},{"./about.js":184,"./contact-form.js":186,"./currentWeather.js":187,"./nav.js":188,"./smoothScroll.js":189,"./twitter-worker.js":190,"mithril":96}],186:[function(require,module,exports){
+m.mount(document.getElementById('work-mount'), m.component(Work));
+},{"./about.js":184,"./contact-form.js":186,"./currentWeather.js":187,"./nav.js":188,"./smoothScroll.js":189,"./twitter-worker.js":190,"./work.js":191,"mithril":96}],186:[function(require,module,exports){
 var m = require('mithril')
 var ContactForm = {};
 
@@ -48482,4 +48503,43 @@ TwitterWorker.view = function(ctrl) {
 }
 
 module.exports = TwitterWorker;
-},{"mithril":96,"twitter":174}]},{},[185])
+},{"mithril":96,"twitter":174}],191:[function(require,module,exports){
+// What's a scalable way to present this? 
+//  RE, SAM, HD site
+
+var m = require('mithril')
+var Data = require('./Data.js')
+
+var Work = {};
+
+Work.vm = (function() {
+	var vm = {}
+	vm.init = function() {
+		console.log("hello world")
+	}
+	return vm
+}())
+
+Work.controller = function() {
+	Work.vm.init()
+}
+
+Work.view = function() {
+	return [ 
+		m('.work-component', [
+			Data.projects.filter(function(project) {
+				return console.log(project.company === "Human Design")
+			}).map(function(project, i) {
+				return ('.company-work-wrapper', [
+					m('h3', project.project),
+					m('p', project.specs),
+					m('p', project.about)
+				])
+			})
+		])
+
+	]
+}
+
+module.exports = Work;
+},{"./Data.js":183,"mithril":96}]},{},[185])
