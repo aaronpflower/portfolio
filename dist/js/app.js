@@ -48245,7 +48245,7 @@ ContactForm.controller = function() {
 
 ContactForm.view = function(ctrl) {
 	return [
-		m('div.contact-container', [
+		m('div.contact-component', [
 			m('h1.section-title', "Contact"),
 			m('form', [
 				m('input.form-input', {
@@ -48265,14 +48265,6 @@ ContactForm.view = function(ctrl) {
 					placeholder: 'Enter email body...'
 				}),
 				m('button.form-button[type="button"]', { onclick: ContactForm.vm.sendData }, "Send")
-			]),
-			m('.icons-container', [
-				m('a.icon-item[href="https://www.linkedin.com/in/aaron-flower-20748339"], [target="_blank"]',
-					m('img', {src: "./assets/linkedIn.svg"})
-				),
-				m('a.icon-item[href="https://github.com/aaronpflower"], [target="_blank"]',
-					m('img', {src: "./assets/github.svg"})
-				)
 			])
 		]) 
 	] 

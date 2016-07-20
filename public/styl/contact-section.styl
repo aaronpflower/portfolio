@@ -1,13 +1,14 @@
 .form-mount
 	width 100%
-	height 50%
+	height 55%
 
-.contact-container
+.contact-component
 	display flex
 	flex-flow column nowrap
 	justify-content center
 	align-items center
-	
+	height 100%
+	width 100%
 form	
 	display flex
 	flex-flow column nowrap
@@ -18,32 +19,34 @@ form
 
 .form-input
 	width 50%
-	height 45px
-	background-color $white
+	height 40px
+	background-color transparent
 	border none
 	border-bottom 1px solid $navy
 	text-align center
-	color $navy
+	color $blue-gray
 	z-index 102
 	
 .form-input::placeholder,
 .form-textarea::placeholder
 	text-align center
-	color $navy
+	height 100%
+	color $blue-gray
 	
 .form-textarea
-	width 50%
-	height 200px
-	background-color $white
+	width 80%
+	height 120px
+	background-color transparent
 	border none
 	border-bottom 1px solid $navy
-	color $navy
+	color $blue-gray
 	z-index 102
 	
 .form-button
-	width 30%
+	width 75%
 	height 45px
-	background-color $beige
+	margin-top 25px
+	background-color $white
 	color $red
 	outline none
 	border 1px solid $red
@@ -51,17 +54,37 @@ form
 	z-index 102
 
 .form-button:hover
-	border 1px solid $beige
-	background-color $red
+	border 1px solid $navy
+	background-color $navy
 	color $white
 	transition all .3s ease-out
 	
+
+.copywrite
+	display flex
+	flex-flow column nowrap
+	justify-content center
+	align-items center
+	width 100%
+	height 10%
+
+.name-container
+	width 100%
+	height 50%
+	display flex
+	justify-content center
+	align-items flex-end
+	p
+		font-size .5em
+	
+
 .icons-container
 	display flex
-	justify-content space-around
+	justify-content center
 	align-content center
-	width 50%
-	height 10%
+	width 100%
+	height 50%
+	z-index 102
 
 .icon-item
 	display flex
