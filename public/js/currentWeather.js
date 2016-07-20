@@ -50,7 +50,6 @@ CurrentWeather.API = {
 	getCurrentConditions: function() {
 		return m.request({
 			dataType: "jsonp",
-			// url: "https://api.forecast.io/forecast/"+ process.env.FORECAST_API_KEY +"/40.0150,-105.2705"
 			url: "https://api.forecast.io/forecast/963c2a286c46883b606d0962897eeef7/40.0150,-105.2705"
 		})
 	}
@@ -75,15 +74,17 @@ CurrentWeather.controller = function() {
 }
 
 CurrentWeather.view = function(ctrl) {
-	return m('div.currently-container',
-		m('h3', "Currently in Boulder"),
-		m('p', ctrl.currentTemp(), " °F"),
-		m('p', ctrl.currentSummary()),
-		m('.current-icon-wrapper',
-			m("img.current-icon[src='"+ctrl.currentIcon()+"']")
-		),
-		m("object.boulder-svg[type='image/svg+xml'], [data='../assets/boulder.svg']")
-	)
+	return [
+		m('div.currently-container', [
+			m('h3', "Currently in Boulder"),
+			m('p', ctrl.currentTemp(), " °F"),
+			m('p', ctrl.currentSummary()),
+			m('.current-icon-wrapper', [
+				m("img.current-icon[src='"+ctrl.currentIcon()+"']")
+			]),
+			m("object.boulder-svg[type='image/svg+xml'], [data='../assets/boulder.svg']")
+		])
+	]
 }
 
 module.exports = CurrentWeather;

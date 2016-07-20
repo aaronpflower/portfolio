@@ -48118,97 +48118,168 @@ function extend() {
 }
 
 },{}],183:[function(require,module,exports){
+var Data = {
+	about: [{
+		header: "Why all the weather references?",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
+		img: ""
+	},
+	{
+		header: "Running to Quality Assurance",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
+		img: ""
+	},
+	{
+		header: "Quality Assurance to Web Development",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
+		img: ""
+	}]
+}
+
+
+module.exports = Data;
+},{}],184:[function(require,module,exports){
+var m = require('mithril');
+var Data = require('./Data.js');
+
+var About = {};
+
+About.vm = (function() {
+	var vm = {}
+	vm.init = function () {
+		vm.sliderOver = m.prop();
+		vm.slideRight = function() {
+			if(vm.sliderOver() == "right-one-third") {
+				vm.sliderOver('right-two-thirds')
+			} else if (vm.sliderOver() == "right-two-thirds") {
+				vm.sliderOver('right-three-thirds')
+			} else if (vm.sliderOver() == "right-three-thirds") {
+				vm.sliderOver('')
+			} else {
+				vm.sliderOver('right-one-third')
+			}
+		};
+	}
+	return vm
+}())
+
+About.controller = function() {
+	About.vm.init();
+}
+
+About.view = function(ctrl) {
+	return [
+		m('.about-component-wrapper', [
+			m('a.next-slide.right', { onclick: About.vm.slideRight}, [
+				m('img', {src: "./assets/forward-arrow.png" })
+			]),
+			m('.slide-container', {class: About.vm.sliderOver()}, [			
+				Data.about.map(function(slide, i){
+					console.log(i)
+					return m('div.slide-wrapper', 
+						m('h3', slide.header),
+						m('p', slide.body)
+					)
+				})
+			])
+		])
+	]
+}
+
+module.exports = About;
+
+
+},{"./Data.js":183,"mithril":96}],185:[function(require,module,exports){
 var SmootScroll = require('./smoothScroll.js');
 var CurrentWeather = require('./currentWeather.js');
+var m = require('mithril');
 var ContactForm = require('./contact-form.js');
 var TwitterWorker = require('./twitter-worker.js');
+var About = require('./about.js')
 var Nav = require('./nav.js')
-var m = require('mithril');
 
 SmootScroll.controller.init();
 Nav.controller.init();
 m.mount(document.getElementById('current-weather'), m.component(CurrentWeather));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
-// m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
+m.mount(document.getElementById('about-mount'), m.component(About));
+m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
 
-
-},{"./contact-form.js":184,"./currentWeather.js":185,"./nav.js":186,"./smoothScroll.js":187,"./twitter-worker.js":188,"mithril":96}],184:[function(require,module,exports){
+},{"./about.js":184,"./contact-form.js":186,"./currentWeather.js":187,"./nav.js":188,"./smoothScroll.js":189,"./twitter-worker.js":190,"mithril":96}],186:[function(require,module,exports){
 var m = require('mithril')
 var ContactForm = {};
 
 ContactForm.API = {
-	sendEmail: function(sender) {
-		console.log(sender)
+	sendEmail: function() {
+		console.log(ContactForm.vm.senderEmail())
 		return m.request({
 			method: 'POST',
 			url: 'http://localhost:3000/api/v1/emails/send-email',
 			data: { 
-				senderName: ContactForm.Model.senderName(),
-				senderEmail: ContactForm.Model.senderEmail(),
-				emailSubject: ContactForm.Model.emailSubject(),
-				emailBody: ContactForm.Model.emailBody()
+				senderName: ContactForm.vm.senderName(),
+				senderEmail: ContactForm.vm.senderEmail(),
+				emailSubject: ContactForm.vm.emailSubject(),
+				emailBody: ContactForm.vm.emailBody()
 			}
 		})
 	}
 }
 
-ContactForm.Model = {
-	senderName: m.prop(),
-	senderEmail: m.prop(),
-	emailSubject: m.prop(),
-	emailBody: m.prop()
-}
+ContactForm.vm = (function() {
+	var vm = {}
+	vm.init = function() {
+		vm.senderName = m.prop(),
+		vm.senderEmail = m.prop(),
+		vm.emailSubject = m.prop(),
+		vm.emailBody = m.prop(),
+		vm.sendData = function() {
+			ContactForm.API.sendEmail()
+		};
+	}
+	return vm
+}())
 
 ContactForm.controller = function() {
-	this.senderName = m.prop()
-	this.senderEmail = m.prop()
-	this.emailSubject = m.prop()
-	this.emailBody = m.prop()
+	ContactForm.vm.init();
 }
 
 ContactForm.view = function(ctrl) {
-	return m('div.contact-container',
+	return [
+		m('div.contact-container', [
 			m('h1.section-title', "Contact"),
-			m('form',
+			m('form', [
 				m('input.form-input', {
-					oninput: m.withAttr('value', ctrl.senderName),
+					oninput: m.withAttr('value', ContactForm.vm.senderName),
 					placeholder: 'Enter name...'
 				}),
 				m('input.form-input', {
-					oninput: m.withAttr('value', ctrl.senderEmail),
+					oninput: m.withAttr('value', ContactForm.vm.senderEmail),
 					placeholder: 'Enter email...'
 				}),
 				m('input.form-input', {
-					oninput: m.withAttr('value', ctrl.emailSubject),
+					oninput: m.withAttr('value', ContactForm.vm.emailSubject),
 					placeholder: 'Enter subject...'
 				}),
 				m('textarea.form-textarea', {
-					oninput: m.withAttr('value', ctrl.emailBody),
+					oninput: m.withAttr('value', ContactForm.vm.emailBody),
 					placeholder: 'Enter email body...'
 				}),
-				m('button.form-button[type="button"]', "Submit", {
-					onclick: function (e) {
-						ContactForm.Model.senderName(ctrl.senderName)
-						ContactForm.Model.senderEmail(ctrl.senderEmail)
-						ContactForm.Model.emailSubject(ctrl.emailSubject)
-						ContactForm.Model.emailBody(ctrl.emailBody)
-						ContactForm.API.sendEmail()
-					}
-				})
-			),
-			m('.icons-container',
+				m('button.form-button[type="button"]', { onclick: ContactForm.vm.sendData }, "Send")
+			]),
+			m('.icons-container', [
 				m('a.icon-item[href="https://www.linkedin.com/in/aaron-flower-20748339"], [target="_blank"]',
 					m('img', {src: "./assets/linkedIn.svg"})
 				),
 				m('a.icon-item[href="https://github.com/aaronpflower"], [target="_blank"]',
 					m('img', {src: "./assets/github.svg"})
 				)
-			)
-		) 
+			])
+		]) 
+	] 
 }
 
 module.exports = ContactForm;
-},{"mithril":96}],185:[function(require,module,exports){
+},{"mithril":96}],187:[function(require,module,exports){
 var m = require('mithril')
 
 var CurrentWeather = {};
@@ -48261,7 +48332,6 @@ CurrentWeather.API = {
 	getCurrentConditions: function() {
 		return m.request({
 			dataType: "jsonp",
-			// url: "https://api.forecast.io/forecast/"+ process.env.FORECAST_API_KEY +"/40.0150,-105.2705"
 			url: "https://api.forecast.io/forecast/963c2a286c46883b606d0962897eeef7/40.0150,-105.2705"
 		})
 	}
@@ -48286,22 +48356,24 @@ CurrentWeather.controller = function() {
 }
 
 CurrentWeather.view = function(ctrl) {
-	return m('div.currently-container',
-		m('h3', "Currently in Boulder"),
-		m('p', ctrl.currentTemp(), " °F"),
-		m('p', ctrl.currentSummary()),
-		m('.current-icon-wrapper',
-			m("img.current-icon[src='"+ctrl.currentIcon()+"']")
-		),
-		m("object.boulder-svg[type='image/svg+xml'], [data='../assets/boulder.svg']")
-	)
+	return [
+		m('div.currently-container', [
+			m('h3', "Currently in Boulder"),
+			m('p', ctrl.currentTemp(), " °F"),
+			m('p', ctrl.currentSummary()),
+			m('.current-icon-wrapper', [
+				m("img.current-icon[src='"+ctrl.currentIcon()+"']")
+			]),
+			m("object.boulder-svg[type='image/svg+xml'], [data='../assets/boulder.svg']")
+		])
+	]
 }
 
 module.exports = CurrentWeather;
 
 
 
-},{"mithril":96}],186:[function(require,module,exports){
+},{"mithril":96}],188:[function(require,module,exports){
 var Nav = {};
 
 Nav.controller = {
@@ -48339,7 +48411,7 @@ Nav.view = {
 };
 
 module.exports = Nav;
-},{}],187:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 // SmoothScroll
 var SmootScroll = {};
 
@@ -48378,7 +48450,7 @@ SmootScroll.view = {
 };
 
 module.exports = SmootScroll;
-},{"smoothscroll":135}],188:[function(require,module,exports){
+},{"smoothscroll":135}],190:[function(require,module,exports){
 var m = require ('mithril');
 var Twitter = require('twitter');
 var socket = io();
@@ -48418,4 +48490,4 @@ TwitterWorker.view = function(ctrl) {
 }
 
 module.exports = TwitterWorker;
-},{"mithril":96,"twitter":174}]},{},[183])
+},{"mithril":96,"twitter":174}]},{},[185])

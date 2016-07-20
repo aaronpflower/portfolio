@@ -10,12 +10,12 @@ var io = require('socket.io')(server);
 var twitter = require('twitter');
 
 app.use(cors())
-app.use(bodyParser.urlencoded({limit : "50mb", extended: false }))
-app.use(bodyParser.json({limit : "50mb"}))
 app.use(express.static('dist'))
-
 app.set('view engine', 'pug');
 app.set('views', './public/pug');
+app.use(bodyParser.urlencoded({limit : "50mb", extended: false }))
+app.use(bodyParser.json({limit : "50mb"}))
+
 
 require('./server/routes/sendEmail.js')(app)
 
@@ -38,35 +38,35 @@ var twitterStream = new twitter({
 });
 var stream = null;
 var users = [];
-var hashtag = '#ColdSpringsFire, #CoWx, #mlb'
+var hashtag = '#CoWx'
 
-// io.on("connection", function(socket) {
-// 	if(users.indexOf(socket.id) === -1) {
-// 		users.push(socket.id)
-// 		logConnectedUsers()
-// 	}
+io.on("connection", function(socket) {
+	if(users.indexOf(socket.id) === -1) {
+		users.push(socket.id)
+		logConnectedUsers()
+	}
 
-// 	socket.on("disconnect", function(o) {
-// 		var index = users.indexOf(socket.id);
-// 		if(index != -1) {
-// 			users.splice(index, 1);
-// 			logConnectedUsers();
-// 		}
-// 	});
+	socket.on("disconnect", function(o) {
+		var index = users.indexOf(socket.id);
+		if(index != -1) {
+			users.splice(index, 1);
+			logConnectedUsers();
+		}
+	});
 
 
-// 	twitterStream.stream('statuses/filter', { track: hashtag }, function(stream) {
-// 		stream.on('data', function (data) {
-// 			io.sockets.emit('tweet', data.text);
-// 			console.log(data.text);
-// 		});
-// 		stream.on('error', function(error) {
-// 	    	console.log(error);
-// 		}); 
-// 	});
-// });
+	twitterStream.stream('statuses/filter', { track: hashtag }, function(stream) {
+		stream.on('data', function (data) {
+			io.sockets.emit('tweet', data.text);
+			// console.log(data.text);
+		});
+		stream.on('error', function(error) {
+	    	console.log(error);
+		}); 
+	});
+});
 
-// // // A log function for debugging purposes
-// function logConnectedUsers() {
-//     console.log("CONNECTED USERS " + users.length);
-// }
+// // A log function for debugging purposes
+function logConnectedUsers() {
+    console.log("CONNECTED USERS " + users.length);
+}

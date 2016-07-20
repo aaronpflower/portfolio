@@ -2234,97 +2234,75 @@
 }); // eslint-disable-line
 
 },{}],2:[function(require,module,exports){
-var m = require('mithril')
-
-var CurrentWeather = {};
-
-CurrentWeather.conditions = {
-	icons: [{
-		icon: 'clear-day',
-		img: './assets/cloud.svg'
+var Data = {
+	about: [{
+		header: "Why all the weather references?",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
+		img: ""
 	},
 	{
-		icon: 'clear-night',
-		img: './assets/cloud.svg'	
+		header: "Running to Quality Assurance",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
+		img: ""
 	},
 	{
-		icon: 'rain',
-		img: './assets/cloud.svg'
-	},
-	{
-		icon: 'snow',
-		img: './assets/cloud.svg'
-	},
-	{
-		icon: 'sleet',
-		img: './assets/cloud.svg'
-	},
-	{
-		icon: 'wind',
-		img: './assets/cloud.svg'
-	},
-	{
-		icon: 'fog',
-		img: './assets/cloud.svg'
-	},
-	{
-		icon: 'cloudy',
-		img: './assets/cloud.svg'
-	},
-	{
-		icon: 'partly-cloudy-day',
-		img: './assets/cloud.svg'
-	},
-	{
-		icon: 'partly-cloudy-night',
-		img: './assets/cloud.svg'
+		header: "Quality Assurance to Web Development",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
+		img: ""
 	}]
 }
 
 
-CurrentWeather.API = {
-	getCurrentConditions: function() {
-		return m.request({
-			dataType: "jsonp",
-			url: "https://api.forecast.io/forecast/963c2a286c46883b606d0962897eeef7/40.0150,-105.2705"
-		})
-	}
-}
+module.exports = Data;
+},{}],3:[function(require,module,exports){
+var m = require('mithril');
+var Data = require('./Data.js');
 
-CurrentWeather.controller = function() {
-	var that = this;
-	this.currentTemp = m.prop();
-	this.currentIcon = m.prop();
-	this.currentSummary = m.prop();
+var About = {};
 
-	CurrentWeather.API.getCurrentConditions().then(function(data) {	
-		var iconMap = CurrentWeather.conditions.icons.map(function(condition, i) {
-			if (condition.icon === data.currently.icon) {
-				that.currentIcon(condition.img)
+About.vm = (function() {
+	var vm = {}
+	vm.init = function () {
+		vm.sliderOver = m.prop();
+		vm.slideRight = function() {
+			if(vm.sliderOver() == "right-one-third") {
+				vm.sliderOver('right-two-thirds')
+			} else if (vm.sliderOver() == "right-two-thirds") {
+				vm.sliderOver('right-three-thirds')
+			} else if (vm.sliderOver() == "right-three-thirds") {
+				vm.sliderOver('')
+			} else {
+				vm.sliderOver('right-one-third')
 			}
-		})
-		console.log(data)
-		that.currentTemp(data.currently.apparentTemperature);
-		that.currentSummary(data.currently.summary)
-	})
+		};
+	}
+	return vm
+}())
+
+About.controller = function() {
+	About.vm.init();
 }
 
-CurrentWeather.view = function(ctrl) {
+About.view = function(ctrl) {
 	return [
-		m('div.currently-container', [
-			m('h3', "Currently in Boulder"),
-			m('p', ctrl.currentTemp(), " °F"),
-			m('p', ctrl.currentSummary()),
-			m('.current-icon-wrapper', [
-				m("img.current-icon[src='"+ctrl.currentIcon()+"']")
+		m('.about-component-wrapper', [
+			m('a.next-slide.right', { onclick: About.vm.slideRight}, [
+				m('img', {src: "./assets/forward-arrow.png" })
 			]),
-			m("object.boulder-svg[type='image/svg+xml'], [data='../assets/boulder.svg']")
+			m('.slide-container', {class: About.vm.sliderOver()}, [			
+				Data.about.map(function(slide, i){
+					console.log(i)
+					return m('div.slide-wrapper', 
+						m('h3', slide.header),
+						m('p', slide.body)
+					)
+				})
+			])
 		])
 	]
 }
 
-module.exports = CurrentWeather;
+module.exports = About;
 
 
-
-},{"mithril":1}]},{},[2])
+},{"./Data.js":2,"mithril":1}]},{},[3])
