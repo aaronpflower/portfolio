@@ -2241,31 +2241,31 @@ var CurrentWeather = {};
 CurrentWeather.conditions = {
 	icons: [{
 		icon: 'clear-day',
-		img: './assets/cloud.svg'
+		img: './assets/sun.svg'
 	},
 	{
 		icon: 'clear-night',
-		img: './assets/cloud.svg'	
+		img: './assets/clear-night.svg'	
 	},
 	{
 		icon: 'rain',
-		img: './assets/cloud.svg'
+		img: './assets/rain.svg'
 	},
 	{
 		icon: 'snow',
-		img: './assets/cloud.svg'
+		img: './assets/snow.svg'
 	},
 	{
 		icon: 'sleet',
-		img: './assets/cloud.svg'
+		img: './assets/sleet.svg'
 	},
 	{
 		icon: 'wind',
-		img: './assets/cloud.svg'
+		img: './assets/wind.svg'
 	},
 	{
 		icon: 'fog',
-		img: './assets/cloud.svg'
+		img: './assets/fog.svg'
 	},
 	{
 		icon: 'cloudy',
@@ -2273,11 +2273,11 @@ CurrentWeather.conditions = {
 	},
 	{
 		icon: 'partly-cloudy-day',
-		img: './assets/cloud.svg'
+		img: './assets/partly-cloudy-sun.svg'
 	},
 	{
 		icon: 'partly-cloudy-night',
-		img: './assets/cloud.svg'
+		img: './assets/partly-cloudy-night.svg'
 	}]
 }
 

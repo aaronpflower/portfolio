@@ -10,7 +10,7 @@ Nav.controller = {
 Nav.view = {
 	init: function() {
 		var firstSection = document.getElementById('top').offsetHeight;
-		var scrollTime = firstSection / 2;
+		var scrollTime = firstSection / 4;
 		console.log(scrollTime)
 		window.addEventListener('scroll', function(){
 			var nav = document.getElementById('nav');
