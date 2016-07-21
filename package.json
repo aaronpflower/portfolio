@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "mithril": "^0.2.5",
-    "nodemon": "^1.9.2"
+    "nodemon": "^1.9.2",
+    "svg-browserify": "0.0.2"
   }
 }

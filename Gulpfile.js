@@ -10,13 +10,14 @@ var pug = require('gulp-pug')
 var concat = require('gulp-concat')
 var order = require('gulp-order')
 var babel = require('gulp-babel')
+var svg = require('svg-browserify')
 
 var ENV = process.env.ENV || 'development'
 
 gulp.task('js', function(){
 	return gulp.src('public/js/*.js', { read: false })
 		.pipe(plumber())
-		.pipe(browserify())
+		.pipe(browserify({transform : svg}))
 		// .pipe(babel({presets: ['es2015']}))
 		.pipe(gulp.dest('dist/js'))
 })
@@ -76,6 +77,7 @@ gulp.task('watch', function(){
 	gulp.watch('public/styl/*.styl', ['css'])
 	gulp.watch('public/js/*.js', ['js'])
 	gulp.watch('public/pug/*.pug', ['pug'])
+	gulp.watch('dist/assets/*.svg', ['pug', 'js'])
 })
 
 gulp.task('default', ['js', 'css', 'pug', 'watch'])

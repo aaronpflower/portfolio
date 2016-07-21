@@ -1,0 +1,30 @@
+@keyframes dash
+	to
+		stroke-dashoffset 0
+        
+#sun
+	display block
+	
+#sun-line-1,
+#sun-line-2,
+#sun-line-3,
+#sun-line-4,
+#sun-line-5,
+#sun-line-6,
+#sun-line-7,
+#sun-line-8
+	stroke-dasharray 484
+	stroke-dashoffset 484
+
+#sun
+	#sun-line-1
+	#sun-line-2
+	#sun-line-3
+	#sun-line-4
+	#sun-line-5
+	#sun-line-6
+	#sun-line-7
+	#sun-line-8
+		animation dash 1s linear forwards .5s
+		@media screen and (max-width: 768px)
+			animation dash 1s linear forwards .5s

@@ -142,7 +142,7 @@ svg path {
   position: relative;
   width: 100%;
 }
-.current-icon {
+.current-icon svg {
   position: absolute;
   width: 9%;
   top: 25%;
@@ -153,13 +153,9 @@ svg path {
           animation: nudge 8s linear infinite;
   z-index: 2;
 }
-.currently-container object {
+.boulder-svg svg {
   width: 80%;
   z-index: 1;
-}
-object svg {
-  height: 100%;
-  width: 100%;
 }
 .form-mount {
   width: 100%;
@@ -445,6 +441,44 @@ form {
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
 }
+#sun {
+  display: block;
+}
+#sun-line-1,
+#sun-line-2,
+#sun-line-3,
+#sun-line-4,
+#sun-line-5,
+#sun-line-6,
+#sun-line-7,
+#sun-line-8 {
+  stroke-dasharray: 484;
+  stroke-dashoffset: 484;
+}
+#sun #sun-line-1,
+#sun #sun-line-2,
+#sun #sun-line-3,
+#sun #sun-line-4,
+#sun #sun-line-5,
+#sun #sun-line-6,
+#sun #sun-line-7,
+#sun #sun-line-8 {
+  -webkit-animation: dash 1s linear forwards 0.5s;
+          animation: dash 1s linear forwards 0.5s;
+}
+@media screen and (max-width: 768px) {
+  #sun #sun-line-1,
+  #sun #sun-line-2,
+  #sun #sun-line-3,
+  #sun #sun-line-4,
+  #sun #sun-line-5,
+  #sun #sun-line-6,
+  #sun #sun-line-7,
+  #sun #sun-line-8 {
+    -webkit-animation: dash 1s linear forwards 0.5s;
+            animation: dash 1s linear forwards 0.5s;
+  }
+}
 .nav-wrapper {
   height: 100vh;
   width: 100vw;
@@ -642,6 +676,16 @@ form {
   100% {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
+  }
+}
+@-webkit-keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
   }
 }
 @-webkit-keyframes nav-animation {

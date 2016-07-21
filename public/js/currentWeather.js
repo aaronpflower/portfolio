@@ -1,47 +1,59 @@
 var m = require('mithril')
+require('../../dist/assets/sun.svg')
+require('../../dist/assets/clear-night.svg')
+require('../../dist/assets/rain.svg')
+require('../../dist/assets/snow.svg')
+require('../../dist/assets/sleet.svg')
+require('../../dist/assets/wind.svg')
+require('../../dist/assets/fog.svg')
+require('../../dist/assets/cloud.svg')
+require('../../dist/assets/partly-cloudy-sun.svg')
+require('../../dist/assets/partly-cloudy-night.svg')
+require('../../dist/assets/boulder.svg')
+
 
 var CurrentWeather = {};
 
 CurrentWeather.conditions = {
 	icons: [{
 		icon: 'clear-day',
-		img: './assets/sun.svg'
+		img: '../../dist/assets/sun.svg'
 	},
 	{
 		icon: 'clear-night',
-		img: './assets/clear-night.svg'	
+		img: '../../dist/assets/clear-night.svg'	
 	},
 	{
 		icon: 'rain',
-		img: './assets/rain.svg'
+		img: '../../dist/assets/rain.svg'
 	},
 	{
 		icon: 'snow',
-		img: './assets/snow.svg'
+		img: '../../dist/assets/snow.svg'
 	},
 	{
 		icon: 'sleet',
-		img: './assets/sleet.svg'
+		img: '../../dist/assets/sleet.svg'
 	},
 	{
 		icon: 'wind',
-		img: './assets/wind.svg'
+		img: '../../dist/assets/wind.svg'
 	},
 	{
 		icon: 'fog',
-		img: './assets/fog.svg'
+		img: '../../dist/assets/fog.svg'
 	},
 	{
 		icon: 'cloudy',
-		img: './assets/cloud.svg'
+		img: '../../dist/assets/cloud.svg'
 	},
 	{
 		icon: 'partly-cloudy-day',
-		img: './assets/partly-cloudy-sun.svg'
+		img: '../../dist/assets/partly-cloudy-sun.svg'
 	},
 	{
 		icon: 'partly-cloudy-night',
-		img: './assets/partly-cloudy-night.svg'
+		img: '../../dist/assets/partly-cloudy-night.svg'
 	}]
 }
 
@@ -79,10 +91,10 @@ CurrentWeather.view = function(ctrl) {
 			m('h3', "Currently in Boulder"),
 			m('p', ctrl.currentTemp(), " °F"),
 			m('p', ctrl.currentSummary()),
-			m('.current-icon-wrapper', [
-				m("img.current-icon[src='"+ctrl.currentIcon()+"']")
-			]),
-			m("object.boulder-svg[type='image/svg+xml'], [data='../assets/boulder.svg']")
+			m(".current-icon-wrapper", 
+				m('.current-icon', m.trust(require(ctrl.currentIcon())))
+			),
+			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg')))
 		])
 	]
 }
