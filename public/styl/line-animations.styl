@@ -1,30 +1,88 @@
 @keyframes dash
 	to
-		stroke-dashoffset 0
+		stroke-dashoffset 100
         
-#sun
+#sun,
+#boulder-svg
 	display block
 	
-#sun-line-1,
-#sun-line-2,
-#sun-line-3,
-#sun-line-4,
-#sun-line-5,
-#sun-line-6,
-#sun-line-7,
-#sun-line-8
+#sun path
+	// #sun-line-1
+	// #sun-line-2
+	// #sun-line-3
+	// #sun-line-4
+	// #sun-line-5
+	// #sun-line-6
+	// #sun-line-7
+	// #sun-line-8
+	stroke-dasharray 20
+	// stroke-dashoffset 484
+
+#sun path
+	// #sun-line-1
+	// #sun-line-2
+	// #sun-line-3
+	// #sun-line-4
+	// #sun-line-5
+	// #sun-line-6
+	// #sun-line-7
+	// #sun-line-8
+	animation dash 1s linear infinite
+	@media screen and (max-width: 768px)
+		animation dash 1s linear forwards .5s
+
+#boulder-svg-line-1
+#boulder-svg-line-2
+#boulder-svg-line-3
+#boulder-svg-line-4
+#boulder-svg-line-5
+#boulder-svg-line-6
+#boulder-svg-line-7
+#boulder-svg-line-8
+#boulder-svg-line-9
+#boulder-svg-line-10
+#boulder-svg-line-11
+#boulder-svg-line-12
+#boulder-svg-line-13
+#boulder-svg-line-14
+#boulder-svg-line-15
+#boulder-svg-line-16
+#boulder-svg-line-17
+#boulder-svg-line-18
+#boulder-svg-line-19
+#boulder-svg-line-20
+#boulder-svg-line-21
+#boulder-svg-line-22
+#boulder-svg-line-23
+#boulder-svg-line-24
 	stroke-dasharray 484
 	stroke-dashoffset 484
-
-#sun
-	#sun-line-1
-	#sun-line-2
-	#sun-line-3
-	#sun-line-4
-	#sun-line-5
-	#sun-line-6
-	#sun-line-7
-	#sun-line-8
+	
+#boulder-svg
+	#boulder-svg-line-1
+	#boulder-svg-line-2
+	#boulder-svg-line-3
+	#boulder-svg-line-4
+	#boulder-svg-line-5
+	#boulder-svg-line-6
+	#boulder-svg-line-7
+	#boulder-svg-line-8
+	#boulder-svg-line-9
+	#boulder-svg-line-10
+	#boulder-svg-line-11
+	#boulder-svg-line-12
+	#boulder-svg-line-13
+	#boulder-svg-line-14
+	#boulder-svg-line-15
+	#boulder-svg-line-16
+	#boulder-svg-line-17
+	#boulder-svg-line-18
+	#boulder-svg-line-19
+	#boulder-svg-line-20
+	#boulder-svg-line-21
+	#boulder-svg-line-22
+	#boulder-svg-line-23
+	#boulder-svg-line-24
 		animation dash 1s linear forwards .5s
 		@media screen and (max-width: 768px)
 			animation dash 1s linear forwards .5s

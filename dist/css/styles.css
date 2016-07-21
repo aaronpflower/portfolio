@@ -56,8 +56,8 @@ svg path {
           animation: fade-in 0.6s ease-out;
 }
 .site-wrapper {
-  background: -webkit-linear-gradient(#415560, #f7fdff);
-  background: linear-gradient(#415560, #f7fdff);
+  background: -webkit-linear-gradient(#415560, #0bc9ec);
+  background: linear-gradient(#415560, #0bc9ec);
   position: relative;
 }
 .header-container,
@@ -82,6 +82,8 @@ svg path {
 .header-container {
   color: #fafafa;
   position: relative;
+  background: -webkit-linear-gradient(top, #0d3a59, #0899b4, #0bc9ec, #018e0e);
+  background: linear-gradient(to bottom, #0d3a59, #0899b4, #0bc9ec, #018e0e);
 }
 .about-container {
   color: #fafafa;
@@ -111,25 +113,16 @@ svg path {
 .header-bottom {
   height: 66.6%;
   width: 100%;
+}
+.current-weather-component {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: column nowrap;
       flex-flow: column nowrap;
-}
-.current-weather-mount {
-  width: 100%;
-  height: 100%;
-}
-.currently-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-flow: column nowrap;
-      flex-flow: column nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -138,24 +131,31 @@ svg path {
   height: 100%;
   position: relative;
 }
-.current-icon-wrapper {
-  position: relative;
-  width: 100%;
+.conditions {
+  height: 10%;
 }
-.current-icon svg {
+.current-icon {
   position: absolute;
-  width: 9%;
-  top: 25%;
+  width: 11%;
+  top: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 0px auto;
   -webkit-animation: nudge 8s linear infinite;
           animation: nudge 8s linear infinite;
   z-index: 2;
 }
-.boulder-svg svg {
-  width: 80%;
+.current-icon svg {
+  width: 100%;
+}
+.boulder-svg {
+  width: 100%;
+  height: 80%;
   z-index: 1;
+}
+.boulder-svg svg {
+  width: 100%;
+  height: 100%;
 }
 .form-mount {
   width: 100%;
@@ -350,6 +350,8 @@ form {
 .about-component-wrapper {
   width: 100%;
   height: 100%;
+  max-width: 1400px;
+  margin: auto;
 }
 .next-slide {
   display: -webkit-box;
@@ -441,40 +443,102 @@ form {
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
 }
-#sun {
+#sun,
+#boulder-svg {
   display: block;
 }
-#sun-line-1,
-#sun-line-2,
-#sun-line-3,
-#sun-line-4,
-#sun-line-5,
-#sun-line-6,
-#sun-line-7,
-#sun-line-8 {
+#sun path {
+  stroke-dasharray: 20;
+}
+#sun path {
+  -webkit-animation: dash 1s linear infinite;
+          animation: dash 1s linear infinite;
+}
+@media screen and (max-width: 768px) {
+  #sun path {
+    -webkit-animation: dash 1s linear forwards 0.5s;
+            animation: dash 1s linear forwards 0.5s;
+  }
+}
+#boulder-svg-line-1,
+#boulder-svg-line-2,
+#boulder-svg-line-3,
+#boulder-svg-line-4,
+#boulder-svg-line-5,
+#boulder-svg-line-6,
+#boulder-svg-line-7,
+#boulder-svg-line-8,
+#boulder-svg-line-9,
+#boulder-svg-line-10,
+#boulder-svg-line-11,
+#boulder-svg-line-12,
+#boulder-svg-line-13,
+#boulder-svg-line-14,
+#boulder-svg-line-15,
+#boulder-svg-line-16,
+#boulder-svg-line-17,
+#boulder-svg-line-18,
+#boulder-svg-line-19,
+#boulder-svg-line-20,
+#boulder-svg-line-21,
+#boulder-svg-line-22,
+#boulder-svg-line-23,
+#boulder-svg-line-24 {
   stroke-dasharray: 484;
   stroke-dashoffset: 484;
 }
-#sun #sun-line-1,
-#sun #sun-line-2,
-#sun #sun-line-3,
-#sun #sun-line-4,
-#sun #sun-line-5,
-#sun #sun-line-6,
-#sun #sun-line-7,
-#sun #sun-line-8 {
+#boulder-svg #boulder-svg-line-1,
+#boulder-svg #boulder-svg-line-2,
+#boulder-svg #boulder-svg-line-3,
+#boulder-svg #boulder-svg-line-4,
+#boulder-svg #boulder-svg-line-5,
+#boulder-svg #boulder-svg-line-6,
+#boulder-svg #boulder-svg-line-7,
+#boulder-svg #boulder-svg-line-8,
+#boulder-svg #boulder-svg-line-9,
+#boulder-svg #boulder-svg-line-10,
+#boulder-svg #boulder-svg-line-11,
+#boulder-svg #boulder-svg-line-12,
+#boulder-svg #boulder-svg-line-13,
+#boulder-svg #boulder-svg-line-14,
+#boulder-svg #boulder-svg-line-15,
+#boulder-svg #boulder-svg-line-16,
+#boulder-svg #boulder-svg-line-17,
+#boulder-svg #boulder-svg-line-18,
+#boulder-svg #boulder-svg-line-19,
+#boulder-svg #boulder-svg-line-20,
+#boulder-svg #boulder-svg-line-21,
+#boulder-svg #boulder-svg-line-22,
+#boulder-svg #boulder-svg-line-23,
+#boulder-svg #boulder-svg-line-24 {
   -webkit-animation: dash 1s linear forwards 0.5s;
           animation: dash 1s linear forwards 0.5s;
 }
 @media screen and (max-width: 768px) {
-  #sun #sun-line-1,
-  #sun #sun-line-2,
-  #sun #sun-line-3,
-  #sun #sun-line-4,
-  #sun #sun-line-5,
-  #sun #sun-line-6,
-  #sun #sun-line-7,
-  #sun #sun-line-8 {
+  #boulder-svg #boulder-svg-line-1,
+  #boulder-svg #boulder-svg-line-2,
+  #boulder-svg #boulder-svg-line-3,
+  #boulder-svg #boulder-svg-line-4,
+  #boulder-svg #boulder-svg-line-5,
+  #boulder-svg #boulder-svg-line-6,
+  #boulder-svg #boulder-svg-line-7,
+  #boulder-svg #boulder-svg-line-8,
+  #boulder-svg #boulder-svg-line-9,
+  #boulder-svg #boulder-svg-line-10,
+  #boulder-svg #boulder-svg-line-11,
+  #boulder-svg #boulder-svg-line-12,
+  #boulder-svg #boulder-svg-line-13,
+  #boulder-svg #boulder-svg-line-14,
+  #boulder-svg #boulder-svg-line-15,
+  #boulder-svg #boulder-svg-line-16,
+  #boulder-svg #boulder-svg-line-17,
+  #boulder-svg #boulder-svg-line-18,
+  #boulder-svg #boulder-svg-line-19,
+  #boulder-svg #boulder-svg-line-20,
+  #boulder-svg #boulder-svg-line-21,
+  #boulder-svg #boulder-svg-line-22,
+  #boulder-svg #boulder-svg-line-23,
+  #boulder-svg #boulder-svg-line-24 {
     -webkit-animation: dash 1s linear forwards 0.5s;
             animation: dash 1s linear forwards 0.5s;
   }
@@ -490,6 +554,11 @@ form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: auto;
   z-index: 1;
   height: 100%;
@@ -497,8 +566,8 @@ form {
   -webkit-animation: nav-animation-2 0.5s ease-out;
           animation: nav-animation-2 0.5s ease-out;
   position: relative;
-  -webkit-transform: translate(0%, 97%);
-          transform: translate(0%, 97%);
+  -webkit-transform: translate(0%, 95%);
+          transform: translate(0%, 95%);
   color: #fafafa;
 }
 .nav-scroll {
@@ -516,21 +585,19 @@ form {
   -webkit-transform: translate(0%, 0%);
           transform: translate(0%, 0%);
   text-align: center;
+  margin: 0px 5px;
 }
 .about-li {
   -webkit-animation: about-li-2 0.5s ease-out;
           animation: about-li-2 0.5s ease-out;
-  width: 33.3%;
 }
 .work-li {
   -webkit-animation: work-li-2 0.5s ease-out;
           animation: work-li-2 0.5s ease-out;
-  width: 33.3%;
 }
 .contact-li {
   -webkit-animation: contact-li-2 0.5s ease-out;
           animation: contact-li-2 0.5s ease-out;
-  width: 33.3%;
 }
 .about-li-animate {
   -webkit-animation: about-li 0.5s ease-out;
@@ -556,6 +623,14 @@ form {
 .work-component {
   width: 100%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+}
+.company-name {
+  text-align: center;
 }
 .company-work-wrapper {
   display: -webkit-box;
@@ -563,7 +638,7 @@ form {
   display: flex;
   -ms-flex-flow: column nowrap;
       flex-flow: column nowrap;
-  width: 100%;
+  width: 33%;
   height: 100%;
 }
 @-webkit-keyframes fade-in {
@@ -680,12 +755,12 @@ form {
 }
 @-webkit-keyframes dash {
   to {
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 100;
   }
 }
 @keyframes dash {
   to {
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 100;
   }
 }
 @-webkit-keyframes nav-animation {

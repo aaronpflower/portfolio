@@ -87,13 +87,13 @@ CurrentWeather.controller = function() {
 
 CurrentWeather.view = function(ctrl) {
 	return [
-		m('div.currently-container', [
-			m('h3', "Currently in Boulder"),
-			m('p', ctrl.currentTemp(), " °F"),
-			m('p', ctrl.currentSummary()),
-			m(".current-icon-wrapper", 
-				m('.current-icon', m.trust(require(ctrl.currentIcon())))
-			),
+		m('div.current-weather-component', [
+			m('div.conditions', [
+				m('h3', "Currently in Boulder"),
+				m('p', ctrl.currentTemp(), " °F"),
+				m('p', ctrl.currentSummary())
+			]), 
+			m('.current-icon', m.trust(require(ctrl.currentIcon()))),
 			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg')))
 		])
 	]

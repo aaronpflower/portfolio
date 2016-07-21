@@ -1,31 +1,37 @@
-.currently-container
+.current-weather-component
 	display flex
 	flex-flow column nowrap
-	justify-content center
+	justify-content flex-start
 	align-items center
 	text-align center
 	width 100%
 	height 100%
 	position relative
 
-.current-icon-wrapper
-	position relative
-	width 100%
+.conditions
+	height 10%
 	
-.current-icon svg
+.current-icon
 	position absolute
-	width 9%
-	top 25%
+	width 11%
+	top 0
 	left 0
 	right 0
-	margin auto
+	margin 0px auto
 	animation nudge 8s linear infinite
 	z-index 2
 
-.boulder-svg svg
-	width 80%
+.current-icon svg
+	width 100%
+	
+.boulder-svg
+	width 100%
+	height 80%
 	z-index 1
 
+.boulder-svg svg
+	width 100%
+	height 100%
 
 @keyframes nudge
 	0% 

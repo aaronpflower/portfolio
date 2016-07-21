@@ -17,12 +17,12 @@ Work.controller = function() {
 
 Work.view = function() {
 	return [ 
+		m("h3.company-name", "Human Design"),
 		m('.work-component', [
-			m("h3", "Human Design"),
 			Data.projects.filter(function(project) {
 				return project.company_id === "Human Design"
 			}).map(function(project) {
-				return ('.company-work-wrapper', [
+				return m('.company-work-wrapper', [
 					m('h3', project.project),
 					m('p', project.specs),
 					m('p', project.about)

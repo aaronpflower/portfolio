@@ -2,9 +2,13 @@
 
 $navy = #0d3a59
 $red = #f0576b
-$ltBlue = #f7fdff
+$ltBlue = #0bc9ec
 $blue-gray = #415560
 $white = #fafafa
+$ltGreen = #b4ef7f
+$green = #018E0E
+$yellowGreen = #c3ca6b
+$blue = #0899b4
 
 $content-width = 1400px
 
@@ -72,6 +76,7 @@ svg
 	color $white
 	font-size 1.5rem
 	overflow hidden
+	// margin 0px 15px
 
 .section-title
 	margin 25px
@@ -80,6 +85,7 @@ svg
 .header-container
 	color $white
 	position relative
+	background linear-gradient(to bottom, $navy, $blue, $ltBlue, $green)
 	
 .about-container
 	color $white
@@ -102,9 +108,3 @@ svg
 .header-bottom
 	height 66.6%
 	width 100%
-	display flex
-	flex-flow column nowrap
-	
-.current-weather-mount
-	width 100%
-	height 100%
