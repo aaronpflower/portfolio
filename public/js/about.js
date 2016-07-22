@@ -37,9 +37,14 @@ About.view = function(ctrl) {
 			m('.slide-container', {class: About.vm.sliderOver()}, [			
 				Data.about.map(function(slide, i){
 					console.log(i)
-					return m('div.slide-wrapper', 
-						m('h3', slide.header),
-						m('p', slide.body)
+					return m('div.slide-wrapper',
+						m('.slide-left', [
+							m('h3', slide.header)
+						]),
+						m('.slide-right', [
+							m('h3', slide.header),
+							m('p', slide.body)
+						])
 					)
 				})
 			])

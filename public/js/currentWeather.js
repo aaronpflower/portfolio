@@ -89,10 +89,15 @@ CurrentWeather.view = function(ctrl) {
 	return [
 		m('div.current-weather-component', [
 			m('div.conditions', [
-				m('h3', "Currently in Boulder"),
+				m('p', "Boulder, CO"),
 				m('p', ctrl.currentTemp(), " °F"),
 				m('p', ctrl.currentSummary())
-			]), 
+			]),
+			m('.whoami', [
+				m('h2', "Aaron Flower"),
+				m('h3', "Web Developer"),
+				m('h3', "Boulder, CO")
+			]),
 			m('.current-icon', m.trust(require(ctrl.currentIcon()))),
 			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg')))
 		])

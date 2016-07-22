@@ -56,8 +56,7 @@ svg path {
           animation: fade-in 0.6s ease-out;
 }
 .site-wrapper {
-  background: -webkit-linear-gradient(#415560, #0bc9ec);
-  background: linear-gradient(#415560, #0bc9ec);
+  background: #fafafa;
   position: relative;
 }
 .header-container,
@@ -82,11 +81,12 @@ svg path {
 .header-container {
   color: #fafafa;
   position: relative;
-  background: -webkit-linear-gradient(top, #0d3a59, #0899b4, #0bc9ec);
-  background: linear-gradient(to bottom, #0d3a59, #0899b4, #0bc9ec);
+  background: -webkit-linear-gradient(top, #0d3a59, #0899b4, #bedff6, #fafafa);
+  background: linear-gradient(to bottom, #0d3a59, #0899b4, #bedff6, #fafafa);
+  background-size: 100% 90%;
+  background-repeat: no-repeat;
 }
 .about-container {
-  color: #fafafa;
   position: relative;
 }
 .work-container {
@@ -114,15 +114,19 @@ svg path {
   height: 66.6%;
   width: 100%;
 }
+.current-weather-mount {
+  height: 100%;
+  width: 100%;
+}
 .current-weather-component {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: column nowrap;
       flex-flow: column nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -132,6 +136,11 @@ svg path {
   position: relative;
 }
 .conditions {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+.whoami {
   height: 10%;
 }
 .current-icon {
@@ -350,8 +359,6 @@ form {
 .about-component-wrapper {
   width: 100%;
   height: 100%;
-  max-width: 1400px;
-  margin: auto;
 }
 .next-slide {
   display: -webkit-box;
@@ -366,11 +373,6 @@ form {
   height: 50px;
   z-index: 101;
   background: transparent;
-}
-@media (min-width: 1025px) {
-  .next-slide {
-    display: none;
-  }
 }
 .next-slide.right {
   right: 0px;
@@ -394,15 +396,6 @@ form {
   width: 300vw;
   overflow: hidden;
 }
-@media (min-width: 1025px) {
-  .slide-container {
-    width: 100%;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-                -ms-grid-row-align: center;
-            align-items: center;
-  }
-}
 .slide-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -416,26 +409,81 @@ form {
       -ms-flex-align: center;
           align-items: center;
   width: 33.3%;
+  height: 100%;
+}
+@media (min-width: 567px) {
+  .slide-wrapper {
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+  }
+}
+.slide-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 50%;
+  background-color: #f0576b;
+  color: #fafafa;
+  border-top: 4px solid #0899b4;
+}
+@media (min-width: 567px) {
+  .slide-left {
+    width: 50%;
+    height: 100%;
+  }
+}
+.slide-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 50%;
+  background-color: #fafafa;
+  color: #453749;
+  border-top: 4px solid #f0576b;
+}
+@media (min-width: 567px) {
+  .slide-right {
+    width: 50%;
+    height: 100%;
+  }
 }
 .slide-wrapper h3 {
-  width: 90%;
-  text-align: center;
+  width: 66.6%;
+  text-align: left;
 }
 .slide-wrapper p {
-  width: 90%;
-  text-align: center;
+  width: 66.6%;
+  text-align: left;
 }
 .right-one-third {
   -webkit-animation: right-one-third 0.5s ease-out;
           animation: right-one-third 0.5s ease-out;
-  -webkit-transform: translateX(-33%);
-          transform: translateX(-33%);
+  -webkit-transform: translateX(-33.33%);
+          transform: translateX(-33.33%);
 }
 .right-two-thirds {
   -webkit-animation: right-two-thirds 0.5s ease-out;
           animation: right-two-thirds 0.5s ease-out;
-  -webkit-transform: translateX(-66%);
-          transform: translateX(-66%);
+  -webkit-transform: translateX(-66.66%);
+          transform: translateX(-66.66%);
 }
 .right-three-thirds {
   -webkit-animation: right-three-thirds 0.5s ease-out;
@@ -566,16 +614,15 @@ form {
   width: 50%;
   height: 100%;
   margin: auto;
-  -webkit-animation: nav-animation-reset 1s ease-out;
-          animation: nav-animation-reset 1s ease-out;
+  -webkit-animation: nav-animation-reset 0.5s ease-out;
+          animation: nav-animation-reset 0.5s ease-out;
   -webkit-transform: translate(0%, 95%);
           transform: translate(0%, 95%);
-  color: #fafafa;
+  color: #453749;
 }
 .nav-scroll {
-  -webkit-animation: nav-animation-go 1s ease-out;
-          animation: nav-animation-go 1s ease-out;
-  color: #fafafa;
+  -webkit-animation: nav-animation-go 0.5s ease-out;
+          animation: nav-animation-go 0.5s ease-out;
   -webkit-transform: translate(-50%, 0%);
           transform: translate(-50%, 0%);
 }
@@ -595,37 +642,34 @@ form {
   letter-spacing: 2px;
 }
 .about-li {
-  -webkit-animation: about-li-reset 1s ease-out;
-          animation: about-li-reset 1s ease-out;
+  position: static;
 }
 .work-li {
-  -webkit-animation: work-li-reset 1 ease-out;
-          animation: work-li-reset 1 ease-out;
+  position: static;
 }
 .contact-li {
-  -webkit-animation: contact-li-reset 1 ease-out;
-          animation: contact-li-reset 1 ease-out;
+  position: static;
 }
 .about-li-animate {
-  -webkit-animation: about-li-go 1s ease-out;
-          animation: about-li-go 1s ease-out;
+  -webkit-animation: about-li-go 0.5s ease-out;
+          animation: about-li-go 0.5s ease-out;
   -webkit-transform: translate(0%, 5%);
           transform: translate(0%, 5%);
-  text-align: left;
+  position: absolute;
 }
 .work-li-animate {
-  -webkit-animation: work-li-go 1 ease-out;
-          animation: work-li-go 1 ease-out;
-  -webkit-transform: translate(-110%, 10%);
-          transform: translate(-110%, 10%);
-  text-align: left;
+  -webkit-animation: work-li-go 0.5s ease-out;
+          animation: work-li-go 0.5s ease-out;
+  -webkit-transform: translate(0%, 100%);
+          transform: translate(0%, 100%);
+  position: absolute;
 }
 .contact-li-animate {
-  -webkit-animation: contact-li-go 1 ease-out;
-          animation: contact-li-go 1 ease-out;
-  -webkit-transform: translate(-150%, 15%);
-          transform: translate(-150%, 15%);
-  text-align: left;
+  -webkit-animation: contact-li-go 0.5s ease-out;
+          animation: contact-li-go 0.5s ease-out;
+  -webkit-transform: translate(0%, 200%);
+          transform: translate(0%, 200%);
+  position: absolute;
 }
 .work-component {
   width: 100%;
@@ -706,8 +750,8 @@ form {
             transform: translateX(0%);
   }
   100% {
-    -webkit-transform: translateX(-33%);
-            transform: translateX(-33%);
+    -webkit-transform: translateX(-33.33%);
+            transform: translateX(-33.33%);
   }
 }
 @keyframes right-one-third {
@@ -716,34 +760,34 @@ form {
             transform: translateX(0%);
   }
   100% {
-    -webkit-transform: translateX(-33%);
-            transform: translateX(-33%);
+    -webkit-transform: translateX(-33.33%);
+            transform: translateX(-33.33%);
   }
 }
 @-webkit-keyframes right-two-thirds {
   0% {
-    -webkit-transform: translateX(-33%);
-            transform: translateX(-33%);
+    -webkit-transform: translateX(-33.33%);
+            transform: translateX(-33.33%);
   }
   100% {
-    -webkit-transform: translateX(-66%);
-            transform: translateX(-66%);
+    -webkit-transform: translateX(-66.66%);
+            transform: translateX(-66.66%);
   }
 }
 @keyframes right-two-thirds {
   0% {
-    -webkit-transform: translateX(-33%);
-            transform: translateX(-33%);
+    -webkit-transform: translateX(-33.33%);
+            transform: translateX(-33.33%);
   }
   100% {
-    -webkit-transform: translateX(-66%);
-            transform: translateX(-66%);
+    -webkit-transform: translateX(-66.66%);
+            transform: translateX(-66.66%);
   }
 }
 @-webkit-keyframes right-three-thirds {
   0% {
-    -webkit-transform: translateX(-66%);
-            transform: translateX(-66%);
+    -webkit-transform: translateX(-66.66%);
+            transform: translateX(-66.66%);
   }
   100% {
     -webkit-transform: translateX(0%);
@@ -752,8 +796,8 @@ form {
 }
 @keyframes right-three-thirds {
   0% {
-    -webkit-transform: translateX(-66%);
-            transform: translateX(-66%);
+    -webkit-transform: translateX(-66.66%);
+            transform: translateX(-66.66%);
   }
   100% {
     -webkit-transform: translateX(0%);
@@ -776,10 +820,22 @@ form {
             transform: translate(-50%, 0%);
     opacity: 1;
   }
-  50% {
-    -webkit-transform: translate(-50%, 95%);
-            transform: translate(-50%, 95%);
+  1% {
     opacity: 0;
+  }
+  50% {
+    -webkit-transform: translate(-25%, 95%);
+            transform: translate(-25%, 95%);
+    opacity: 0;
+  }
+  75% {
+    -webkit-transform: translate(-5%, 95%);
+            transform: translate(-5%, 95%);
+  }
+  95% {
+    opacity: 0.5;
+    -webkit-transform: translate(0%, 95%);
+            transform: translate(0%, 95%);
   }
   100% {
     -webkit-transform: translate(0%, 95%);
@@ -793,10 +849,22 @@ form {
             transform: translate(-50%, 0%);
     opacity: 1;
   }
-  50% {
-    -webkit-transform: translate(-50%, 95%);
-            transform: translate(-50%, 95%);
+  1% {
     opacity: 0;
+  }
+  50% {
+    -webkit-transform: translate(-25%, 95%);
+            transform: translate(-25%, 95%);
+    opacity: 0;
+  }
+  75% {
+    -webkit-transform: translate(-5%, 95%);
+            transform: translate(-5%, 95%);
+  }
+  95% {
+    opacity: 0.5;
+    -webkit-transform: translate(0%, 95%);
+            transform: translate(0%, 95%);
   }
   100% {
     -webkit-transform: translate(0%, 95%);
@@ -858,40 +926,14 @@ form {
             transform: translate(0%, 5%);
   }
 }
-@-webkit-keyframes about-li-reset {
-  0% {
-    -webkit-transform: translate(0%, 5%);
-            transform: translate(0%, 5%);
-  }
-  50% {
-    position: absolute;
-  }
-  100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-}
-@keyframes about-li-reset {
-  0% {
-    -webkit-transform: translate(0%, 5%);
-            transform: translate(0%, 5%);
-  }
-  50% {
-    position: absolute;
-  }
-  100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-}
 @-webkit-keyframes work-li-go {
   0% {
     -webkit-transform: translate(0%, 0%);
             transform: translate(0%, 0%);
   }
   100% {
-    -webkit-transform: translate(-110%, 10%);
-            transform: translate(-110%, 10%);
+    -webkit-transform: translate(0%, 100%);
+            transform: translate(0%, 100%);
   }
 }
 @keyframes work-li-go {
@@ -900,28 +942,8 @@ form {
             transform: translate(0%, 0%);
   }
   100% {
-    -webkit-transform: translate(-110%, 10%);
-            transform: translate(-110%, 10%);
-  }
-}
-@-webkit-keyframes work-li-reset {
-  0% {
-    -webkit-transform: translate(-110%, 10%);
-            transform: translate(-110%, 10%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-}
-@keyframes work-li-reset {
-  0% {
-    -webkit-transform: translate(-110%, 10%);
-            transform: translate(-110%, 10%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
+    -webkit-transform: translate(0%, 100%);
+            transform: translate(0%, 100%);
   }
 }
 @-webkit-keyframes contact-li-go {
@@ -930,8 +952,8 @@ form {
             transform: translate(0%, 0%);
   }
   100% {
-    -webkit-transform: translate(-150%, 15%);
-            transform: translate(-150%, 15%);
+    -webkit-transform: translate(0%, 200%);
+            transform: translate(0%, 200%);
   }
 }
 @keyframes contact-li-go {
@@ -940,27 +962,7 @@ form {
             transform: translate(0%, 0%);
   }
   100% {
-    -webkit-transform: translate(-150%, 15%);
-            transform: translate(-150%, 15%);
-  }
-}
-@-webkit-keyframes contact-li-reset {
-  0% {
-    -webkit-transform: translate(-150%, 15%);
-            transform: translate(-150%, 15%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-}
-@keyframes contact-li-reset {
-  0% {
-    -webkit-transform: translate(-150%, 15%);
-            transform: translate(-150%, 15%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
+    -webkit-transform: translate(0%, 200%);
+            transform: translate(0%, 200%);
   }
 }

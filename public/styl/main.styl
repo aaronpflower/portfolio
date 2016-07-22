@@ -1,14 +1,18 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700'
 
+// sky colors
 $navy = #0d3a59
-$red = #f0576b
-$ltBlue = #0bc9ec
+$ltBlue = #bedff6
+$blue = #0899b4
 $blue-gray = #415560
+
+// other colors
+$red = #f0576b
 $white = #fafafa
 $ltGreen = #b4ef7f
 $green = #018E0E
 $yellowGreen = #c3ca6b
-$blue = #0899b4
+$purple = #453749
 
 $content-width = 1400px
 
@@ -62,7 +66,7 @@ svg
 
 
 .site-wrapper
-	background linear-gradient($blue-gray, $ltBlue)
+	background $white
 	position relative
 
 .header-container, 
@@ -85,10 +89,11 @@ svg
 .header-container
 	color $white
 	position relative
-	background linear-gradient(to bottom, $navy, $blue, $ltBlue)
+	background linear-gradient(to bottom, $navy, $blue, $ltBlue, $white)
+	background-size 100% 90%
+	background-repeat no-repeat
 	
 .about-container
-	color $white
 	position relative
 
 .work-container
