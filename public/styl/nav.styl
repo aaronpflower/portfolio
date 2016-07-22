@@ -1,65 +1,62 @@
-@keyframes nav-animation
+@keyframes nav-animation-reset
 	0%
-		transform translate(0%, 97%)
+		transform translate(-50%, 0%)
+		opacity 1
+	50%
+		transform translate(-50%, 95%)
+		opacity 0
 	100%
-		transform translate(0%, 0%)
-		flex-flow column nowrap
-
-@keyframes nav-animation-2
+		transform translate(0%, 95%)
+		opacity 1
+		
+@keyframes nav-animation-go
 	0%
-		transform translate(0%, 0%)
+		transform translate(0%, 95%)
+		opacity 1
+	50%
+		transform translate(-50%, 95%)
+		opacity 0
 	100%
-		transform translate(0%, 97%)
-
-
-@keyframes about-li
+		transform translate(-50%, 0%)
+		opacity 1
+		
+@keyframes about-li-go
 	0%
 		transform translate(0%, 0%)
-		width 100%
 	100%
 		transform translate(0%, 5%)
-		width 10%
 
-@keyframes work-li
-	0%
-		transform translate(0%, 0%)
-		width 100%
-	100%
-		transform translate(0%, 10%)
-		width 10%
-		
-		
-@keyframes contact-li
-	0%
-		transform translate(0%, 0%)
-		width 100%
-	100%
-		transform translate(0%, 15%)
-		width 10%
-
-@keyframes about-li-2
+@keyframes about-li-reset
 	0%
 		transform translate(0%, 5%)
-		width 10%
+	50%
+		position absolute
 	100%
 		transform translate(0%, 0%)
-		width 100%
-
-@keyframes work-li-2
+		
+@keyframes work-li-go
 	0%
-		transform translate(0%, 10%)
-		width 10%
-	100%
 		transform translate(0%, 0%)
-		width 100%
-
-@keyframes contact-li-2
+	100%
+		transform translate(-110%, 10%)
+		
+@keyframes work-li-reset
 	0%
-		transform translate(0%, 15%)
-		width 10%
+		transform translate(-110%, 10%)
 	100%
 		transform translate(0%, 0%)
-		width 100%
+		
+@keyframes contact-li-go
+	0%
+		transform translate(0%, 0%)
+	100%
+		transform translate(-150%, 15%)
+
+@keyframes contact-li-reset
+	0%
+		transform translate(-150%, 15%)
+	100%
+		transform translate(0%, 0%)
 		
 .nav-wrapper
 	height 100vh
@@ -68,50 +65,68 @@
 	background transparent
 	z-index 100
 
-.nav
-	display flex
-	flex-flow row nowrap
-	justify-content center
-	margin auto
+.nav-item-container
+	position relative
+	display inline-block
 	z-index 1
 	height 100%
 	width 100%
-	animation nav-animation-2 .5s ease-out
+	
+.nav-item-wrapper
+	display flex
 	position relative
+	z-index 1
+	width 50%
+	height 100%
+	margin auto
+	animation nav-animation-reset 1s ease-out
 	transform translate(0%, 95%)
 	color $white
 	
 .nav-scroll
-	animation nav-animation .5s ease-out
+	animation nav-animation-go 1s ease-out
 	color $white
-	transform translate(0%, 0%)
-	flex-flow column nowrap
+	transform translate(-50%, 0%)
 
 .about-li,
 .work-li,
 .contact-li
 	transform translate(0%, 0%)
+	flex 1 1 auto
 	text-align center
-	margin 0px 5px
+
+.about-li,
+.work-li,
+.contact-li
+	a
+		letter-spacing 2px
 	
 .about-li
-	animation about-li-2 .5s ease-out
+	animation about-li-reset 1s ease-out
+	// position static
 
 .work-li
-	animation work-li-2 .5s ease-out
+	animation work-li-reset 1 ease-out
+	// position static
 
 .contact-li
-	animation contact-li-2 .5s ease-out
+	animation contact-li-reset 1 ease-out
+	// position static
 
 .about-li-animate
-	animation about-li .5s ease-out
+	animation about-li-go 1s ease-out
 	transform translate(0%, 5%)
-	width 10%
+	// position absolute
+	text-align left
+	
 .work-li-animate
-	animation work-li .5s ease-out
-	transform translate(0%, 10%)
-	width 10%
+	animation work-li-go 1 ease-out
+	transform translate(-110%, 10%)
+	// position absolute
+	text-align left
+	
 .contact-li-animate
-	animation contact-li .5s ease-out
-	transform translate(0%, 15%)
-	width 10%
+	animation contact-li-go 1 ease-out
+	transform translate(-150%, 15%)
+	// position absolute
+	text-align left

@@ -2,17 +2,14 @@ include ./header.pug
 
 .site-wrapper
 	nav.nav-wrapper
-		ul.nav#nav
-			li#about-li.about-li
-				a#about About
-			li
-				a |
-			li#work-li.work-li
-				a#work Work
-			li
-				a |
-			li#contact-li.contact-li
-				a#contact Contact
+		.nav-item-container
+			ul.nav-item-wrapper#nav-item-wrapper
+				li#about-li.about-li
+					a#about About
+				li#work-li.work-li
+					a#work Work
+				li#contact-li.contact-li
+					a#contact Contact
 	section.header-container#top
 		div.header-top
 			h1 Aaron Flower
