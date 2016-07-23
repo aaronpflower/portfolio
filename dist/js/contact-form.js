@@ -2276,15 +2276,15 @@ ContactForm.view = function(ctrl) {
 		m('div.contact-component', [
 			m('h1.section-title', "Contact"),
 			m('form', [
-				m('input.form-input', {
+				m('input.form-input[type="text"]', {
 					oninput: m.withAttr('value', ContactForm.vm.senderName),
 					placeholder: 'Enter name...'
 				}),
-				m('input.form-input', {
+				m('input.form-input[type="text"]', {
 					oninput: m.withAttr('value', ContactForm.vm.senderEmail),
 					placeholder: 'Enter email...'
 				}),
-				m('input.form-input', {
+				m('input.form-input[type="text"]', {
 					oninput: m.withAttr('value', ContactForm.vm.emailSubject),
 					placeholder: 'Enter subject...'
 				}),

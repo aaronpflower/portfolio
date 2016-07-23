@@ -22,43 +22,52 @@ form
 .form-input
 	width 50%
 	height 40px
+	max-width 250px
 	background-color transparent
 	border none
-	border-bottom 1px solid $navy
+	border-bottom 1px solid $blue4
 	text-align center
-	color $blue-gray
+	color $blue4
 	z-index 102
+	margin 15px 0px
 	
 .form-input::placeholder,
 .form-textarea::placeholder
 	text-align center
 	height 100%
-	color $blue-gray
+	color $blue4
+	font-size 1.5em
+
+.form-input::value,
+.form-textarea::value
+	font-size 1.5em
 	
 .form-textarea
 	width 80%
 	height 120px
+	max-width 300px
 	background-color transparent
 	border none
-	border-bottom 1px solid $navy
-	color $blue-gray
+	border-bottom 1px solid $blue4
+	color $blue4
 	z-index 102
 	
 .form-button
 	width 75%
-	height 45px
+	height 65px
 	margin-top 25px
-	background-color $white
-	color $red
+	max-width 250px
+	background-color $offWhite
+	color $blue4
 	outline none
-	border 1px solid $red
+	border 1px solid $blue4
 	transition all .3s ease-in
 	z-index 102
+	font-size 1.3em
 
 .form-button:hover
-	border 1px solid $navy
-	background-color $navy
-	color $white
+	background-color $blue4
+	color $offWhite
 	transition all .3s ease-out
 	
 

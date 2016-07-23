@@ -1,18 +1,28 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700'
 
-// sky colors
-$navy = #0d3a59
-$ltBlue = #bedff6
-$blue = #0899b4
-$blue-gray = #415560
-
-// other colors
-$red = #f0576b
 $white = #fafafa
-$ltGreen = #b4ef7f
-$green = #018E0E
-$yellowGreen = #c3ca6b
-$purple = #453749
+$offWhite = #fefbf7
+
+// Reds
+$red1 = #EE5A3B
+$red2 = #FFA08C
+$red3 = #FF7D62
+$red4 = #D33514
+$red5 = #A62206
+
+// Blues
+$blue1 = #2A7895
+$blue2 = #6FADC5
+$blue3 = #448BA5
+$blue4 = #126584
+$blue5 = #084D68
+
+// Greens
+$green1 = #C2F184
+$green2 = #ABEA5A
+$green3 = #92D936
+$green4 = #75C013
+$green5 = #589706
 
 $content-width = 1400px
 
@@ -69,6 +79,9 @@ svg
 	background $white
 	position relative
 
+.site-wrapper::selection
+	background-color $red4
+	
 .header-container, 
 .about-container,
 .work-container,
@@ -80,7 +93,6 @@ svg
 	color $white
 	font-size 1.5rem
 	overflow hidden
-	// margin 0px 15px
 
 .section-title
 	margin 25px
@@ -89,18 +101,18 @@ svg
 .header-container
 	color $white
 	position relative
-	background linear-gradient(to bottom, $navy, $blue, $ltBlue, $white)
-	background-size 100% 90%
-	background-repeat no-repeat
+	background-color $blue4
 	
 .about-container
 	position relative
 
 .work-container
-	color $navy
+	background-color $offWhite
+	color $blue4
 
 .contact-container
-	color $navy
+	background-color $green1
+	color $white
 
 .header-top
 	display flex
