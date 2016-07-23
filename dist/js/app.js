@@ -48262,12 +48262,12 @@ var Nav = require('./nav.js')
 var Work = require('./work.js')
 
 SmootScroll.controller.init();
-Nav.controller.init();
 m.mount(document.getElementById('current-weather'), m.component(CurrentWeather));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
 m.mount(document.getElementById('about-mount'), m.component(About));
 m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
 m.mount(document.getElementById('work-mount'), m.component(Work));
+Nav.controller.init();
 },{"./about.js":195,"./contact-form.js":197,"./currentWeather.js":198,"./nav.js":199,"./smoothScroll.js":200,"./twitter-worker.js":201,"./work.js":202,"mithril":107}],197:[function(require,module,exports){
 var m = require('mithril')
 var ContactForm = {};
@@ -48425,12 +48425,12 @@ CurrentWeather.controller = function() {
 CurrentWeather.view = function(ctrl) {
 	return [
 		m('div.current-weather-component', [
-			m('div.conditions', [
+			m('div.conditions#conditions', [
 				m('p', "Boulder, CO"),
 				m('p', ctrl.currentTemp(), " °F"),
 				m('p', ctrl.currentSummary())
 			]),
-			m('.whoami', [
+			m('.whoami#whoami', [
 				m('h2', "Aaron Flower"),
 				m('h3', "Web Developer"),
 				m('h3', "Boulder, CO")
@@ -48464,12 +48464,16 @@ Nav.view = {
 			var aboutLi = document.getElementById('about-li');
 			var workLi = document.getElementById('work-li');
 			var contactLi = document.getElementById('contact-li');
+			var whoAmI = document.getElementById('whoami')
+			var conditions = document.getElementById('conditions')
 
 			if(window.pageYOffset > 0) {
 				navItemWrapper.classList.add('nav-scroll')
 				aboutLi.classList.add('about-li-animate')
 				workLi.classList.add('work-li-animate')
 				contactLi.classList.add('contact-li-animate')
+				whoAmI.classList.add('whoami-scroll')
+				conditions.classList.add('conditions-scroll')
 			}
 
 			else if(window.pageYOffset <= scrollTime) {
@@ -48477,6 +48481,8 @@ Nav.view = {
 				aboutLi.classList.remove('about-li-animate')
 				workLi.classList.remove('work-li-animate')
 				contactLi.classList.remove('contact-li-animate')
+				whoAmI.classList.remove('whoami-scroll')
+				conditions.classList.remove('conditions-scroll')
 			}
 		})
 	}

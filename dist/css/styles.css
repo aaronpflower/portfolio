@@ -95,6 +95,7 @@ svg path {
 .work-container {
   background-color: #fefbf7;
   color: #126584;
+  height: 200vh;
 }
 .contact-container {
   background-color: #c2f184;
@@ -144,9 +145,34 @@ svg path {
   position: fixed;
   top: 0px;
   right: 0px;
+  text-align: right;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+.conditions-scroll {
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  top: -15px;
+  right: -15px;
 }
 .whoami {
   height: 10%;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+.whoami-scroll {
+  position: fixed;
+  top: -15px;
+  right: 0px;
+  left: 0px;
+  margin: 0px auto;
+  z-index: 99;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
 }
 .current-icon {
   position: absolute;
@@ -642,6 +668,10 @@ form {
           animation: nav-animation-go 0.5s ease-out;
   -webkit-transform: translate(-50%, 0%);
           transform: translate(-50%, 0%);
+  z-index: 103;
+}
+.nav-scroll a {
+  font-size: 0.8em;
 }
 .about-li,
 .work-li,

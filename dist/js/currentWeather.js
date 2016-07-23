@@ -2357,12 +2357,12 @@ CurrentWeather.controller = function() {
 CurrentWeather.view = function(ctrl) {
 	return [
 		m('div.current-weather-component', [
-			m('div.conditions', [
+			m('div.conditions#conditions', [
 				m('p', "Boulder, CO"),
 				m('p', ctrl.currentTemp(), " °F"),
 				m('p', ctrl.currentSummary())
 			]),
-			m('.whoami', [
+			m('.whoami#whoami', [
 				m('h2', "Aaron Flower"),
 				m('h3', "Web Developer"),
 				m('h3', "Boulder, CO")
