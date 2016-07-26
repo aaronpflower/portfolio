@@ -48436,14 +48436,18 @@ CurrentWeather.vm = (function() {
 				}
 			})
 		},
-		vm.scrollToAnchor = function() {
-			
+		vm.scrollToAnchor = function(e) {
 			var aboutSection = document.getElementById('about-section')
-			// var workSection = document.getElementById('work-section')
-			// var contactSection = document.getElementById('contact-section')
-
-
-			smoothScroll(aboutSection);
+			var workSection = document.getElementById('work-section')
+			var contactSection = document.getElementById('contact-section')
+			
+			if(e.target.id === "about") {
+				smoothScroll(aboutSection);
+			} else if(e.target.id === "work") {
+				smoothScroll(workSection)
+			} else if(e.target.id === "contact") {
+				smoothScroll(contactSection)
+			}
 		}
 	}
 	return vm
@@ -48477,10 +48481,10 @@ CurrentWeather.view = function(ctrl) {
 						m('a#about', { onclick: CurrentWeather.vm.scrollToAnchor }, "About")
 					]),
 					m('li.work-li#work-li', [
-						m('a#work', "Work")
+						m('a#work', { onclick: CurrentWeather.vm.scrollToAnchor }, "Work")
 					]),
 					m('li.contact-li#contact-li', [
-						m('a#contact', "Contact")
+						m('a#contact', { onclick: CurrentWeather.vm.scrollToAnchor }, "Contact")
 					])
 				]),
 				m('.whoami#whoami', [
