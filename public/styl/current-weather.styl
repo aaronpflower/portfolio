@@ -11,33 +11,6 @@
 	width 100%
 	height 100%
 	position relative
-
-.conditions
-	position fixed
-	top 0px
-	right 0px
-	text-align right
-	transition all .5s ease-in
-	
-.conditions-scroll
-	transform scale(.5)
-	transition all .5s ease-out
-	top -15px
-	right -15px
-
-.whoami
-	height 10%
-	transition all .5s ease-in
-	
-.whoami-scroll
-	position fixed
-	top -15px
-	right 0px
-	left 0px
-	margin 0px auto
-	z-index 99
-	transition all .5s ease-out
-	transform scale(.5)
 	
 .current-icon
 	position absolute
@@ -53,9 +26,11 @@
 	width 100%
 	
 .boulder-svg
+	height 50%
 	width 100%
-	height 80%
 	z-index 1
+	@media $screen-lg
+		height 80%
 
 .boulder-svg svg
 	width 100%

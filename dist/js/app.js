@@ -48188,6 +48188,48 @@ var Data = {
 			specs: "Node, Express, MongoDB, MithrilJS, CSS, Jade, JavaScript",
 			about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
 		}
+	],
+	conditionsIcons: [
+		{
+			icon: 'clear-day',
+			img: '../../dist/assets/sun.svg'
+		},
+		{
+			icon: 'clear-night',
+			img: '../../dist/assets/clear-night.svg'	
+		},
+		{
+			icon: 'rain',
+			img: '../../dist/assets/rain.svg'
+		},
+		{
+			icon: 'snow',
+			img: '../../dist/assets/snow.svg'
+		},
+		{
+			icon: 'sleet',
+			img: '../../dist/assets/sleet.svg'
+		},
+		{
+			icon: 'wind',
+			img: '../../dist/assets/wind.svg'
+		},
+		{
+			icon: 'fog',
+			img: '../../dist/assets/fog.svg'
+		},
+		{
+			icon: 'cloudy',
+			img: '../../dist/assets/cloud.svg'
+		},
+		{
+			icon: 'partly-cloudy-day',
+			img: '../../dist/assets/partly-cloudy-sun.svg'
+		},
+		{
+			icon: 'partly-cloudy-night',
+			img: '../../dist/assets/partly-cloudy-night.svg'
+		}
 	]
 }
 
@@ -48252,23 +48294,20 @@ module.exports = About;
 
 
 },{"./Data.js":194,"mithril":107}],196:[function(require,module,exports){
-var SmootScroll = require('./smoothScroll.js');
-var CurrentWeather = require('./currentWeather.js');
 var m = require('mithril');
+var CurrentWeather = require('./currentWeather.js');
 var ContactForm = require('./contact-form.js');
 var TwitterWorker = require('./twitter-worker.js');
 var About = require('./about.js')
-var Nav = require('./nav.js')
 var Work = require('./work.js')
 
-SmootScroll.controller.init();
 m.mount(document.getElementById('current-weather'), m.component(CurrentWeather));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
 m.mount(document.getElementById('about-mount'), m.component(About));
 m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
 m.mount(document.getElementById('work-mount'), m.component(Work));
-Nav.controller.init();
-},{"./about.js":195,"./contact-form.js":197,"./currentWeather.js":198,"./nav.js":199,"./smoothScroll.js":200,"./twitter-worker.js":201,"./work.js":202,"mithril":107}],197:[function(require,module,exports){
+
+},{"./about.js":195,"./contact-form.js":197,"./currentWeather.js":198,"./twitter-worker.js":199,"./work.js":200,"mithril":107}],197:[function(require,module,exports){
 var m = require('mithril')
 var ContactForm = {};
 
@@ -48336,6 +48375,8 @@ ContactForm.view = function(ctrl) {
 module.exports = ContactForm;
 },{"mithril":107}],198:[function(require,module,exports){
 var m = require('mithril')
+var Data = require('./Data.js')
+var smoothScroll = require('smoothscroll')
 require('../../dist/assets/sun.svg')
 require('../../dist/assets/clear-night.svg')
 require('../../dist/assets/rain.svg')
@@ -48351,50 +48392,6 @@ require('../../dist/assets/boulder.svg')
 
 var CurrentWeather = {};
 
-CurrentWeather.conditions = {
-	icons: [{
-		icon: 'clear-day',
-		img: '../../dist/assets/sun.svg'
-	},
-	{
-		icon: 'clear-night',
-		img: '../../dist/assets/clear-night.svg'	
-	},
-	{
-		icon: 'rain',
-		img: '../../dist/assets/rain.svg'
-	},
-	{
-		icon: 'snow',
-		img: '../../dist/assets/snow.svg'
-	},
-	{
-		icon: 'sleet',
-		img: '../../dist/assets/sleet.svg'
-	},
-	{
-		icon: 'wind',
-		img: '../../dist/assets/wind.svg'
-	},
-	{
-		icon: 'fog',
-		img: '../../dist/assets/fog.svg'
-	},
-	{
-		icon: 'cloudy',
-		img: '../../dist/assets/cloud.svg'
-	},
-	{
-		icon: 'partly-cloudy-day',
-		img: '../../dist/assets/partly-cloudy-sun.svg'
-	},
-	{
-		icon: 'partly-cloudy-night',
-		img: '../../dist/assets/partly-cloudy-night.svg'
-	}]
-}
-
-
 CurrentWeather.API = {
 	getCurrentConditions: function() {
 		return m.request({
@@ -48404,14 +48401,63 @@ CurrentWeather.API = {
 	}
 }
 
+CurrentWeather.vm = (function() {
+	var vm = {};
+	var that = this;
+	vm.init = function() {
+		vm.navAnimation = function() {
+			var firstSection = document.getElementById('top').offsetHeight;
+			var scrollTime = firstSection / 6;
+			console.log(scrollTime)
+			window.addEventListener('scroll', function(){
+				var navItemWrapper = document.getElementById('nav-item-wrapper');
+				var aboutLi = document.getElementById('about-li');
+				var workLi = document.getElementById('work-li');
+				var contactLi = document.getElementById('contact-li');
+				var whoAmI = document.getElementById('whoami')
+				var conditions = document.getElementById('conditions')
+
+				if(window.pageYOffset > 0) {
+					navItemWrapper.classList.add('nav-scroll')
+					aboutLi.classList.add('about-li-animate')
+					workLi.classList.add('work-li-animate')
+					contactLi.classList.add('contact-li-animate')
+					conditions.classList.add('conditions-scroll')
+					whoAmI.classList.add('whoami-scroll')
+				}
+
+				else if(window.pageYOffset <= scrollTime) {
+					navItemWrapper.classList.remove('nav-scroll')
+					aboutLi.classList.remove('about-li-animate')
+					workLi.classList.remove('work-li-animate')
+					contactLi.classList.remove('contact-li-animate')
+					conditions.classList.remove('conditions-scroll')
+					whoAmI.classList.remove('whoami-scroll')
+				}
+			})
+		},
+		vm.scrollToAnchor = function() {
+			
+			var aboutSection = document.getElementById('about-section')
+			// var workSection = document.getElementById('work-section')
+			// var contactSection = document.getElementById('contact-section')
+
+
+			smoothScroll(aboutSection);
+		}
+	}
+	return vm
+}())
+
 CurrentWeather.controller = function() {
+	CurrentWeather.vm.init();
+	CurrentWeather.vm.navAnimation();
 	var that = this;
 	this.currentTemp = m.prop();
 	this.currentIcon = m.prop();
 	this.currentSummary = m.prop();
-
 	CurrentWeather.API.getCurrentConditions().then(function(data) {	
-		var iconMap = CurrentWeather.conditions.icons.map(function(condition, i) {
+		var iconMap = Data.conditionsIcons.map(function(condition, i) {
 			if (condition.icon === data.currently.icon) {
 				that.currentIcon(condition.img)
 			}
@@ -48424,17 +48470,32 @@ CurrentWeather.controller = function() {
 
 CurrentWeather.view = function(ctrl) {
 	return [
+		m('nav.nav-wrapper', [
+			m('.nav-item-container#nav-item-container', [
+				m('ul.nav-item-wrapper#nav-item-wrapper', [
+					m('li.about-li#about-li', [
+						m('a#about', { onclick: CurrentWeather.vm.scrollToAnchor }, "About")
+					]),
+					m('li.work-li#work-li', [
+						m('a#work', "Work")
+					]),
+					m('li.contact-li#contact-li', [
+						m('a#contact', "Contact")
+					])
+				]),
+				m('.whoami#whoami', [
+					m('h2', "Aaron Flower"),
+					m('h3', "Web Developer"),
+					m('h3', "Boulder, CO")
+				]),
+				m('div.conditions#conditions', [
+					m('p', "Boulder, CO"),
+					m('p', ctrl.currentTemp(), " °F"),
+					m('p', ctrl.currentSummary())
+				])
+			])
+		]),
 		m('div.current-weather-component', [
-			m('div.conditions#conditions', [
-				m('p', "Boulder, CO"),
-				m('p', ctrl.currentTemp(), " °F"),
-				m('p', ctrl.currentSummary())
-			]),
-			m('.whoami#whoami', [
-				m('h2', "Aaron Flower"),
-				m('h3', "Web Developer"),
-				m('h3', "Boulder, CO")
-			]),
 			m('.current-icon', m.trust(require(ctrl.currentIcon()))),
 			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg')))
 		])
@@ -48445,90 +48506,7 @@ module.exports = CurrentWeather;
 
 
 
-},{"../../dist/assets/boulder.svg":1,"../../dist/assets/clear-night.svg":2,"../../dist/assets/cloud.svg":3,"../../dist/assets/fog.svg":4,"../../dist/assets/partly-cloudy-night.svg":5,"../../dist/assets/partly-cloudy-sun.svg":6,"../../dist/assets/rain.svg":7,"../../dist/assets/sleet.svg":8,"../../dist/assets/snow.svg":9,"../../dist/assets/sun.svg":10,"../../dist/assets/wind.svg":11,"mithril":107}],199:[function(require,module,exports){
-var Nav = {};
-
-Nav.controller = {
-	init: function() {
-		Nav.view.init();
-	}
-};
-
-Nav.view = {
-	init: function() {
-		var firstSection = document.getElementById('top').offsetHeight;
-		var scrollTime = firstSection / 6;
-		console.log(scrollTime)
-		window.addEventListener('scroll', function(){
-			var navItemWrapper = document.getElementById('nav-item-wrapper');
-			var aboutLi = document.getElementById('about-li');
-			var workLi = document.getElementById('work-li');
-			var contactLi = document.getElementById('contact-li');
-			var whoAmI = document.getElementById('whoami')
-			var conditions = document.getElementById('conditions')
-
-			if(window.pageYOffset > 0) {
-				navItemWrapper.classList.add('nav-scroll')
-				aboutLi.classList.add('about-li-animate')
-				workLi.classList.add('work-li-animate')
-				contactLi.classList.add('contact-li-animate')
-				whoAmI.classList.add('whoami-scroll')
-				conditions.classList.add('conditions-scroll')
-			}
-
-			else if(window.pageYOffset <= scrollTime) {
-				navItemWrapper.classList.remove('nav-scroll')
-				aboutLi.classList.remove('about-li-animate')
-				workLi.classList.remove('work-li-animate')
-				contactLi.classList.remove('contact-li-animate')
-				whoAmI.classList.remove('whoami-scroll')
-				conditions.classList.remove('conditions-scroll')
-			}
-		})
-	}
-};
-
-module.exports = Nav;
-},{}],200:[function(require,module,exports){
-// SmoothScroll
-var SmootScroll = {};
-
-SmootScroll.controller = {
-	init: function() {
-		SmootScroll.view.init();
-	}
-};
-
-SmootScroll.view = {
-	init: function() {
-		SmootScroll.view.render()
-	},
-
-	render: function() {
-		var smoothScroll = require('smoothscroll')
-		var aboutAnchor = document.getElementById('about')
-		var workAnchor = document.getElementById('work')
-		var contactAnchor = document.getElementById('contact')
-		var aboutSection = document.getElementById('about-section')
-		var workSection = document.getElementById('work-section')
-		var contactSection = document.getElementById('contact-section')
-
-		var handleClick = function(el) {
-			return function(e) {
-				e.preventDefault();
-				smoothScroll(el);
-			}
-		}
-
-		aboutAnchor.addEventListener('click', handleClick(aboutSection))
-		workAnchor.addEventListener('click', handleClick(workSection))
-		contactAnchor.addEventListener('click', handleClick(contactSection))
-
-	}
-};
-
-module.exports = SmootScroll;
-},{"smoothscroll":146}],201:[function(require,module,exports){
+},{"../../dist/assets/boulder.svg":1,"../../dist/assets/clear-night.svg":2,"../../dist/assets/cloud.svg":3,"../../dist/assets/fog.svg":4,"../../dist/assets/partly-cloudy-night.svg":5,"../../dist/assets/partly-cloudy-sun.svg":6,"../../dist/assets/rain.svg":7,"../../dist/assets/sleet.svg":8,"../../dist/assets/snow.svg":9,"../../dist/assets/sun.svg":10,"../../dist/assets/wind.svg":11,"./Data.js":194,"mithril":107,"smoothscroll":146}],199:[function(require,module,exports){
 var m = require ('mithril');
 var Twitter = require('twitter');
 var socket = io();
@@ -48568,7 +48546,7 @@ TwitterWorker.view = function(ctrl) {
 }
 
 module.exports = TwitterWorker;
-},{"mithril":107,"twitter":185}],202:[function(require,module,exports){
+},{"mithril":107,"twitter":185}],200:[function(require,module,exports){
 var m = require('mithril')
 var Data = require('./Data.js')
 
