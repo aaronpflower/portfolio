@@ -37,16 +37,33 @@ a {
 h1 {
   font-size: 2.5em;
 }
-h2,
-a {
-  font-size: 1.7em;
-}
-h3 {
+h2 {
   font-size: 1.3em;
 }
-p,
-li {
+@media (min-width: 1025px) {
+  h2 {
+    font-size: 1.7em;
+  }
+}
+h3 {
   font-size: 1em;
+}
+@media (min-width: 1025px) {
+  h3 {
+    font-size: 1.3em;
+  }
+}
+p,
+li,
+a {
+  font-size: 0.6em;
+}
+@media (min-width: 1025px) {
+  p,
+  li,
+  a {
+    font-size: 1em;
+  }
 }
 svg path {
   fill: #fafafa;
@@ -79,18 +96,10 @@ svg path {
   color: #fafafa;
   font-size: 1.5rem;
   overflow: hidden;
-}
-.section-title {
-  margin: 25px;
-  text-align: center;
+  position: relative;
 }
 .header-container {
-  color: #fafafa;
-  position: relative;
   background-color: #126584;
-}
-.about-container {
-  position: relative;
 }
 .work-container {
   background-color: #fefbf7;
@@ -120,19 +129,15 @@ svg path {
   height: 66.6%;
   width: 100%;
 }
-.current-weather-mount {
-  height: 100%;
-  width: 100%;
-}
 .current-weather-component {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: column nowrap;
       flex-flow: column nowrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -144,21 +149,20 @@ svg path {
 .current-icon {
   position: absolute;
   width: 11%;
-  top: 0;
+  top: 50%;
   left: 0;
   right: 0;
   margin: 0px auto;
   -webkit-animation: nudge 8s linear infinite;
           animation: nudge 8s linear infinite;
-  z-index: 2;
+  z-index: 1;
 }
 .current-icon svg {
   width: 100%;
 }
 .boulder-svg {
-  height: 50%;
+  height: 65%;
   width: 100%;
-  z-index: 1;
 }
 @media (min-width: 1025px) {
   .boulder-svg {
@@ -213,7 +217,6 @@ form {
   border-bottom: 1px solid #126584;
   text-align: center;
   color: #126584;
-  z-index: 102;
   margin: 15px 0px;
 }
 .form-input::-webkit-input-placeholder,
@@ -256,7 +259,6 @@ form {
   border: none;
   border-bottom: 1px solid #126584;
   color: #126584;
-  z-index: 102;
 }
 .form-button {
   width: 75%;
@@ -269,7 +271,6 @@ form {
   border: 1px solid #126584;
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
-  z-index: 102;
   font-size: 1.3em;
 }
 .form-button:hover {
@@ -320,7 +321,6 @@ form {
       align-content: center;
   width: 100%;
   height: 50%;
-  z-index: 102;
 }
 .icon-item {
   display: -webkit-box;
@@ -386,7 +386,6 @@ form {
   top: 50%;
   width: 100px;
   height: 50px;
-  z-index: 101;
   background: transparent;
 }
 .next-slide.right {
@@ -611,42 +610,57 @@ form {
   width: 100vw;
   position: fixed;
   background: transparent;
+  -webkit-transition: background-color 0.5s ease-in;
+  transition: background-color 0.5s ease-in;
   z-index: 100;
 }
+.nav-wrapper-scroll {
+  height: 10vh;
+  background: #fafafa;
+  -webkit-animation: nav-wrapper-scroll 0.5s ease-out;
+          animation: nav-wrapper-scroll 0.5s ease-out;
+}
 .nav-item-container {
-  position: relative;
   display: inline-block;
-  z-index: 1;
+  position: relative;
   height: 100%;
   width: 100%;
-}
-.nav-item-container-scroll {
-  height: 12%;
-  background: #fafafa;
 }
 .nav-item-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  z-index: 1;
-  width: 50%;
+  width: 100%;
   height: 100%;
   margin: auto;
-  -webkit-animation: nav-animation-reset 0.5s ease-out;
-          animation: nav-animation-reset 0.5s ease-out;
-  -webkit-transform: translate(0%, 95%);
-          transform: translate(0%, 95%);
+  -webkit-animation: nav-animation-reset 0.5s ease-in;
+          animation: nav-animation-reset 0.5s ease-in;
+  -webkit-transform: translate(0%, 85%);
+          transform: translate(0%, 85%);
   color: #fafafa;
 }
-.nav-scroll {
+@media (min-width: 1025px) {
+  .nav-item-wrapper {
+    -webkit-transform: translate(0%, 95%);
+            transform: translate(0%, 95%);
+    width: 50%;
+  }
+}
+.nav-item-wrapper-scroll {
   -webkit-animation: nav-animation-go 0.5s ease-out;
           animation: nav-animation-go 0.5s ease-out;
-  -webkit-transform: translate(-50%, 0%);
-          transform: translate(-50%, 0%);
-  z-index: 103;
+  -webkit-transform: translate(0%, 0%);
+          transform: translate(0%, 0%);
+  color: #126584;
 }
-.nav-scroll a {
+@media (min-width: 1025px) {
+  .nav-item-wrapper-scroll {
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
+  }
+}
+.nav-item-wrapper-scroll a {
   font-size: 0.8em;
 }
 .about-li,
@@ -662,15 +676,7 @@ form {
 .about-li a,
 .work-li a,
 .contact-li a {
-  font-size: 1em;
   letter-spacing: 2px;
-}
-@media (min-width: 1025px) {
-  .about-li a,
-  .work-li a,
-  .contact-li a {
-    font-size: 2em;
-  }
 }
 .about-li {
   position: static;
@@ -706,26 +712,30 @@ form {
   height: 100%;
   width: 50%;
   position: absolute;
-  top: 0px;
+  top: 50%;
   bottom: 0px;
   right: 0px;
   left: 0px;
   margin: auto;
+  text-align: center;
   -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
   -webkit-transform: scale(1) translate(0%, 0%);
           transform: scale(1) translate(0%, 0%);
+  color: #fafafa;
+  letter-spacing: 1px;
 }
 .whoami-scroll {
+  color: #126584;
   position: fixed;
   right: 0px;
   left: 0px;
+  top: 0%;
   margin: 0px auto;
-  z-index: 99;
   -webkit-animation: whoami-scroll 0.5s ease-out;
           animation: whoami-scroll 0.5s ease-out;
-  -webkit-transform: scale(0.3) translate(0%, -410%);
-          transform: scale(0.3) translate(0%, -410%);
+  -webkit-transform: scale(0.5) translate(0%, -49%);
+          transform: scale(0.5) translate(0%, -49%);
 }
 .conditions {
   position: fixed;
@@ -736,12 +746,15 @@ form {
   transition: all 0.5s ease-in;
   -webkit-transform: scale(1) translate(0%, 0%);
           transform: scale(1) translate(0%, 0%);
+  color: #fafafa;
+  letter-spacing: 2px;
 }
 .conditions-scroll {
-  -webkit-transform: scale(0.5) translate(60%, -60%) !important;
-          transform: scale(0.5) translate(60%, -60%) !important;
+  -webkit-transform: scale(0.8) translate(20%, -30%);
+          transform: scale(0.8) translate(20%, -30%);
   -webkit-animation: conditions-scroll 0.5s ease-out;
           animation: conditions-scroll 0.5s ease-out;
+  color: #126584;
 }
 .work-component {
   width: 100%;
@@ -888,93 +901,99 @@ form {
 }
 @-webkit-keyframes nav-animation-reset {
   0% {
-    -webkit-transform: translate(-50%, 0%);
-            transform: translate(-50%, 0%);
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
     opacity: 1;
+    background-color: #126584;
   }
   1% {
     opacity: 0;
   }
   50% {
-    -webkit-transform: translate(-25%, 95%);
-            transform: translate(-25%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
     opacity: 0;
   }
   75% {
-    -webkit-transform: translate(-5%, 95%);
-            transform: translate(-5%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
   }
   95% {
     opacity: 0.5;
-    -webkit-transform: translate(0%, 95%);
-            transform: translate(0%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
+    background-color: #126584;
   }
   100% {
-    -webkit-transform: translate(0%, 95%);
-            transform: translate(0%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
     opacity: 1;
+    background-color: #fafafa;
   }
 }
 @keyframes nav-animation-reset {
   0% {
-    -webkit-transform: translate(-50%, 0%);
-            transform: translate(-50%, 0%);
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
     opacity: 1;
+    background-color: #126584;
   }
   1% {
     opacity: 0;
   }
   50% {
-    -webkit-transform: translate(-25%, 95%);
-            transform: translate(-25%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
     opacity: 0;
   }
   75% {
-    -webkit-transform: translate(-5%, 95%);
-            transform: translate(-5%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
   }
   95% {
     opacity: 0.5;
-    -webkit-transform: translate(0%, 95%);
-            transform: translate(0%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
+    background-color: #126584;
   }
   100% {
-    -webkit-transform: translate(0%, 95%);
-            transform: translate(0%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
     opacity: 1;
+    background-color: #fafafa;
   }
 }
 @-webkit-keyframes nav-animation-go {
   0% {
-    -webkit-transform: translate(0%, 95%);
-            transform: translate(0%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
     opacity: 1;
   }
   50% {
-    -webkit-transform: translate(-50%, 95%);
-            transform: translate(-50%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
     opacity: 0;
   }
   100% {
-    -webkit-transform: translate(-50%, 0%);
-            transform: translate(-50%, 0%);
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
     opacity: 1;
   }
 }
 @keyframes nav-animation-go {
   0% {
-    -webkit-transform: translate(0%, 95%);
-            transform: translate(0%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
     opacity: 1;
   }
   50% {
-    -webkit-transform: translate(-50%, 95%);
-            transform: translate(-50%, 95%);
+    -webkit-transform: translate(0%, 85%);
+            transform: translate(0%, 85%);
     opacity: 0;
   }
   100% {
-    -webkit-transform: translate(-50%, 0%);
-            transform: translate(-50%, 0%);
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
     opacity: 1;
   }
 }
@@ -1043,13 +1062,9 @@ form {
     -webkit-transform: scale(1) translate(0%, 0%);
             transform: scale(1) translate(0%, 0%);
   }
-  50% {
-    -webkit-transform: scale(0.3) translate(0%, 0%);
-            transform: scale(0.3) translate(0%, 0%);
-  }
   100% {
-    -webkit-transform: scale(0.3) translate(0%, -410%);
-            transform: scale(0.3) translate(0%, -410%);
+    -webkit-transform: scale(0.5) translate(0%, -49%);
+            transform: scale(0.5) translate(0%, -49%);
   }
 }
 @keyframes whoami-scroll {
@@ -1057,13 +1072,9 @@ form {
     -webkit-transform: scale(1) translate(0%, 0%);
             transform: scale(1) translate(0%, 0%);
   }
-  50% {
-    -webkit-transform: scale(0.3) translate(0%, 0%);
-            transform: scale(0.3) translate(0%, 0%);
-  }
   100% {
-    -webkit-transform: scale(0.3) translate(0%, -410%);
-            transform: scale(0.3) translate(0%, -410%);
+    -webkit-transform: scale(0.5) translate(0%, -49%);
+            transform: scale(0.5) translate(0%, -49%);
   }
 }
 @-webkit-keyframes conditions-scroll {
@@ -1072,20 +1083,20 @@ form {
             transform: scale(1) translate(0%, 0%);
   }
   50% {
-    -webkit-transform: scale(0.5) translate(0%, 0%);
-            transform: scale(0.5) translate(0%, 0%);
+    -webkit-transform: scale(0.8) translate(0%, 0%);
+            transform: scale(0.8) translate(0%, 0%);
   }
   75% {
-    -webkit-transform: scale(0.5) translate(0%, -35%);
-            transform: scale(0.5) translate(0%, -35%);
+    -webkit-transform: scale(0.8) translate(0%, -15%);
+            transform: scale(0.8) translate(0%, -15%);
   }
   90% {
-    -webkit-transform: scale(0.5) translate(60%, -60%);
-            transform: scale(0.5) translate(60%, -60%);
+    -webkit-transform: scale(0.8) translate(20%, -30%);
+            transform: scale(0.8) translate(20%, -30%);
   }
   100% {
-    -webkit-transform: scale(0.5) translate(60%, -60%);
-            transform: scale(0.5) translate(60%, -60%);
+    -webkit-transform: scale(0.8) translate(20%, -30%);
+            transform: scale(0.8) translate(20%, -30%);
   }
 }
 @keyframes conditions-scroll {
@@ -1094,19 +1105,41 @@ form {
             transform: scale(1) translate(0%, 0%);
   }
   50% {
-    -webkit-transform: scale(0.5) translate(0%, 0%);
-            transform: scale(0.5) translate(0%, 0%);
+    -webkit-transform: scale(0.8) translate(0%, 0%);
+            transform: scale(0.8) translate(0%, 0%);
   }
   75% {
-    -webkit-transform: scale(0.5) translate(0%, -35%);
-            transform: scale(0.5) translate(0%, -35%);
+    -webkit-transform: scale(0.8) translate(0%, -15%);
+            transform: scale(0.8) translate(0%, -15%);
   }
   90% {
-    -webkit-transform: scale(0.5) translate(60%, -60%);
-            transform: scale(0.5) translate(60%, -60%);
+    -webkit-transform: scale(0.8) translate(20%, -30%);
+            transform: scale(0.8) translate(20%, -30%);
   }
   100% {
-    -webkit-transform: scale(0.5) translate(60%, -60%);
-            transform: scale(0.5) translate(60%, -60%);
+    -webkit-transform: scale(0.8) translate(20%, -30%);
+            transform: scale(0.8) translate(20%, -30%);
+  }
+}
+@-webkit-keyframes nav-wrapper-scroll {
+  0% {
+    background: transparent;
+  }
+  95% {
+    background: transparent;
+  }
+  100% {
+    background: #fafafa;
+  }
+}
+@keyframes nav-wrapper-scroll {
+  0% {
+    background: transparent;
+  }
+  95% {
+    background: transparent;
+  }
+  100% {
+    background: #fafafa;
   }
 }

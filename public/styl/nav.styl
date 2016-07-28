@@ -1,32 +1,35 @@
 @keyframes nav-animation-reset
 	0%
-		transform translate(-50%, 0%)
+		transform translate(0%, 0%)
 		opacity 1
+		background-color $blue4
 	1%
 		opacity 0
 	50%
-		transform translate(-25%, 95%)
+		transform translate(0%, 85%)
 		opacity 0
 	75%
-		transform translate(-5%, 95%)
+		transform translate(0%, 85%)
 	95%
 		opacity .5
-		transform translate(0%, 95%)
+		transform translate(0%, 85%)
+		background-color $blue4
 	100%
-		transform translate(0%, 95%)
+		transform translate(0%, 85%)
 		opacity 1
+		background-color $white
 		
 @keyframes nav-animation-go
 	0%
-		transform translate(0%, 95%)
+		transform translate(0%, 85%)
 		opacity 1
 	50%
-		transform translate(-50%, 95%)
+		transform translate(0%, 85%)
 		opacity 0
 	100%
-		transform translate(-50%, 0%)
+		transform translate(0%, 0%)
 		opacity 1
-		
+
 @keyframes about-li-go
 	0%
 		transform translate(0%, 0%)
@@ -48,57 +51,69 @@
 @keyframes whoami-scroll
 	0%
 		transform scale(1) translate(0%, 0%)
-	50%
-		transform scale(.3) translate(0%, 0%)
+	// 50%
+	// 	transform scale(.8) translate(0%, -20%)
 	100%
-		transform scale(.3) translate(0%, -410%)
+		transform scale(.5) translate(0%, -49%)
 
 @keyframes conditions-scroll
 	0%
 		transform scale(1) translate(0%, 0%)
 	50%
-		transform scale(.5) translate(0%, 0%)
+		transform scale(.8) translate(0%, 0%)
 	75%
-		transform scale(.5) translate(0%, -35%)
+		transform scale(.8) translate(0%, -15%)
 	90%
-		transform scale(.5) translate(60%, -60%)
+		transform scale(.8) translate(20%, -30%)
 	100%
-		transform scale(.5) translate(60%, -60%)
-		
+		transform scale(.8) translate(20%, -30%)
+
+@keyframes nav-wrapper-scroll
+	0%
+		background transparent
+	95%
+		background transparent
+	100%
+		background $white
 		
 .nav-wrapper
 	height 100vh
 	width 100vw
 	position fixed
 	background transparent
+	transition background-color .5s ease-in
 	z-index 100
 
+.nav-wrapper-scroll
+	height 10vh
+	background $white
+	animation nav-wrapper-scroll .5s ease-out
+
 .nav-item-container
-	position relative
 	display inline-block
-	z-index 1
+	position relative
 	height 100%
 	width 100%
-
-.nav-item-container-scroll
-	height 12%
-	background $white
 	
 .nav-item-wrapper
 	display flex
 	position relative
-	z-index 1
-	width 50%
+	width 100%
 	height 100%
 	margin auto
-	animation nav-animation-reset .5s ease-out
-	transform translate(0%, 95%)
+	animation nav-animation-reset .5s ease-in
+	transform translate(0%, 85%)
 	color $white
+	@media $screen-lg
+		transform translate(0%, 95%)
+		width 50%
 	
-.nav-scroll
+.nav-item-wrapper-scroll
 	animation nav-animation-go .5s ease-out
-	transform translate(-50%, 0%)
-	z-index 103
+	transform translate(0%, 0%)
+	color $blue4
+	@media $screen-lg
+		transform translate(-50%, 0%)
 	a
 		font-size .8em
 
@@ -113,10 +128,7 @@
 .work-li,
 .contact-li
 	a
-		font-size 1em
 		letter-spacing 2px
-		@media $screen-lg
-			font-size 2em
 	
 .about-li
 	position static
@@ -146,22 +158,26 @@
 	height 100%
 	width 50%
 	position absolute
-	top 0px
+	top 50%
 	bottom 0px
 	right 0px
 	left 0px
 	margin auto
+	text-align center
 	transition all .5s ease-in
 	transform scale(1) translate(0%, 0%)
+	color $white
+	letter-spacing 1px
 	
 .whoami-scroll
+	color $blue4
 	position fixed
 	right 0px
 	left 0px
+	top 0%
 	margin 0px auto
-	z-index 99
 	animation whoami-scroll .5s ease-out
-	transform scale(.3) translate(0%, -410%)
+	transform scale(.5) translate(0%, -49%)
 
 .conditions
 	position fixed
@@ -170,7 +186,10 @@
 	text-align right
 	transition all .5s ease-in
 	transform scale(1) translate(0%, 0%)
+	color $white
+	letter-spacing 2px
 	
 .conditions-scroll
-	transform scale(.5) translate(60%, -60%) !important
+	transform scale(.8) translate(20%, -30%)
 	animation conditions-scroll .5s ease-out
+	color $blue4

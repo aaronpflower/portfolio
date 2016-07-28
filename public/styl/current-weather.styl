@@ -1,11 +1,7 @@
-.current-weather-mount
-	height 100%
-	width 100%
-	
 .current-weather-component
 	display flex
 	flex-flow column nowrap
-	justify-content center
+	justify-content flex-end
 	align-items center
 	text-align center
 	width 100%
@@ -15,20 +11,19 @@
 .current-icon
 	position absolute
 	width 11%
-	top 0
+	top 50%
 	left 0
 	right 0
 	margin 0px auto
 	animation nudge 8s linear infinite
-	z-index 2
+	z-index 1
 
 .current-icon svg
 	width 100%
 	
 .boulder-svg
-	height 50%
+	height 65%
 	width 100%
-	z-index 1
 	@media $screen-lg
 		height 80%
 

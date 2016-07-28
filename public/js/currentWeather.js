@@ -27,59 +27,59 @@ CurrentWeather.API = {
 
 CurrentWeather.vm = (function() {
 	var vm = {};
-	var that = this;
-	vm.init = function() {
-		vm.navAnimation = function() {
-			var firstSection = document.getElementById('top').offsetHeight;
-			var scrollTime = firstSection / 6;
-			console.log(scrollTime)
-			window.addEventListener('scroll', function(){
-				var navItemWrapper = document.getElementById('nav-item-wrapper');
-				var aboutLi = document.getElementById('about-li');
-				var workLi = document.getElementById('work-li');
-				var contactLi = document.getElementById('contact-li');
-				var whoAmI = document.getElementById('whoami')
-				var conditions = document.getElementById('conditions')
+	
+	vm.navAnimation = function() {
+		var firstSection = document.getElementById('header-section').offsetHeight;
+		var scrollTime = firstSection / 4;
+		console.log(scrollTime)
+		window.addEventListener('scroll', function(){
+			var navWrapper = document.getElementById('nav-wrapper');
+			var navItemWrapper = document.getElementById('nav-item-wrapper')
+			var aboutLi = document.getElementById('about-li');
+			var workLi = document.getElementById('work-li');
+			var contactLi = document.getElementById('contact-li');
+			var whoAmI = document.getElementById('whoami')
+			var conditions = document.getElementById('conditions')
 
-				if(window.pageYOffset > 0) {
-					navItemWrapper.classList.add('nav-scroll')
-					aboutLi.classList.add('about-li-animate')
-					workLi.classList.add('work-li-animate')
-					contactLi.classList.add('contact-li-animate')
-					conditions.classList.add('conditions-scroll')
-					whoAmI.classList.add('whoami-scroll')
-				}
-
-				else if(window.pageYOffset <= scrollTime) {
-					navItemWrapper.classList.remove('nav-scroll')
-					aboutLi.classList.remove('about-li-animate')
-					workLi.classList.remove('work-li-animate')
-					contactLi.classList.remove('contact-li-animate')
-					conditions.classList.remove('conditions-scroll')
-					whoAmI.classList.remove('whoami-scroll')
-				}
-			})
-		},
-		vm.scrollToAnchor = function(e) {
-			var aboutSection = document.getElementById('about-section')
-			var workSection = document.getElementById('work-section')
-			var contactSection = document.getElementById('contact-section')
-			
-			if(e.target.id === "about") {
-				smoothScroll(aboutSection);
-			} else if(e.target.id === "work") {
-				smoothScroll(workSection)
-			} else if(e.target.id === "contact") {
-				smoothScroll(contactSection)
+			if(window.pageYOffset >= scrollTime) {
+				navWrapper.classList.add('nav-wrapper-scroll')
+				navItemWrapper.classList.add('nav-item-wrapper-scroll')
+				aboutLi.classList.add('about-li-animate')
+				workLi.classList.add('work-li-animate')
+				contactLi.classList.add('contact-li-animate')
+				conditions.classList.add('conditions-scroll')
+				whoAmI.classList.add('whoami-scroll')
 			}
+
+			else if(window.pageYOffset <= scrollTime) {
+				navWrapper.classList.remove('nav-wrapper-scroll')
+				navItemWrapper.classList.remove('nav-item-wrapper-scroll')
+				aboutLi.classList.remove('about-li-animate')
+				workLi.classList.remove('work-li-animate')
+				contactLi.classList.remove('contact-li-animate')
+				conditions.classList.remove('conditions-scroll')
+				whoAmI.classList.remove('whoami-scroll')
+			}
+		})
+	},
+	vm.scrollToAnchor = function(e) {
+		var aboutSection = document.getElementById('about-section')
+		var workSection = document.getElementById('work-section')
+		var contactSection = document.getElementById('contact-section')
+		
+		if(e.target.id === "about") {
+			smoothScroll(aboutSection);
+		} else if(e.target.id === "work") {
+			smoothScroll(workSection)
+		} else if(e.target.id === "contact") {
+			smoothScroll(contactSection)
 		}
 	}
+
 	return vm
 }())
 
 CurrentWeather.controller = function() {
-	CurrentWeather.vm.init();
-	CurrentWeather.vm.navAnimation();
 	var that = this;
 	this.currentTemp = m.prop();
 	this.currentIcon = m.prop();
@@ -98,8 +98,10 @@ CurrentWeather.controller = function() {
 
 CurrentWeather.view = function(ctrl) {
 	return [
-		m('nav.nav-wrapper', [
-			m('.nav-item-container#nav-item-container', [
+		m('nav.nav-wrapper#nav-wrapper', [ {
+			config: CurrentWeather.vm.navAnimation()
+		},
+			m('.nav-item-container', [
 				m('ul.nav-item-wrapper#nav-item-wrapper', [
 					m('li.about-li#about-li', [
 						m('a#about', { onclick: CurrentWeather.vm.scrollToAnchor }, "About")

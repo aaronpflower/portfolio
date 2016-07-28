@@ -5,7 +5,7 @@ var TwitterWorker = require('./twitter-worker.js');
 var About = require('./about.js')
 var Work = require('./work.js')
 
-m.mount(document.getElementById('current-weather'), m.component(CurrentWeather));
+m.mount(document.getElementById('header-section'), m.component(CurrentWeather));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
 m.mount(document.getElementById('about-mount'), m.component(About));
 m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
