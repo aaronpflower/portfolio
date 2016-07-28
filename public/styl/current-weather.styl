@@ -11,12 +11,12 @@
 .current-icon
 	position absolute
 	width 11%
-	top 50%
+	top 20%
 	left 0
 	right 0
 	margin 0px auto
-	animation nudge 8s linear infinite
-	z-index 1
+	animation pulse 2s ease-out infinite alternate
+	// z-index 1
 
 .current-icon svg
 	width 100%
@@ -31,15 +31,9 @@
 	width 100%
 	height 100%
 
-@keyframes nudge
+@keyframes pulse
 	0% 
-		transform translate(-250%, 0)
-		opacity 0
-	10%
-		opacity 1
-	90%
-		opacity .9
+		transform scale(1)
 	100%
-		transform: translate(350%, 0)
-		opacity 0
+		transform scale(1.3)
 		

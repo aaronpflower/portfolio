@@ -65,6 +65,9 @@ a {
     font-size: 1em;
   }
 }
+li a {
+  font-size: 1em;
+}
 svg path {
   fill: #fafafa;
 }
@@ -95,11 +98,14 @@ svg path {
   height: 100vh;
   color: #fafafa;
   font-size: 1.5rem;
-  overflow: hidden;
   position: relative;
 }
 .header-container {
   background-color: #126584;
+  height: 99.7vh;
+}
+.about-container {
+  border-top: 4px solid #d33514;
 }
 .work-container {
   background-color: #fefbf7;
@@ -149,13 +155,12 @@ svg path {
 .current-icon {
   position: absolute;
   width: 11%;
-  top: 50%;
+  top: 20%;
   left: 0;
   right: 0;
   margin: 0px auto;
-  -webkit-animation: nudge 8s linear infinite;
-          animation: nudge 8s linear infinite;
-  z-index: 1;
+  -webkit-animation: pulse 2s ease-out infinite alternate;
+          animation: pulse 2s ease-out infinite alternate;
 }
 .current-icon svg {
   width: 100%;
@@ -370,10 +375,25 @@ form {
   width: 66.6%;
   text-align: center;
 }
+.me-img {
+  position: absolute;
+  top: -65.5px;
+  right: 0px;
+  left: 0px;
+  margin: 0px auto;
+  width: 125px;
+  height: 125px;
+  border-top: 4px solid #d33514;
+  border-left: 4px solid #d33514;
+  border-bottom: 4px solid #d33514;
+  border-right: 4px solid #d33514;
+  border-radius: 50%;
+}
 .about-mount,
 .about-component-wrapper {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 .next-slide {
   display: -webkit-box;
@@ -386,7 +406,6 @@ form {
   top: 50%;
   width: 100px;
   height: 50px;
-  z-index: 100;
   background: transparent;
 }
 .next-slide.right {
@@ -446,8 +465,8 @@ form {
           align-items: center;
   width: 100%;
   height: 50%;
-  background-color: #d33514;
-  color: #fafafa;
+  background-color: $overflow;
+  color: #126584;
   border-top: 4px solid $blue;
 }
 @media (min-width: 567px) {
@@ -470,8 +489,8 @@ form {
           align-items: center;
   width: 100%;
   height: 50%;
-  background-color: #fefbf7;
-  color: #126584;
+  background-color: #d33514;
+  color: #fafafa;
   border-top: 4px solid $red;
 }
 @media (min-width: 567px) {
@@ -613,11 +632,11 @@ form {
   background: transparent;
   -webkit-transition: background-color 0.5s ease-in;
   transition: background-color 0.5s ease-in;
-  z-index: 100;
 }
 .nav-wrapper-scroll {
   height: 10vh;
-  background: #fafafa;
+  background: -webkit-linear-gradient(top, #fafafa, transparent);
+  background: linear-gradient(to bottom, #fafafa, transparent);
   -webkit-animation: nav-wrapper-scroll 0.5s ease-out;
           animation: nav-wrapper-scroll 0.5s ease-out;
 }
@@ -635,40 +654,13 @@ form {
   width: 100%;
   height: 100%;
   margin: auto;
-  -webkit-animation: nav-animation-reset 0.5s ease-in;
-          animation: nav-animation-reset 0.5s ease-in;
-  -webkit-transform: translate(0%, 85%);
-          transform: translate(0%, 85%);
   color: #fafafa;
-}
-@media (min-width: 1025px) {
-  .nav-item-wrapper {
-    -webkit-transform: translate(0%, 95%);
-            transform: translate(0%, 95%);
-    width: 50%;
-  }
-}
-.nav-item-wrapper-scroll {
-  -webkit-animation: nav-animation-go 0.5s ease-out;
-          animation: nav-animation-go 0.5s ease-out;
-  -webkit-transform: translate(0%, 0%);
-          transform: translate(0%, 0%);
-  color: #126584;
-}
-@media (min-width: 1025px) {
-  .nav-item-wrapper-scroll {
-    -webkit-transform: translate(-50%, 0%);
-            transform: translate(-50%, 0%);
-  }
-}
-.nav-item-wrapper-scroll a {
-  font-size: 0.8em;
 }
 .about-li,
 .work-li,
 .contact-li {
-  -webkit-transform: translate(0%, 0%);
-          transform: translate(0%, 0%);
+  position: absolute;
+  bottom: 10%;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
@@ -680,40 +672,19 @@ form {
   letter-spacing: 2px;
 }
 .about-li {
-  position: static;
+  left: 40%;
 }
 .work-li {
-  position: static;
+  left: 48%;
 }
 .contact-li {
-  position: static;
-}
-.about-li-animate {
-  -webkit-animation: about-li-go 0.5s ease-out;
-          animation: about-li-go 0.5s ease-out;
-  -webkit-transform: translate(0%, 5%);
-          transform: translate(0%, 5%);
-  position: absolute;
-}
-.work-li-animate {
-  -webkit-animation: work-li-go 0.5s ease-out;
-          animation: work-li-go 0.5s ease-out;
-  -webkit-transform: translate(0%, 100%);
-          transform: translate(0%, 100%);
-  position: absolute;
-}
-.contact-li-animate {
-  -webkit-animation: contact-li-go 0.5s ease-out;
-          animation: contact-li-go 0.5s ease-out;
-  -webkit-transform: translate(0%, 200%);
-          transform: translate(0%, 200%);
-  position: absolute;
+  left: 55%;
 }
 .whoami {
   height: 100%;
   width: 50%;
   position: absolute;
-  top: 50%;
+  top: 25%;
   bottom: 0px;
   right: 0px;
   left: 0px;
@@ -739,10 +710,15 @@ form {
           transform: scale(0.5) translate(0%, -49%);
 }
 .conditions {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  text-align: right;
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  top: 30%;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  margin: 0px auto;
+  text-align: center;
   -webkit-transition: all 0.5s ease-in;
   transition: all 0.5s ease-in;
   -webkit-transform: scale(1) translate(0%, 0%);
@@ -751,11 +727,17 @@ form {
   letter-spacing: 2px;
 }
 .conditions-scroll {
-  -webkit-transform: scale(0.8) translate(20%, -30%);
-          transform: scale(0.8) translate(20%, -30%);
+  -webkit-transform: scale(0.9) translate(0%, -4%);
+          transform: scale(0.9) translate(0%, -4%);
   -webkit-animation: conditions-scroll 0.5s ease-out;
           animation: conditions-scroll 0.5s ease-out;
   color: #126584;
+  position: fixed;
+  right: 0px;
+  top: 0%;
+  left: auto;
+  margin: 0;
+  text-align: right;
 }
 .work-component {
   width: 100%;
@@ -794,40 +776,24 @@ form {
     opacity: 1;
   }
 }
-@-webkit-keyframes nudge {
+@-webkit-keyframes pulse {
   0% {
-    -webkit-transform: translate(-250%, 0);
-            transform: translate(-250%, 0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 0.9;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   100% {
-    -webkit-transform: translate(350%, 0);
-            transform: translate(350%, 0);
-    opacity: 0;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
   }
 }
-@keyframes nudge {
+@keyframes pulse {
   0% {
-    -webkit-transform: translate(-250%, 0);
-            transform: translate(-250%, 0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 0.9;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   100% {
-    -webkit-transform: translate(350%, 0);
-            transform: translate(350%, 0);
-    opacity: 0;
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
   }
 }
 @-webkit-keyframes right-one-third {
@@ -998,66 +964,6 @@ form {
     opacity: 1;
   }
 }
-@-webkit-keyframes about-li-go {
-  0% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 5%);
-            transform: translate(0%, 5%);
-  }
-}
-@keyframes about-li-go {
-  0% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 5%);
-            transform: translate(0%, 5%);
-  }
-}
-@-webkit-keyframes work-li-go {
-  0% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 100%);
-            transform: translate(0%, 100%);
-  }
-}
-@keyframes work-li-go {
-  0% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 100%);
-            transform: translate(0%, 100%);
-  }
-}
-@-webkit-keyframes contact-li-go {
-  0% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 200%);
-            transform: translate(0%, 200%);
-  }
-}
-@keyframes contact-li-go {
-  0% {
-    -webkit-transform: translate(0%, 0%);
-            transform: translate(0%, 0%);
-  }
-  100% {
-    -webkit-transform: translate(0%, 200%);
-            transform: translate(0%, 200%);
-  }
-}
 @-webkit-keyframes whoami-scroll {
   0% {
     -webkit-transform: scale(1) translate(0%, 0%);
@@ -1084,20 +990,20 @@ form {
             transform: scale(1) translate(0%, 0%);
   }
   50% {
-    -webkit-transform: scale(0.8) translate(0%, 0%);
-            transform: scale(0.8) translate(0%, 0%);
+    -webkit-transform: scale(0.9) translate(0%, 0%);
+            transform: scale(0.9) translate(0%, 0%);
   }
   75% {
-    -webkit-transform: scale(0.8) translate(0%, -15%);
-            transform: scale(0.8) translate(0%, -15%);
+    -webkit-transform: scale(0.9) translate(0%, -1%);
+            transform: scale(0.9) translate(0%, -1%);
   }
   90% {
-    -webkit-transform: scale(0.8) translate(20%, -30%);
-            transform: scale(0.8) translate(20%, -30%);
+    -webkit-transform: scale(0.9) translate(0%, -4%);
+            transform: scale(0.9) translate(0%, -4%);
   }
   100% {
-    -webkit-transform: scale(0.8) translate(20%, -30%);
-            transform: scale(0.8) translate(20%, -30%);
+    -webkit-transform: scale(0.9) translate(0%, -4%);
+            transform: scale(0.9) translate(0%, -4%);
   }
 }
 @keyframes conditions-scroll {
@@ -1106,20 +1012,20 @@ form {
             transform: scale(1) translate(0%, 0%);
   }
   50% {
-    -webkit-transform: scale(0.8) translate(0%, 0%);
-            transform: scale(0.8) translate(0%, 0%);
+    -webkit-transform: scale(0.9) translate(0%, 0%);
+            transform: scale(0.9) translate(0%, 0%);
   }
   75% {
-    -webkit-transform: scale(0.8) translate(0%, -15%);
-            transform: scale(0.8) translate(0%, -15%);
+    -webkit-transform: scale(0.9) translate(0%, -1%);
+            transform: scale(0.9) translate(0%, -1%);
   }
   90% {
-    -webkit-transform: scale(0.8) translate(20%, -30%);
-            transform: scale(0.8) translate(20%, -30%);
+    -webkit-transform: scale(0.9) translate(0%, -4%);
+            transform: scale(0.9) translate(0%, -4%);
   }
   100% {
-    -webkit-transform: scale(0.8) translate(20%, -30%);
-            transform: scale(0.8) translate(20%, -30%);
+    -webkit-transform: scale(0.9) translate(0%, -4%);
+            transform: scale(0.9) translate(0%, -4%);
   }
 }
 @-webkit-keyframes nav-wrapper-scroll {
@@ -1130,7 +1036,8 @@ form {
     background: transparent;
   }
   100% {
-    background: #fafafa;
+    background: -webkit-linear-gradient(top, #fafafa, transparent);
+    background: linear-gradient(to bottom, #fafafa, transparent);
   }
 }
 @keyframes nav-wrapper-scroll {
@@ -1141,6 +1048,7 @@ form {
     background: transparent;
   }
   100% {
-    background: #fafafa;
+    background: -webkit-linear-gradient(top, #fafafa, transparent);
+    background: linear-gradient(to bottom, #fafafa, transparent);
   }
 }

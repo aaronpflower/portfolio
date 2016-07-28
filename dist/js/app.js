@@ -48410,29 +48410,29 @@ CurrentWeather.vm = (function() {
 		console.log(scrollTime)
 		window.addEventListener('scroll', function(){
 			var navWrapper = document.getElementById('nav-wrapper');
-			var navItemWrapper = document.getElementById('nav-item-wrapper')
-			var aboutLi = document.getElementById('about-li');
-			var workLi = document.getElementById('work-li');
-			var contactLi = document.getElementById('contact-li');
+			// var navItemWrapper = document.getElementById('nav-item-wrapper')
+			// var aboutLi = document.getElementById('about-li');
+			// var workLi = document.getElementById('work-li');
+			// var contactLi = document.getElementById('contact-li');
 			var whoAmI = document.getElementById('whoami')
 			var conditions = document.getElementById('conditions')
 
 			if(window.pageYOffset >= scrollTime) {
 				navWrapper.classList.add('nav-wrapper-scroll')
-				navItemWrapper.classList.add('nav-item-wrapper-scroll')
-				aboutLi.classList.add('about-li-animate')
-				workLi.classList.add('work-li-animate')
-				contactLi.classList.add('contact-li-animate')
+				// navItemWrapper.classList.add('nav-item-wrapper-scroll')
+				// aboutLi.classList.add('about-li-animate')
+				// workLi.classList.add('work-li-animate')
+				// contactLi.classList.add('contact-li-animate')
 				conditions.classList.add('conditions-scroll')
 				whoAmI.classList.add('whoami-scroll')
 			}
 
 			else if(window.pageYOffset <= scrollTime) {
 				navWrapper.classList.remove('nav-wrapper-scroll')
-				navItemWrapper.classList.remove('nav-item-wrapper-scroll')
-				aboutLi.classList.remove('about-li-animate')
-				workLi.classList.remove('work-li-animate')
-				contactLi.classList.remove('contact-li-animate')
+				// navItemWrapper.classList.remove('nav-item-wrapper-scroll')
+				// aboutLi.classList.remove('about-li-animate')
+				// workLi.classList.remove('work-li-animate')
+				// contactLi.classList.remove('contact-li-animate')
 				conditions.classList.remove('conditions-scroll')
 				whoAmI.classList.remove('whoami-scroll')
 			}
