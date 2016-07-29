@@ -30,9 +30,12 @@ CurrentWeather.vm = (function() {
 	
 	vm.navAnimation = function() {
 		var firstSection = document.getElementById('header-section').offsetHeight;
+		var meImg = document.getElementById('me-img');
+		var meImgPosition = meImg.getBoundingClientRect().top;
 		var scrollTime = firstSection / 4;
 		console.log(scrollTime)
 		window.addEventListener('scroll', function(){
+			console.log(meImgPosition)
 			var navWrapper = document.getElementById('nav-wrapper');
 			// var navItemWrapper = document.getElementById('nav-item-wrapper')
 			// var aboutLi = document.getElementById('about-li');
@@ -49,6 +52,7 @@ CurrentWeather.vm = (function() {
 				// contactLi.classList.add('contact-li-animate')
 				conditions.classList.add('conditions-scroll')
 				whoAmI.classList.add('whoami-scroll')
+				m.redraw()
 			}
 
 			else if(window.pageYOffset <= scrollTime) {
@@ -59,6 +63,11 @@ CurrentWeather.vm = (function() {
 				// contactLi.classList.remove('contact-li-animate')
 				conditions.classList.remove('conditions-scroll')
 				whoAmI.classList.remove('whoami-scroll')
+				m.redraw()
+			}
+
+			if(meImgPosition = 0) {
+				alert("hi")
 			}
 		})
 	},
@@ -102,32 +111,32 @@ CurrentWeather.view = function(ctrl) {
 			config: CurrentWeather.vm.navAnimation()
 		},
 			m('.nav-item-container', [
-				m('ul.nav-item-wrapper#nav-item-wrapper', [
-					m('li.about-li#about-li', [
-						m('a#about', { onclick: CurrentWeather.vm.scrollToAnchor }, "About")
-					]),
-					m('li.work-li#work-li', [
-						m('a#work', { onclick: CurrentWeather.vm.scrollToAnchor }, "Work")
-					]),
-					m('li.contact-li#contact-li', [
-						m('a#contact', { onclick: CurrentWeather.vm.scrollToAnchor }, "Contact")
-					])
-				]),
 				m('.whoami#whoami', [
 					m('h2', "Aaron Flower"),
 					m('h3', "Web Developer"),
 					m('h3', "Boulder, CO")
 				]),
 				m('div.conditions#conditions', [
-					m('p', "Boulder, CO"),
-					m('p', ctrl.currentTemp(), " °F"),
-					m('p', ctrl.currentSummary())
+					m('p', "Current Conditions"),
+					m('p', ctrl.currentSummary()),
+					m('p', ctrl.currentTemp(), " °F")
 				])
 			])
 		]),
 		m('div.current-weather-component', [
 			m('.current-icon', m.trust(require(ctrl.currentIcon()))),
-			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg')))
+			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg'))),
+			m('ul.nav-item-wrapper#nav-item-wrapper', [
+				m('li.about-li#about-li', [
+					m('a#about', { onclick: CurrentWeather.vm.scrollToAnchor }, "About")
+				]),
+				m('li.work-li#work-li', [
+					m('a#work', { onclick: CurrentWeather.vm.scrollToAnchor }, "Work")
+				]),
+				m('li.contact-li#contact-li', [
+					m('a#contact', { onclick: CurrentWeather.vm.scrollToAnchor }, "Contact")
+				])
+			])
 		])
 	]
 }
