@@ -14,9 +14,9 @@ require('../../dist/assets/partly-cloudy-night.svg')
 require('../../dist/assets/boulder.svg')
 
 
-var CurrentWeather = {};
+var Header = {};
 
-CurrentWeather.Model = {
+Header.Model = {
 	getCurrentConditions: function() {
 		return m.request({
 			dataType: "jsonp",
@@ -27,7 +27,7 @@ CurrentWeather.Model = {
 	pageHeight: window.innnerHeight
 }
 
-CurrentWeather.vm = (function() {
+Header.vm = (function() {
 	var vm = {};
 	vm.scrollToAnchor = function(e) {
 		var aboutSection = document.getElementById('about-section')
@@ -46,12 +46,12 @@ CurrentWeather.vm = (function() {
 }())
 
 window.addEventListener("scroll", function(e) {
-	CurrentWeather.Model.pageY = Math.max(e.pageY || window.pageYOffset, 0)
-	CurrentWeather.Model.innnerHeight = window.innnerHeight
+	Header.Model.pageY = Math.max(e.pageY || window.pageYOffset, 0)
+	Header.Model.innnerHeight = window.innnerHeight
 	m.redraw()
 })
 
-CurrentWeather.controller = function() {
+Header.controller = function() {
 	var that = this;
 	this.currentTemp = m.prop();
 	this.currentIcon = m.prop();
@@ -61,7 +61,7 @@ CurrentWeather.controller = function() {
 	this.conditionsScroll = m.prop();
 	this.whoamiScroll = m.prop();
 	this.meImgScroll = m.prop();
-	CurrentWeather.Model.getCurrentConditions().then(function(data) {	
+	Header.Model.getCurrentConditions().then(function(data) {	
 		var iconMap = Data.conditionsIcons.map(function(condition, i) {
 			if (condition.icon === data.currently.icon) {
 				that.currentIcon(condition.img)
@@ -72,10 +72,10 @@ CurrentWeather.controller = function() {
 	})
 }
 
-CurrentWeather.view = function(ctrl) {
-	var pageY = CurrentWeather.Model.pageY;
+Header.view = function(ctrl) {
+	var pageY = Header.Model.pageY;
 	var begin = pageY / 31 | 0;
-	var end = begin + (CurrentWeather.Model.pageHeight / 31 | 0 + 2);
+	var end = begin + (Header.Model.pageHeight / 31 | 0 + 2);
 	var offset = pageY % 31;
 	
 	var handleScroll = (function() {
@@ -115,13 +115,13 @@ CurrentWeather.view = function(ctrl) {
 			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg'))),
 			m('ul.nav-item-wrapper', { class: ctrl.navItemWrapperScroll() }, [
 				m('li.about-li#about-li', [
-					m('a#about', { onclick: CurrentWeather.vm.scrollToAnchor }, "About")
+					m('a#about', { onclick: Header.vm.scrollToAnchor }, "About")
 				]),
 				m('li.work-li#work-li', [
-					m('a#work', { onclick: CurrentWeather.vm.scrollToAnchor }, "Work")
+					m('a#work', { onclick: Header.vm.scrollToAnchor }, "Work")
 				]),
 				m('li.contact-li#contact-li', [
-					m('a#contact', { onclick: CurrentWeather.vm.scrollToAnchor }, "Contact")
+					m('a#contact', { onclick: Header.vm.scrollToAnchor }, "Contact")
 				])
 			]),
 			m("img.me-img", { class: ctrl.meImgScroll(), src: "./assets/Aaron.jpg" } )
@@ -129,6 +129,6 @@ CurrentWeather.view = function(ctrl) {
 	]
 }
 
-module.exports = CurrentWeather;
+module.exports = Header;
 
 

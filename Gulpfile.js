@@ -28,7 +28,7 @@ gulp.task('css', function(){
 		.pipe(order([
 			'variables.styl',
 			'main.styl',
-			'current-weather.styl',
+			'header.styl',
 			'contact-section.styl',
 			'twitter-worker.styl'
 		]))

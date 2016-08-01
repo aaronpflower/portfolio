@@ -48236,6 +48236,142 @@ var Data = {
 
 module.exports = Data;
 },{}],195:[function(require,module,exports){
+var m = require('mithril')
+var Data = require('./Data.js')
+var smoothScroll = require('smoothscroll')
+require('../../dist/assets/sun.svg')
+require('../../dist/assets/clear-night.svg')
+require('../../dist/assets/rain.svg')
+require('../../dist/assets/snow.svg')
+require('../../dist/assets/sleet.svg')
+require('../../dist/assets/wind.svg')
+require('../../dist/assets/fog.svg')
+require('../../dist/assets/cloud.svg')
+require('../../dist/assets/partly-cloudy-sun.svg')
+require('../../dist/assets/partly-cloudy-night.svg')
+require('../../dist/assets/boulder.svg')
+
+
+var Header = {};
+
+Header.Model = {
+	getCurrentConditions: function() {
+		return m.request({
+			dataType: "jsonp",
+			url: "https://api.forecast.io/forecast/963c2a286c46883b606d0962897eeef7/40.0150,-105.2705"
+		})
+	},
+	pageY: 0,
+	pageHeight: window.innnerHeight
+}
+
+Header.vm = (function() {
+	var vm = {};
+	vm.scrollToAnchor = function(e) {
+		var aboutSection = document.getElementById('about-section')
+		var workSection = document.getElementById('work-section')
+		var contactSection = document.getElementById('contact-section')
+		
+		if(e.target.id === "about") {
+			smoothScroll(aboutSection);
+		} else if(e.target.id === "work") {
+			smoothScroll(workSection)
+		} else if(e.target.id === "contact") {
+			smoothScroll(contactSection)
+		}
+	}
+	return vm
+}())
+
+window.addEventListener("scroll", function(e) {
+	Header.Model.pageY = Math.max(e.pageY || window.pageYOffset, 0)
+	Header.Model.innnerHeight = window.innnerHeight
+	m.redraw()
+})
+
+Header.controller = function() {
+	var that = this;
+	this.currentTemp = m.prop();
+	this.currentIcon = m.prop();
+	this.currentSummary = m.prop();
+	this.navWrapperScroll = m.prop();
+	this.navItemWrapperScroll = m.prop();
+	this.conditionsScroll = m.prop();
+	this.whoamiScroll = m.prop();
+	this.meImgScroll = m.prop();
+	Header.Model.getCurrentConditions().then(function(data) {	
+		var iconMap = Data.conditionsIcons.map(function(condition, i) {
+			if (condition.icon === data.currently.icon) {
+				that.currentIcon(condition.img)
+			}
+		})
+		that.currentTemp(data.currently.apparentTemperature);
+		that.currentSummary(data.currently.summary)
+	})
+}
+
+Header.view = function(ctrl) {
+	var pageY = Header.Model.pageY;
+	var begin = pageY / 31 | 0;
+	var end = begin + (Header.Model.pageHeight / 31 | 0 + 2);
+	var offset = pageY % 31;
+	
+	var handleScroll = (function() {
+		console.log(begin);
+		if (begin > 10) {
+			ctrl.navWrapperScroll("nav-wrapper-scroll");
+			ctrl.navItemWrapperScroll("nav-item-wrapper-scroll");
+			ctrl.conditionsScroll("conditions-scroll");
+			ctrl.whoamiScroll("whoami-scroll");
+			ctrl.meImgScroll("me-img-scroll");
+		} 
+		if (begin < 10) {
+			ctrl.navWrapperScroll("");
+			ctrl.navItemWrapperScroll("");
+			ctrl.conditionsScroll("");
+			ctrl.whoamiScroll("");
+			ctrl.meImgScroll("");
+		}
+	}());
+	return [
+		m('nav.nav-wrapper#nav-wrapper', { class: ctrl.navWrapperScroll() }, [
+			m('.nav-item-container',  [
+				m('.whoami#whoami', { class: ctrl.whoamiScroll() }, [
+					m('h2', "Aaron Flower"),
+					m('h3', "Web Developer"),
+					m('h3', "Boulder, CO")
+				]),
+				m('div.conditions#conditions', { class: ctrl.conditionsScroll() }, [
+					m('p', "Current Conditions"),
+					m('p', ctrl.currentSummary()),
+					m('p', ctrl.currentTemp(), " °F")
+				])
+			])
+		]),
+		m('div.current-weather-component', [
+			m('.current-icon', m.trust(require(ctrl.currentIcon()))),
+			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg'))),
+			m('ul.nav-item-wrapper', { class: ctrl.navItemWrapperScroll() }, [
+				m('li.about-li#about-li', [
+					m('a#about', { onclick: Header.vm.scrollToAnchor }, "About")
+				]),
+				m('li.work-li#work-li', [
+					m('a#work', { onclick: Header.vm.scrollToAnchor }, "Work")
+				]),
+				m('li.contact-li#contact-li', [
+					m('a#contact', { onclick: Header.vm.scrollToAnchor }, "Contact")
+				])
+			]),
+			m("img.me-img", { class: ctrl.meImgScroll(), src: "./assets/Aaron.jpg" } )
+		])
+	]
+}
+
+module.exports = Header;
+
+
+
+},{"../../dist/assets/boulder.svg":1,"../../dist/assets/clear-night.svg":2,"../../dist/assets/cloud.svg":3,"../../dist/assets/fog.svg":4,"../../dist/assets/partly-cloudy-night.svg":5,"../../dist/assets/partly-cloudy-sun.svg":6,"../../dist/assets/rain.svg":7,"../../dist/assets/sleet.svg":8,"../../dist/assets/snow.svg":9,"../../dist/assets/sun.svg":10,"../../dist/assets/wind.svg":11,"./Data.js":194,"mithril":107,"smoothscroll":146}],196:[function(require,module,exports){
 // Idea: For desktop have line animation with dude growing up and looping through
 
 var m = require('mithril');
@@ -48293,21 +48429,21 @@ About.view = function(ctrl) {
 module.exports = About;
 
 
-},{"./Data.js":194,"mithril":107}],196:[function(require,module,exports){
+},{"./Data.js":194,"mithril":107}],197:[function(require,module,exports){
 var m = require('mithril');
-var CurrentWeather = require('./currentWeather.js');
+var Header = require('./Header.js');
 var ContactForm = require('./contact-form.js');
 var TwitterWorker = require('./twitter-worker.js');
 var About = require('./about.js')
 var Work = require('./work.js')
 
-m.mount(document.getElementById('header-section'), m.component(CurrentWeather));
+m.mount(document.getElementById('header-section'), m.component(Header));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
 m.mount(document.getElementById('about-mount'), m.component(About));
-// m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
+m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
 m.mount(document.getElementById('work-mount'), m.component(Work));
 
-},{"./about.js":195,"./contact-form.js":197,"./currentWeather.js":198,"./twitter-worker.js":199,"./work.js":200,"mithril":107}],197:[function(require,module,exports){
+},{"./Header.js":195,"./about.js":196,"./contact-form.js":198,"./twitter-worker.js":199,"./work.js":200,"mithril":107}],198:[function(require,module,exports){
 var m = require('mithril')
 var ContactForm = {};
 
@@ -48373,143 +48509,7 @@ ContactForm.view = function(ctrl) {
 }
 
 module.exports = ContactForm;
-},{"mithril":107}],198:[function(require,module,exports){
-var m = require('mithril')
-var Data = require('./Data.js')
-var smoothScroll = require('smoothscroll')
-require('../../dist/assets/sun.svg')
-require('../../dist/assets/clear-night.svg')
-require('../../dist/assets/rain.svg')
-require('../../dist/assets/snow.svg')
-require('../../dist/assets/sleet.svg')
-require('../../dist/assets/wind.svg')
-require('../../dist/assets/fog.svg')
-require('../../dist/assets/cloud.svg')
-require('../../dist/assets/partly-cloudy-sun.svg')
-require('../../dist/assets/partly-cloudy-night.svg')
-require('../../dist/assets/boulder.svg')
-
-
-var CurrentWeather = {};
-
-CurrentWeather.Model = {
-	getCurrentConditions: function() {
-		return m.request({
-			dataType: "jsonp",
-			url: "https://api.forecast.io/forecast/963c2a286c46883b606d0962897eeef7/40.0150,-105.2705"
-		})
-	},
-	pageY: 0,
-	pageHeight: window.innnerHeight
-}
-
-CurrentWeather.vm = (function() {
-	var vm = {};
-	vm.scrollToAnchor = function(e) {
-		var aboutSection = document.getElementById('about-section')
-		var workSection = document.getElementById('work-section')
-		var contactSection = document.getElementById('contact-section')
-		
-		if(e.target.id === "about") {
-			smoothScroll(aboutSection);
-		} else if(e.target.id === "work") {
-			smoothScroll(workSection)
-		} else if(e.target.id === "contact") {
-			smoothScroll(contactSection)
-		}
-	}
-	return vm
-}())
-
-window.addEventListener("scroll", function(e) {
-	CurrentWeather.Model.pageY = Math.max(e.pageY || window.pageYOffset, 0)
-	CurrentWeather.Model.innnerHeight = window.innnerHeight
-	m.redraw()
-})
-
-CurrentWeather.controller = function() {
-	var that = this;
-	this.currentTemp = m.prop();
-	this.currentIcon = m.prop();
-	this.currentSummary = m.prop();
-	this.navWrapperScroll = m.prop();
-	this.navItemWrapperScroll = m.prop();
-	this.conditionsScroll = m.prop();
-	this.whoamiScroll = m.prop();
-	this.meImgScroll = m.prop();
-	CurrentWeather.Model.getCurrentConditions().then(function(data) {	
-		var iconMap = Data.conditionsIcons.map(function(condition, i) {
-			if (condition.icon === data.currently.icon) {
-				that.currentIcon(condition.img)
-			}
-		})
-		that.currentTemp(data.currently.apparentTemperature);
-		that.currentSummary(data.currently.summary)
-	})
-}
-
-CurrentWeather.view = function(ctrl) {
-	var pageY = CurrentWeather.Model.pageY;
-	var begin = pageY / 31 | 0;
-	var end = begin + (CurrentWeather.Model.pageHeight / 31 | 0 + 2);
-	var offset = pageY % 31;
-	
-	var handleScroll = (function() {
-		console.log(begin);
-		if (begin > 10) {
-			ctrl.navWrapperScroll("nav-wrapper-scroll");
-			ctrl.navItemWrapperScroll("nav-item-wrapper-scroll");
-			ctrl.conditionsScroll("conditions-scroll");
-			ctrl.whoamiScroll("whoami-scroll");
-			ctrl.meImgScroll("me-img-scroll");
-		} 
-		if (begin < 10) {
-			ctrl.navWrapperScroll("");
-			ctrl.navItemWrapperScroll("");
-			ctrl.conditionsScroll("");
-			ctrl.whoamiScroll("");
-			ctrl.meImgScroll("");
-		}
-	}());
-	return [
-		m('nav.nav-wrapper#nav-wrapper', { class: ctrl.navWrapperScroll() }, [
-			m('.nav-item-container',  [
-				m('.whoami#whoami', { class: ctrl.whoamiScroll() }, [
-					m('h2', "Aaron Flower"),
-					m('h3', "Web Developer"),
-					m('h3', "Boulder, CO")
-				]),
-				m('div.conditions#conditions', { class: ctrl.conditionsScroll() }, [
-					m('p', "Current Conditions"),
-					m('p', ctrl.currentSummary()),
-					m('p', ctrl.currentTemp(), " °F")
-				])
-			])
-		]),
-		m('div.current-weather-component', [
-			m('.current-icon', m.trust(require(ctrl.currentIcon()))),
-			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg'))),
-			m('ul.nav-item-wrapper', { class: ctrl.navItemWrapperScroll() }, [
-				m('li.about-li#about-li', [
-					m('a#about', { onclick: CurrentWeather.vm.scrollToAnchor }, "About")
-				]),
-				m('li.work-li#work-li', [
-					m('a#work', { onclick: CurrentWeather.vm.scrollToAnchor }, "Work")
-				]),
-				m('li.contact-li#contact-li', [
-					m('a#contact', { onclick: CurrentWeather.vm.scrollToAnchor }, "Contact")
-				])
-			]),
-			m("img.me-img", { class: ctrl.meImgScroll(), src: "./assets/Aaron.jpg" } )
-		])
-	]
-}
-
-module.exports = CurrentWeather;
-
-
-
-},{"../../dist/assets/boulder.svg":1,"../../dist/assets/clear-night.svg":2,"../../dist/assets/cloud.svg":3,"../../dist/assets/fog.svg":4,"../../dist/assets/partly-cloudy-night.svg":5,"../../dist/assets/partly-cloudy-sun.svg":6,"../../dist/assets/rain.svg":7,"../../dist/assets/sleet.svg":8,"../../dist/assets/snow.svg":9,"../../dist/assets/sun.svg":10,"../../dist/assets/wind.svg":11,"./Data.js":194,"mithril":107,"smoothscroll":146}],199:[function(require,module,exports){
+},{"mithril":107}],199:[function(require,module,exports){
 var m = require ('mithril');
 var Twitter = require('twitter');
 var socket = io();
@@ -48585,4 +48585,4 @@ Work.view = function() {
 }
 
 module.exports = Work;
-},{"./Data.js":194,"mithril":107}]},{},[196])
+},{"./Data.js":194,"mithril":107}]},{},[197])
