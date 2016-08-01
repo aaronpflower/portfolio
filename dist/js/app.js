@@ -48432,6 +48432,11 @@ CurrentWeather.controller = function() {
 	this.currentTemp = m.prop();
 	this.currentIcon = m.prop();
 	this.currentSummary = m.prop();
+	this.navWrapperScroll = m.prop();
+	this.navItemWrapperScroll = m.prop();
+	this.conditionsScroll = m.prop();
+	this.whoamiScroll = m.prop();
+	this.meImgScroll = m.prop();
 	CurrentWeather.Model.getCurrentConditions().then(function(data) {	
 		var iconMap = Data.conditionsIcons.map(function(condition, i) {
 			if (condition.icon === data.currently.icon) {
@@ -48444,53 +48449,47 @@ CurrentWeather.controller = function() {
 }
 
 CurrentWeather.view = function(ctrl) {
-	var navWrapper = document.getElementById('nav-wrapper');
-	var navItemWrapper = document.getElementById('nav-item-wrapper')
-	var aboutLi = document.getElementById('about-li');
-	var workLi = document.getElementById('work-li');
-	var contactLi = document.getElementById('contact-li');
-	var whoAmI = document.getElementById('whoami')
-	var conditions = document.getElementById('conditions')
-	var pageY = CurrentWeather.Model.pageY
-	var begin = pageY / 31 | 0
-	// Add 2 so that the top and bottom of the page are filled with
-	// next/prev item, not just whitespace if item not in full view
-	var end = begin + (CurrentWeather.Model.pageHeight / 31 | 0 + 2)
-	var offset = pageY % 31
+	var pageY = CurrentWeather.Model.pageY;
+	var begin = pageY / 31 | 0;
+	var end = begin + (CurrentWeather.Model.pageHeight / 31 | 0 + 2);
+	var offset = pageY % 31;
 	
-	var handleScroll = function(el, style) {
-		console.log(el, style)
-		if (pageY >= begin) {
-			el.classList.add(style)
-		} else if (pageY <= begin) {
-			el.classList.remove(style)
+	var handleScroll = (function() {
+		console.log(begin);
+		if (begin > 10) {
+			ctrl.navWrapperScroll("nav-wrapper-scroll");
+			ctrl.navItemWrapperScroll("nav-item-wrapper-scroll");
+			ctrl.conditionsScroll("conditions-scroll");
+			ctrl.whoamiScroll("whoami-scroll");
+			ctrl.meImgScroll("me-img-scroll");
+		} 
+		if (begin < 10) {
+			ctrl.navWrapperScroll("");
+			ctrl.navItemWrapperScroll("");
+			ctrl.conditionsScroll("");
+			ctrl.whoamiScroll("");
+			ctrl.meImgScroll("");
 		}
-	}
+	}());
 	return [
-		m('nav.nav-wrapper#nav-wrapper', {
-			config: function(el) {
-				console.log(el)
-				return handleScroll(el, "nav-wrapper-scroll")
-				
-			}
-		},
-			m('.nav-item-container', [
-				m('.whoami#whoami', [
+		m('nav.nav-wrapper#nav-wrapper', { class: ctrl.navWrapperScroll() }, [
+			m('.nav-item-container',  [
+				m('.whoami#whoami', { class: ctrl.whoamiScroll() }, [
 					m('h2', "Aaron Flower"),
 					m('h3', "Web Developer"),
 					m('h3', "Boulder, CO")
 				]),
-				m('div.conditions#conditions', [
+				m('div.conditions#conditions', { class: ctrl.conditionsScroll() }, [
 					m('p', "Current Conditions"),
 					m('p', ctrl.currentSummary()),
 					m('p', ctrl.currentTemp(), " °F")
 				])
 			])
-		),
+		]),
 		m('div.current-weather-component', [
 			m('.current-icon', m.trust(require(ctrl.currentIcon()))),
 			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg'))),
-			m('ul.nav-item-wrapper#nav-item-wrapper', [
+			m('ul.nav-item-wrapper', { class: ctrl.navItemWrapperScroll() }, [
 				m('li.about-li#about-li', [
 					m('a#about', { onclick: CurrentWeather.vm.scrollToAnchor }, "About")
 				]),
@@ -48500,7 +48499,8 @@ CurrentWeather.view = function(ctrl) {
 				m('li.contact-li#contact-li', [
 					m('a#contact', { onclick: CurrentWeather.vm.scrollToAnchor }, "Contact")
 				])
-			])
+			]),
+			m("img.me-img", { class: ctrl.meImgScroll(), src: "./assets/Aaron.jpg" } )
 		])
 	]
 }

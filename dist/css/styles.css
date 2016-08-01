@@ -371,19 +371,6 @@ form {
   width: 66.6%;
   text-align: center;
 }
-.me-img {
-  position: absolute;
-  top: -10%;
-  right: 0px;
-  left: 0px;
-  margin: 0px auto;
-  width: 33.3%;
-  border-top: 4px solid #9de0ad;
-  border-left: 4px solid #9de0ad;
-  border-bottom: 4px solid #9de0ad;
-  border-right: 4px solid #9de0ad;
-  border-radius: 50%;
-}
 .about-mount,
 .about-component-wrapper {
   width: 100%;
@@ -635,6 +622,7 @@ form {
           animation: nav-wrapper-scroll 0.5s ease-out;
   -webkit-transition: none;
   transition: none;
+  z-index: 100;
 }
 .nav-item-container {
   display: inline-block;
@@ -656,6 +644,11 @@ form {
 .nav-item-wrapper-scroll {
   -webkit-transform: translate(0%, 0%);
           transform: translate(0%, 0%);
+  position: fixed;
+  top: 9vh;
+  background: #9de0ad;
+  z-index: 100;
+  height: initial;
 }
 .about-li,
 .work-li,
@@ -765,6 +758,28 @@ form {
 }
 .conditions-scroll p {
   font-size: 0.5em;
+}
+.me-img {
+  position: absolute;
+  top: 90%;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  margin: 0px auto;
+  width: 33.3%;
+  border-top: 4px solid #9de0ad;
+  border-left: 4px solid #9de0ad;
+  border-bottom: 4px solid #9de0ad;
+  border-right: 4px solid #9de0ad;
+  border-radius: 50%;
+  z-index: 101;
+}
+.me-img-scroll {
+  position: fixed;
+  top: -5%;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  z-index: 101;
 }
 .work-component {
   width: 100%;
