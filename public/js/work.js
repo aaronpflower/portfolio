@@ -1,35 +1,56 @@
-var m = require('mithril')
-var Data = require('./Data.js')
+// Idea: For desktop have line animation with dude growing up and looping through
+
+var m = require('mithril');
+var Data = require('./Data.js');
 
 var Work = {};
 
 Work.vm = (function() {
 	var vm = {}
-	vm.init = function() {
-		console.log("hello world")
+	vm.init = function () {
+		vm.sliderOver = m.prop();
+		vm.slideRight = function() {
+			if(vm.sliderOver() == "right-one-third") {
+				vm.sliderOver('right-two-thirds')
+			} else if (vm.sliderOver() == "right-two-thirds") {
+				vm.sliderOver('right-three-thirds')
+			} else if (vm.sliderOver() == "right-three-thirds") {
+				vm.sliderOver('')
+			} else {
+				vm.sliderOver('right-one-third')
+			}
+		};
 	}
 	return vm
 }())
 
 Work.controller = function() {
-	Work.vm.init()
+	Work.vm.init();
 }
 
-Work.view = function() {
-	return [ 
-		m("h3.company-name", "Human Design"),
-		m('.work-component', [
-			Data.projects.filter(function(project) {
-				return project.company_id === "Human Design"
-			}).map(function(project) {
-				return m('.company-work-wrapper', [
-					m('h3', project.project),
-					m('p', project.specs),
-					m('p', project.about)
-				])
-			})
+Work.view = function(ctrl) {
+	return [
+		m('.work-component-wrapper', [
+			m('a.next-slide.right', { onclick: Work.vm.slideRight}, [
+				m('img', {src: "./assets/forward-arrow.png" })
+			]),
+			m('.slide-container', {class: Work.vm.sliderOver()}, [			
+				Data.projects.map(function(slide, i){
+					return m('div.slide-wrapper',
+						m('.slide-left', [
+							m('h2', slide.project),
+							m('h3', slide.company_id)
+						]),
+						m('.slide-right', [
+							m('h3', slide.specs),
+							m('p', slide.about)
+						])
+					)
+				})
+			])
 		])
 	]
 }
 
 module.exports = Work;
+

@@ -75,19 +75,16 @@ Header.controller = function() {
 Header.view = function(ctrl) {
 	var pageY = Header.Model.pageY;
 	var begin = pageY / 31 | 0;
-	var end = begin + (Header.Model.pageHeight / 31 | 0 + 2);
-	var offset = pageY % 31;
 	
 	var handleScroll = (function() {
-		console.log(begin);
-		if (begin > 10) {
+		if (begin > 3) {
 			ctrl.navWrapperScroll("nav-wrapper-scroll");
 			ctrl.navItemWrapperScroll("nav-item-wrapper-scroll");
 			ctrl.conditionsScroll("conditions-scroll");
 			ctrl.whoamiScroll("whoami-scroll");
 			ctrl.meImgScroll("me-img-scroll");
 		} 
-		if (begin < 10) {
+		if (begin < 3) {
 			ctrl.navWrapperScroll("");
 			ctrl.navItemWrapperScroll("");
 			ctrl.conditionsScroll("");
@@ -97,17 +94,15 @@ Header.view = function(ctrl) {
 	}());
 	return [
 		m('nav.nav-wrapper#nav-wrapper', { class: ctrl.navWrapperScroll() }, [
-			m('.nav-item-container',  [
-				m('.whoami#whoami', { class: ctrl.whoamiScroll() }, [
-					m('h2', "Aaron Flower"),
-					m('h3', "Web Developer"),
-					m('h3', "Boulder, CO")
-				]),
-				m('div.conditions#conditions', { class: ctrl.conditionsScroll() }, [
-					m('p', "Current Conditions"),
-					m('p', ctrl.currentSummary()),
-					m('p', ctrl.currentTemp(), " °F")
-				])
+			m('.whoami#whoami', { class: ctrl.whoamiScroll() }, [
+				m('h2', "Aaron Flower"),
+				m('h3', "Web Developer"),
+				m('h3', "Boulder, CO")
+			]),
+			m('div.conditions#conditions', { class: ctrl.conditionsScroll() }, [
+				m('p', "Current Conditions"),
+				m('p', ctrl.currentSummary()),
+				m('p', ctrl.currentTemp(), " °F")
 			])
 		]),
 		m('div.current-weather-component', [

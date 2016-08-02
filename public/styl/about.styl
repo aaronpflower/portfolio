@@ -1,106 +1,53 @@
-.about-mount,
-.about-component-wrapper
+.more-about
+	display flex
+	flex-flow column nowrap
+	justify-content center
+	align-items center
 	width 100%
 	height 100%
-	overflow hidden
-	
-.next-slide
-	display flex
-	justify-content flex-end
-	position absolute
-	top 50%
-	width 100px
-	height 50px
-	// z-index 100
-	background transparent
+	z-index 104
 
-.next-slide.right
-	right 0px
-
-.next-slide.left
-	left 0px
-
-.slide-container
+.about-swapper
 	display flex
 	flex-flow row nowrap
 	justify-content center
-	align-items flex-start
-	height 100%
-	width 300vw
-	overflow hidden
-
-.slide-wrapper
-	display flex
-	flex-flow column nowrap
-	justify-content center
-	align-items center
-	width 33.33%
-	height 100%
-	@media $screen-xs
-		flex-flow row nowrap
-
-.slide-left
-	display flex
-	flex-flow column nowrap
-	justify-content center
 	align-items center
 	width 100%
-	height 50%
-	background-color $white
+	height 100%
+	z-index 101
+	
+.about-wrapper
+	width 25%
 	color $gray
-	border-top 4px solid $blue
-	@media $screen-xs
-		width 50%
-		height 100%
-		
-.slide-right
+
+.season-date
+	height 100%
+	width 100%
+
+.date-circle
 	display flex
-	flex-flow column nowrap
 	justify-content center
 	align-items center
-	width 100%
-	height 50%
-	background-color $greenBlue
+	width 80px
+	height 80px
+	border-radius 50%
+	background-color $gray
 	color $white
-	border-top 4px solid $red
-	@media $screen-xs
-		width 50%
-		height 100%
+	h3
+		text-align center
+		
+// .season-header
+// 	display flex
+// 	text-align center
+// 	width 80%
+// 	z-index 101
 	
-.slide-wrapper h3
-	width 66.66%
-	text-align left
-
-.slide-wrapper p
-	width 66.66%
-	text-align left
-
-@keyframes right-one-third
-	0%
-		transform translateX(0%)
-	100%
-		transform translateX(-33.33%)
-
-@keyframes right-two-thirds
-	0%
-		transform translateX(-33.33%)
-	100%
-		transform translateX(-66.66%)
-
-@keyframes right-three-thirds
-	0%
-		transform translateX(-66.66%)
-	100%
-		transform translateX(0%)
-
-.right-one-third
-	animation right-one-third .5s ease-out
-	transform translateX(-33.33%)
+// .season-body
+// 	display flex
+// 	width 80%
 	
-.right-two-thirds
-	animation right-two-thirds .5s ease-out
-	transform translateX(-66.66%)
-
-.right-three-thirds
-	animation right-three-thirds .5s ease-out
-	transform translateX(0%)
+// .body-card
+// 	color $white
+// 	background-color $blueGray
+	
+// 	

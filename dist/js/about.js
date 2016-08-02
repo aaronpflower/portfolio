@@ -2237,36 +2237,39 @@
 var Data = {
 	about: [
 		{
-			header: "Why all the weather references?",
-			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
-			img: ""
+			date: "The Early Years",
+			header: "Meteorological and Baseball Enthusiast",
+			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
 		},
 		{
+			date: "The Big Switch",
 			header: "Running to Quality Assurance",
-			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
-			img: ""
+			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
 		},
 		{
+			date: "Moving On Up",
 			header: "Quality Assurance to Web Development",
-			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
-			img: ""
+			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
 		}
 	],
 	projects: [
 		{
 			company_id: "Human Design",
+			img: "",
 			project: "Racing Extinction",
 			specs: "Squarespace, CSS, HTML, jQuery",
 			about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
 		},
 		{
 			company_id: "Human Design",
+			img: "",
 			project: "Human Design Site",
 			specs: "Node, Firebase, CSS, HTML, JavaScript",
 			about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
 		},
 		{
 			company_id: "Human Design",
+			img: "",
 			project: "Social Action Machine",
 			specs: "Node, Express, MongoDB, MithrilJS, CSS, Jade, JavaScript",
 			about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
@@ -2319,61 +2322,92 @@ var Data = {
 
 module.exports = Data;
 },{}],3:[function(require,module,exports){
-// Idea: For desktop have line animation with dude growing up and looping through
+var m = require('mithril')
+var Data = require('./Data.js')
 
-var m = require('mithril');
-var Data = require('./Data.js');
 
-var About = {};
+var activeData = {
+	date: "The Early Years",
+	header: "Meteorological and Baseball Enthusiast",
+	body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
+}
 
-About.vm = (function() {
+var inactiveData = [
+	{
+		date: "The Big Switch",
+		header: "Running to Quality Assurance",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
+	},
+	{
+		date: "Moving On Up",
+		header: "Quality Assurance to Web Development",
+		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
+	}
+]
+
+var AboutSwapper = {};
+
+AboutSwapper.vm = (function() {
 	var vm = {}
-	vm.init = function () {
-		vm.sliderOver = m.prop();
-		vm.slideRight = function() {
-			if(vm.sliderOver() == "right-one-third") {
-				vm.sliderOver('right-two-thirds')
-			} else if (vm.sliderOver() == "right-two-thirds") {
-				vm.sliderOver('right-three-thirds')
-			} else if (vm.sliderOver() == "right-three-thirds") {
-				vm.sliderOver('')
-			} else {
-				vm.sliderOver('right-one-third')
-			}
-		};
+	vm.init = function() {
+		console.log("hello world")
 	}
 	return vm
 }())
 
-About.controller = function() {
-	About.vm.init();
+AboutSwapper.controller = function(args) {
+	AboutSwapper.vm.init()
 }
 
-About.view = function(ctrl) {
+AboutSwapper.view = function(ctrl, args) {
 	return [
-		m('.about-component-wrapper', [
-			m('a.next-slide.right', { onclick: About.vm.slideRight}, [
-				m('img', {src: "./assets/forward-arrow.png" })
-			]),
-			m('.slide-container', {class: About.vm.sliderOver()}, [			
-				Data.about.map(function(slide, i){
-					// console.log(i)
-					return m('div.slide-wrapper',
-						m('.slide-left', [
-							m('h3', slide.header)
-						]),
-						m('.slide-right', [
-							m('h3', slide.header),
-							m('p', slide.body)
+		m('h3', args.date),
+		m('p', args.header),
+		m('p', args.body)
+	]
+}
+
+var MoreAbout = {}
+
+MoreAbout.controller = function() {
+	return this
+}
+
+MoreAbout.view = function(ctrl, args) {
+	return [
+		m('.about-header', "Choose One"),
+		m('.about-swapper', [
+			args.map(function(season, i) {
+				return m('.about-wrapper',
+					m('.season-date', {
+							onclick: function() {
+								console.log("hi")
+								swap(i);
+							} 
+						},
+						m('.date-circle', [
+							m('h3', season.date)
 						])
 					)
-				})
-			])
+				)
+			})
 		])
 	]
 }
 
-module.exports = About;
+var aboutSection = document.getElementById('about-section')
+var moreAbout = document.getElementById('more-about')
 
+function swap(swapToIndex) {
+	m.mount(aboutSection, null);
+	m.mount(moreAbout, null);
+
+	activeData = inactiveData.splice(swapToIndex, 1, activeData)[0];
+	m.mount(aboutSection, m.component(AboutSwapper, activeData))
+	m.mount(moreAbout, m.component(moreAbout, inactiveData))
+}
+
+m.mount(aboutSection, m.component(AboutSwapper, activeData))
+m.mount(moreAbout, m.component(MoreAbout, inactiveData))
 
 },{"./Data.js":2,"mithril":1}]},{},[3])

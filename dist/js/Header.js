@@ -2387,36 +2387,39 @@ return smoothScroll;
 var Data = {
 	about: [
 		{
-			header: "Why all the weather references?",
-			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
-			img: ""
+			date: "The Early Years",
+			header: "Meteorological and Baseball Enthusiast",
+			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
 		},
 		{
+			date: "The Big Switch",
 			header: "Running to Quality Assurance",
-			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
-			img: ""
+			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
 		},
 		{
+			date: "Moving On Up",
 			header: "Quality Assurance to Web Development",
-			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula.",
-			img: ""
+			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
 		}
 	],
 	projects: [
 		{
 			company_id: "Human Design",
+			img: "",
 			project: "Racing Extinction",
 			specs: "Squarespace, CSS, HTML, jQuery",
 			about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
 		},
 		{
 			company_id: "Human Design",
+			img: "",
 			project: "Human Design Site",
 			specs: "Node, Firebase, CSS, HTML, JavaScript",
 			about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
 		},
 		{
 			company_id: "Human Design",
+			img: "",
 			project: "Social Action Machine",
 			specs: "Node, Express, MongoDB, MithrilJS, CSS, Jade, JavaScript",
 			about: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus."
@@ -2546,19 +2549,16 @@ Header.controller = function() {
 Header.view = function(ctrl) {
 	var pageY = Header.Model.pageY;
 	var begin = pageY / 31 | 0;
-	var end = begin + (Header.Model.pageHeight / 31 | 0 + 2);
-	var offset = pageY % 31;
 	
 	var handleScroll = (function() {
-		console.log(begin);
-		if (begin > 10) {
+		if (begin > 3) {
 			ctrl.navWrapperScroll("nav-wrapper-scroll");
 			ctrl.navItemWrapperScroll("nav-item-wrapper-scroll");
 			ctrl.conditionsScroll("conditions-scroll");
 			ctrl.whoamiScroll("whoami-scroll");
 			ctrl.meImgScroll("me-img-scroll");
 		} 
-		if (begin < 10) {
+		if (begin < 3) {
 			ctrl.navWrapperScroll("");
 			ctrl.navItemWrapperScroll("");
 			ctrl.conditionsScroll("");
@@ -2568,17 +2568,15 @@ Header.view = function(ctrl) {
 	}());
 	return [
 		m('nav.nav-wrapper#nav-wrapper', { class: ctrl.navWrapperScroll() }, [
-			m('.nav-item-container',  [
-				m('.whoami#whoami', { class: ctrl.whoamiScroll() }, [
-					m('h2', "Aaron Flower"),
-					m('h3', "Web Developer"),
-					m('h3', "Boulder, CO")
-				]),
-				m('div.conditions#conditions', { class: ctrl.conditionsScroll() }, [
-					m('p', "Current Conditions"),
-					m('p', ctrl.currentSummary()),
-					m('p', ctrl.currentTemp(), " °F")
-				])
+			m('.whoami#whoami', { class: ctrl.whoamiScroll() }, [
+				m('h2', "Aaron Flower"),
+				m('h3', "Web Developer"),
+				m('h3', "Boulder, CO")
+			]),
+			m('div.conditions#conditions', { class: ctrl.conditionsScroll() }, [
+				m('p', "Current Conditions"),
+				m('p', ctrl.currentSummary()),
+				m('p', ctrl.currentTemp(), " °F")
 			])
 		]),
 		m('div.current-weather-component', [

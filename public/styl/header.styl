@@ -60,19 +60,51 @@
 	100%
 		background $white
 
-@keyframes pulse
+@keyframes current-icon-pulse
 	0% 
 		transform scale(1)
+		
 	100%
 		transform scale(1.2)
 		
+@keyframes me-scroll
+	0%
+		transform scale(1)
+		opacity 1
+	5%
+		opacity 0
+		transform scale(1)
+	75%
+		opacity 0
+		transform scale(.05)
+	100%
+		opacity 1
+		transform scale(.4)
+	
+@keyframes nav-item-wrapper-scroll
+	0%
+		opacity 1
+		background none
+		top auto
+	5%
+		opacity 0
+		top auto
+		background none
+	75%
+		top 16vh
+		opacity 0
+		background none
+	100%
+		top 9vh
+		opacity 1
+		background $ltGreen
 		
 .nav-wrapper
 	height 89vh
 	width 100vw
 	position fixed
 	background transparent
-	transition background-color .5s ease-in
+	transition height .2s ease-in
 	
 .nav-wrapper-scroll
 	height 9vh
@@ -80,6 +112,8 @@
 	animation nav-wrapper-scroll .5s ease-out
 	transition none
 	z-index 100
+	@media $screen-lg
+		height 8vh
 
 .nav-item-container
 	display inline-block
@@ -101,6 +135,9 @@
 	background $ltGreen
 	z-index 100
 	height initial
+	animation nav-item-wrapper-scroll .7s ease-out
+	@media $screen-lg
+		top 8vh
 	
 .about-li,
 .work-li,
@@ -134,15 +171,17 @@
 	align-items flex-start
 	color $gray
 	position fixed
-	top 0%
+	top 2.5%
+	right -2.5%
 	text-align left
 	animation whoami-scroll .5s ease-out
 	transform translate(0%, 0%)
 	transition none
-	h2
-		font-size .8em
-	h3
-		font-size .6em
+	h2, h3
+		font-size .5em
+	@media $screen-lg
+		h2, h3
+			font-size 1em
 
 .conditions
 	display flex
@@ -169,11 +208,15 @@
 	animation conditions-scroll .5s ease-out
 	color $gray
 	position fixed
-	top 0%
+	top 2.5%
+	left -2.5%
 	text-align right
 	transition none
 	p
 		font-size .5em
+	@media $screen-lg
+		p
+			font-size 1em
 
 .me-img
 	position absolute
@@ -190,12 +233,17 @@
 	border-right 4px solid $ltGreen
 	border-radius 50%
 	z-index 101
+	transition opacity scale .5s ease-in
+	@media $screen-lg
+		width 10%
 
 .me-img-scroll
 	position fixed
 	top -5%
-	transform scale(.5)
+	transform scale(.4)
 	z-index 101
+	animation me-scroll .5s ease-out
+	opacity 1
 
 .current-weather-component
 	display flex
@@ -215,7 +263,7 @@
 .current-icon svg
 	width 100%
 	height 100%
-	animation pulse 2.5s ease-out infinite alternate
+	animation current-icon-pulse 2.5s ease-out infinite alternate
 	
 .boulder-svg
 	display flex
