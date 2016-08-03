@@ -4,16 +4,16 @@ var socket = io();
 
 var TwitterWorker = {};
 
-TwitterWorker.controller = function() {
-	var that = this;
-	this.currentTweet = m.prop();
+TwitterWorker.vm = (function() {
+	var vm = {};
+	vm.currentTweet = m.prop();
 
-	(function () {
-		that.currentTweet("Waiting for lastest tweets...")
+	vm.init = function() {
+		vm.currentTweet("Waiting for lastest tweets...")
 		socket.on("tweet", function(data) {
 			try { 
 				if (data) {
-					that.currentTweet(data);
+					vm.currentTweet(data);
 					m.redraw(true)
 				}
 			} catch (e) {
@@ -22,18 +22,23 @@ TwitterWorker.controller = function() {
 				console.log(data)
 			}
 		});
-	}) ();
-}
+	};
+	return vm
+}());
+
+TwitterWorker.controller = function() {
+	TwitterWorker.vm.init();
+	this.currentTweet = m.prop(TwitterWorker.vm.currentTweet());
+
+};
 
 TwitterWorker.view = function(ctrl) {
-	return m('div.tweet-wrapper', {
-		config: function() {
-			console.log(ctrl.currentTweet())
-		}
-	},
-		m('h2', "Twitter Intrests"), 
-		m('p.tweet', ctrl.currentTweet())
-	)
+	return [
+		 m('div.tweet-wrapper', [
+			m('h2', "Twitter Intrests"), 
+			m('p.tweet', ctrl.currentTweet())
+		])
+	]
 }
 
 module.exports = TwitterWorker;

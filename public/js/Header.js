@@ -25,7 +25,7 @@ Header.Model = {
 	},
 	pageY: 0,
 	pageHeight: window.innnerHeight
-}
+};
 
 Header.vm = (function() {
 	var vm = {};
@@ -43,13 +43,13 @@ Header.vm = (function() {
 		}
 	}
 	return vm
-}())
+}());
 
 window.addEventListener("scroll", function(e) {
 	Header.Model.pageY = Math.max(e.pageY || window.pageYOffset, 0)
 	Header.Model.innnerHeight = window.innnerHeight
 	m.redraw()
-})
+});
 
 Header.controller = function() {
 	var that = this;

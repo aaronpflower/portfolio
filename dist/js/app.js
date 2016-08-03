@@ -48152,23 +48152,26 @@ function extend() {
 
 },{}],194:[function(require,module,exports){
 var Data = {
-	about: [
-		{
+	about: {
+		activeData: {
 			date: "The Early Years",
 			header: "Meteorological and Baseball Enthusiast",
-			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
+			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. "
 		},
-		{
-			date: "The Big Switch",
-			header: "Running to Quality Assurance",
-			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
-		},
-		{
-			date: "Moving On Up",
-			header: "Quality Assurance to Web Development",
-			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
-		}
-	],
+		inactiveData: [
+			{
+				date: "The Big Switch",
+				header: "Running to Quality Assurance",
+				body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faud id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
+		
+			},
+			{
+				date: "Moving On Up",
+				header: "Quality Assurance to Web Development",
+				body: "s at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
+			}
+		]	
+	},
 	projects: [
 		{
 			company_id: "Human Design",
@@ -48266,7 +48269,7 @@ Header.Model = {
 	},
 	pageY: 0,
 	pageHeight: window.innnerHeight
-}
+};
 
 Header.vm = (function() {
 	var vm = {};
@@ -48284,13 +48287,13 @@ Header.vm = (function() {
 		}
 	}
 	return vm
-}())
+}());
 
 window.addEventListener("scroll", function(e) {
 	Header.Model.pageY = Math.max(e.pageY || window.pageYOffset, 0)
 	Header.Model.innnerHeight = window.innnerHeight
 	m.redraw()
-})
+});
 
 Header.controller = function() {
 	var that = this;
@@ -48372,39 +48375,15 @@ module.exports = Header;
 },{"../../dist/assets/boulder.svg":1,"../../dist/assets/clear-night.svg":2,"../../dist/assets/cloud.svg":3,"../../dist/assets/fog.svg":4,"../../dist/assets/partly-cloudy-night.svg":5,"../../dist/assets/partly-cloudy-sun.svg":6,"../../dist/assets/rain.svg":7,"../../dist/assets/sleet.svg":8,"../../dist/assets/snow.svg":9,"../../dist/assets/sun.svg":10,"../../dist/assets/wind.svg":11,"./Data.js":194,"mithril":107,"smoothscroll":146}],196:[function(require,module,exports){
 var m = require('mithril')
 var Data = require('./Data.js')
-
-
-var activeData = {
-	date: "The Early Years",
-	header: "Meteorological and Baseball Enthusiast",
-	body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
-}
-
-var inactiveData = [
-	{
-		date: "The Big Switch",
-		header: "Running to Quality Assurance",
-		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
-	},
-	{
-		date: "Moving On Up",
-		header: "Quality Assurance to Web Development",
-		body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
-	}
-]
+var activeData = Data.about.activeData;
+var inactiveData = Data.about.inactiveData;
+var aboutSection = document.getElementById('about-section')
+var moreAbout = document.getElementById('more-about')
 
 var AboutSwapper = {};
 
-AboutSwapper.vm = (function() {
-	var vm = {}
-	vm.init = function() {
-		console.log("hello world")
-	}
-	return vm
-}())
-
 AboutSwapper.controller = function(args) {
-	AboutSwapper.vm.init()
+	return this
 }
 
 AboutSwapper.view = function(ctrl, args) {
@@ -48413,50 +48392,48 @@ AboutSwapper.view = function(ctrl, args) {
 		m('p', args.header),
 		m('p', args.body)
 	]
-}
+};
 
-var MoreAbout = {}
+
+var MoreAbout = {};
+
+MoreAbout.vm = (function() {
+	var vm = {};
+	vm.init = function() {
+		vm.swap = function(swapToIndex) {
+			m.mount(aboutSection, null);
+			m.mount(moreAbout, null);
+
+			activeData = inactiveData.splice(swapToIndex, 1, activeData)[0];
+			m.mount(aboutSection, m.component(AboutSwapper, activeData))
+			m.mount(moreAbout, m.component(MoreAbout, inactiveData))
+		}
+	}
+	return vm;
+}());
 
 MoreAbout.controller = function() {
-	return this
-}
+	MoreAbout.vm.init();
+};
 
 MoreAbout.view = function(ctrl, args) {
 	return [
-		m('.about-header', "Choose One"),
-		m('.about-swapper', [
-			args.map(function(season, i) {
-				return m('.about-wrapper',
-					m('.season-date', {
-							onclick: function() {
-								console.log("hi")
-								swap(i);
-							} 
-						},
-						m('.date-circle', [
-							m('h3', season.date)
-						])
-					)
-				)
-			})
-		])
+		args.map(function(season, i) {
+			return m('.about-wrapper', [ 
+				m('.season-date', { onclick: function() { MoreAbout.vm.swap(i) }}, [
+					m('.date-circle', [
+						m('h3', season.date)
+					])
+				])
+			])
+		})
 	]
 }
 
-var aboutSection = document.getElementById('about-section')
-var moreAbout = document.getElementById('more-about')
-
-function swap(swapToIndex) {
-	m.mount(aboutSection, null);
-	m.mount(moreAbout, null);
-
-	activeData = inactiveData.splice(swapToIndex, 1, activeData)[0];
-	m.mount(aboutSection, m.component(AboutSwapper, activeData))
-	m.mount(moreAbout, m.component(moreAbout, inactiveData))
-}
 
 m.mount(aboutSection, m.component(AboutSwapper, activeData))
 m.mount(moreAbout, m.component(MoreAbout, inactiveData))
+
 
 },{"./Data.js":194,"mithril":107}],197:[function(require,module,exports){
 var m = require('mithril');
@@ -48467,7 +48444,6 @@ var Work = require('./work.js')
 require('./about.js')
 
 m.mount(document.getElementById('header-section'), m.component(Header));
-
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
 m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker));
 m.mount(document.getElementById('work-mount'), m.component(Work));
@@ -48545,16 +48521,16 @@ var socket = io();
 
 var TwitterWorker = {};
 
-TwitterWorker.controller = function() {
-	var that = this;
-	this.currentTweet = m.prop();
+TwitterWorker.vm = (function() {
+	var vm = {};
+	vm.currentTweet = m.prop();
 
-	(function () {
-		that.currentTweet("Waiting for lastest tweets...")
+	vm.init = function() {
+		vm.currentTweet("Waiting for lastest tweets...")
 		socket.on("tweet", function(data) {
 			try { 
 				if (data) {
-					that.currentTweet(data);
+					vm.currentTweet(data);
 					m.redraw(true)
 				}
 			} catch (e) {
@@ -48563,18 +48539,23 @@ TwitterWorker.controller = function() {
 				console.log(data)
 			}
 		});
-	}) ();
-}
+	};
+	return vm
+}());
+
+TwitterWorker.controller = function() {
+	TwitterWorker.vm.init();
+	this.currentTweet = m.prop(TwitterWorker.vm.currentTweet());
+
+};
 
 TwitterWorker.view = function(ctrl) {
-	return m('div.tweet-wrapper', {
-		config: function() {
-			console.log(ctrl.currentTweet())
-		}
-	},
-		m('h2', "Twitter Intrests"), 
-		m('p.tweet', ctrl.currentTweet())
-	)
+	return [
+		 m('div.tweet-wrapper', [
+			m('h2', "Twitter Intrests"), 
+			m('p.tweet', ctrl.currentTweet())
+		])
+	]
 }
 
 module.exports = TwitterWorker;
