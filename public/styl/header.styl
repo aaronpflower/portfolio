@@ -52,7 +52,7 @@
 		transform translate(0%, 0%)
 		opacity 1
 
-@keyframes nav-wrapper-scroll
+@keyframes header-top-scroll
 	0%
 		background transparent
 	95%
@@ -74,9 +74,9 @@
 	5%
 		opacity 0
 		transform scale(1)
-	75%
+	85%
 		opacity 0
-		transform scale(.05)
+		transform scale(.1)
 	100%
 		opacity 1
 		transform scale(.4)
@@ -99,55 +99,20 @@
 		opacity 1
 		background $ltGreen
 		
-.nav-wrapper
-	height 89vh
-	width 100vw
+.header-top
+	height 100vh
+	width 100%
 	position fixed
 	background transparent
 	transition height .2s ease-in
 	
-.nav-wrapper-scroll
+.header-top-scroll
 	height 9vh
 	background $white
-	animation nav-wrapper-scroll .5s ease-out
+	animation header-top-scroll .5s ease-out
 	transition none
 	z-index 100
-	@media $screen-lg
-		height 8vh
 
-.nav-item-container
-	display inline-block
-	position relative
-	height 100%
-	width 100%
-	
-.nav-item-wrapper
-	display flex
-	justify-content flex-start
-	width 100%
-	height 15%
-	color $white
-
-.nav-item-wrapper-scroll
-	transform translate(0%, 0%)
-	position fixed
-	top 9vh
-	background $ltGreen
-	z-index 100
-	height initial
-	animation nav-item-wrapper-scroll .7s ease-out
-	@media $screen-lg
-		top 8vh
-	
-.about-li,
-.work-li,
-.contact-li
-	z-index 1
-	width 33.3%
-	text-align center
-	a
-		letter-spacing 2px
-	
 .whoami
 	display flex
 	flex-flow column nowrap
@@ -168,13 +133,13 @@
 	letter-spacing 1px
 	
 .whoami-scroll
+	justify-content center
 	align-items flex-start
-	height 10%
+	height 9vh
 	margin 0
+	left 2%
 	color $gray
 	position fixed
-	top 2.5%
-	right -2.5%
 	text-align left
 	animation whoami-scroll .5s ease-out
 	transform translate(0%, 0%)
@@ -205,15 +170,15 @@
 	letter-spacing 1px
 	
 .conditions-scroll
+	justify-content center
 	align-items flex-end
 	transform translate(0%, 0%)
 	animation conditions-scroll .5s ease-out
-	height 10%
+	height 9vh
 	margin 0
+	left -2%
 	color $gray
 	position fixed
-	top 2.5%
-	left -2.5%
 	text-align right
 	transition none
 	p
@@ -222,34 +187,7 @@
 		p
 			font-size 1em
 
-.me-img
-	position absolute
-	top 90%
-	right 0px
-	left 0px
-	bottom 0px
-	margin 0px auto
-	width 33.3%
-	// height 125px
-	border-top 4px solid $ltGreen
-	border-left 4px solid $ltGreen
-	border-bottom 4px solid $ltGreen
-	border-right 4px solid $ltGreen
-	border-radius 50%
-	z-index 101
-	transition opacity scale .5s ease-in
-	@media $screen-lg
-		width 10%
-
-.me-img-scroll
-	position fixed
-	top -5%
-	transform scale(.4)
-	z-index 101
-	animation me-scroll .5s ease-out
-	opacity 1
-
-.current-weather-component
+.header-bottom
 	display flex
 	flex-flow column nowrap
 	justify-content flex-end
@@ -257,7 +195,7 @@
 	text-align center
 	width 100%
 	height 100%
-	
+
 .current-icon
 	position relative
 	top 15%
@@ -277,4 +215,64 @@
 .boulder-svg svg
 	width 100%
 	height 100%
+	
+.nav-item-wrapper
+	display flex
+	justify-content flex-start
+	width 100%
+	height 15%
+	color $white
 
+.nav-item-wrapper-scroll
+	transform translate(0%, 0%)
+	position fixed
+	top 9vh
+	background $ltGreen
+	z-index 100
+	height initial
+	animation nav-item-wrapper-scroll .7s ease-out
+	box-shadow 0px 10px 10px 0px rgba(0,0,0,.25)
+	
+.about-li,
+.work-li,
+.contact-li
+	z-index 1
+	width 33.3%
+	text-align center
+	a
+		letter-spacing 2px
+	
+.me-img-wrapper
+	display flex
+	justify-content center
+	align-items center
+	position absolute
+	top 100%
+	right 0px
+	left 0px
+	bottom 0px
+	width 100%
+
+.me-img-wrapper-scroll
+	position fixed
+	height 9vh
+	top 0px
+	bottom auto
+	transform scale(.4)
+	z-index 101
+	animation me-scroll .5s ease-out
+	opacity 1
+	
+.me-img
+	width 33.3%
+	max-width 265px
+	border-top 4px solid $ltGreen
+	border-left 4px solid $ltGreen
+	border-bottom 4px solid $ltGreen
+	border-right 4px solid $ltGreen
+	border-radius 50%
+	z-index 101
+	transition opacity scale .5s ease-in
+
+
+	

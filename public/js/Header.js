@@ -50,7 +50,7 @@ Header.controller = function() {
 	this.currentTemp = m.prop();
 	this.currentIcon = m.prop();
 	this.currentSummary = m.prop();
-	this.navWrapperScroll = m.prop();
+	this.headerTopScroll = m.prop();
 	this.navItemWrapperScroll = m.prop();
 	this.conditionsScroll = m.prop();
 	this.whoamiScroll = m.prop();
@@ -76,14 +76,14 @@ Header.controller = function() {
 Header.view = function(ctrl) {	
 	var handleScroll = (function() {
 		if (ctrl.pageY() > 200) {
-			ctrl.navWrapperScroll("nav-wrapper-scroll");
+			ctrl.headerTopScroll("header-top-scroll");
 			ctrl.navItemWrapperScroll("nav-item-wrapper-scroll");
 			ctrl.conditionsScroll("conditions-scroll");
 			ctrl.whoamiScroll("whoami-scroll");
-			ctrl.meImgScroll("me-img-scroll");
+			ctrl.meImgScroll("me-img-wrapper-scroll");
 		} 
 		if (ctrl.pageY() < 200) {
-			ctrl.navWrapperScroll("");
+			ctrl.headerTopScroll("");
 			ctrl.navItemWrapperScroll("");
 			ctrl.conditionsScroll("");
 			ctrl.whoamiScroll("");
@@ -91,19 +91,19 @@ Header.view = function(ctrl) {
 		}
 	}());
 	return [
-		m('nav.nav-wrapper#nav-wrapper', { class: ctrl.navWrapperScroll() }, [
-			m('.whoami#whoami', { class: ctrl.whoamiScroll() }, [
+		m('.header-top', { class: ctrl.headerTopScroll() }, [
+			m('.whoami', { class: ctrl.whoamiScroll() }, [
 				m('h2', "Aaron Flower"),
 				m('h3', "Web Developer"),
 				m('h3', "Boulder, CO")
 			]),
-			m('div.conditions#conditions', { class: ctrl.conditionsScroll() }, [
+			m('.conditions', { class: ctrl.conditionsScroll() }, [
 				m('p', "Current Conditions"),
 				m('p', ctrl.currentSummary()),
 				m('p', ctrl.currentTemp(), " °F")
 			])
 		]),
-		m('div.current-weather-component', [
+		m('.header-bottom', [
 			m('.current-icon', m.trust(require(ctrl.currentIcon()))),
 			m(".boulder-svg", m.trust(boulderSVG)),
 			m('ul.nav-item-wrapper', { class: ctrl.navItemWrapperScroll() }, [
@@ -117,7 +117,9 @@ Header.view = function(ctrl) {
 					m('a#contact', { onclick: Header.vm.scrollToAnchor }, "Contact")
 				])
 			]),
-			m("img.me-img", { class: ctrl.meImgScroll(), src: "./assets/Aaron.jpg" } )
+			m('.me-img-wrapper', { class: ctrl.meImgScroll() }, [
+				m("img.me-img", { src: "./assets/Aaron.jpg" } )
+			])
 		])
 	]
 }
