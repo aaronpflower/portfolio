@@ -500,6 +500,7 @@ form {
 }
 .form-button:hover {
   background-color: #547980;
+  border: 1px solid #fefbf7;
   color: #fefbf7;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
