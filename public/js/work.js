@@ -30,6 +30,7 @@ Work.controller = function() {
 
 Work.view = function(ctrl) {
 	return [
+		m('h2.text-align-center', "Projects I Have Worked on"),
 		m('.work-component-wrapper', [
 			m('a.next-slide.right', { onclick: Work.vm.slideRight}, [
 				m('img', {src: "./assets/forward-arrow.png" })

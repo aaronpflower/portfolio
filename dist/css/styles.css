@@ -75,8 +75,11 @@ svg path {
   -webkit-animation: fade-in 0.6s ease-out;
           animation: fade-in 0.6s ease-out;
 }
+.text-align-center {
+  text-align: center;
+}
 .site-wrapper {
-  background: #fafafa;
+  background: #fefbf7;
   position: relative;
 }
 .site-wrapper::-moz-selection {
@@ -104,34 +107,26 @@ svg path {
   height: 100vh;
   border-bottom: 4px solid #9de0ad;
 }
-.about-container {
+.about-container,
+.work-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
               -ms-grid-row-align: center;
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  height: 80vh;
+  background-color: #fefbf7;
+  height: 89vh;
   max-width: 1400px;
   margin: auto;
   color: #594f4f;
 }
-.work-container {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-              -ms-grid-row-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: #fefbf7;
-  color: #594f4f;
-  height: 80vh;
-}
+.about-container h2,
 .work-container h2 {
   text-align: center;
 }
 .contact-container {
+  border-top: 4px solid #9de0ad;
   background-color: #45ada8;
   color: #fafafa;
   height: 89vh;
@@ -392,7 +387,7 @@ svg path {
   opacity: 1;
 }
 .me-img {
-  width: 33.3%;
+  width: 150px;
   max-width: 265px;
   border-top: 4px solid #9de0ad;
   border-left: 4px solid #9de0ad;
@@ -600,22 +595,21 @@ form {
   width: 66.6%;
   text-align: center;
 }
-.about-title {
-  text-align: center;
-}
 .active-widget {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-flow: column nowrap;
       flex-flow: column nowrap;
-  width: 90%;
+  width: 100%;
   height: 60%;
   box-shadow: 0 0 53px 0 rgba(0,0,0,0.25);
 }
 @media (min-width: 1025px) {
   .active-widget {
-    width: 100%;
+    max-height: 550px;
+    height: 65%;
+    width: 85%;
   }
 }
 .about-active {
@@ -631,15 +625,27 @@ form {
   display: flex;
   -ms-flex-flow: column nowrap;
       flex-flow: column nowrap;
-  width: 66.6%;
+  padding: 15px;
+}
+@media (min-width: 567px) {
+  .active-copy {
+    border-right: 2px solid #594f4f;
+    width: 66.6%;
+  }
 }
 .active-img {
-  width: 33.3%;
-  height: 100%;
+  display: none;
 }
-.active-img img {
-  height: 100%;
-  width: 100%;
+@media (min-width: 567px) {
+  .active-img {
+    display: block;
+    width: 33.3%;
+    height: 100%;
+  }
+  .active-img img {
+    height: 100%;
+    width: 100%;
+  }
 }
 .about-inactive {
   display: -webkit-box;
@@ -680,6 +686,7 @@ form {
   height: 100%;
   background-color: #594f4f;
   color: #fafafa;
+  border-right: 1px solid #fefbf7;
 }
 .inactive-item h3 {
   text-align: center;
@@ -784,15 +791,23 @@ form {
             animation: dash 1s linear forwards 0.5s;
   }
 }
-.work-mount,
 .work-component-wrapper {
-  max-width: 1400px;
-  max-height: 500px;
-  margin: 0px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: 65%;
   box-shadow: 0 0 53px 0 rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+@media (min-width: 1025px) {
+  .work-component-wrapper {
+    max-height: 550px;
+    height: 65%;
+    width: 85%;
+  }
 }
 .next-slide {
   display: -webkit-box;
@@ -802,11 +817,16 @@ form {
       -ms-flex-pack: end;
           justify-content: flex-end;
   position: absolute;
-  top: 28.8%;
+  top: 60%;
   width: 100px;
   height: 50px;
   z-index: 100;
   background: transparent;
+}
+@media (min-width: 567px) {
+  .next-slide {
+    top: 63%;
+  }
 }
 .next-slide.right {
   right: 0px;
@@ -864,7 +884,7 @@ form {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 33.3%;
+  height: 20%;
   background: #45ada8;
   color: #fafafa;
 }
@@ -887,7 +907,7 @@ form {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  height: 66.6%;
+  height: 80%;
   background-color: #fafafa;
   color: #594f4f;
   border-top: 4px solid $red;

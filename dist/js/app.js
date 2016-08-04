@@ -48402,7 +48402,7 @@ AboutSection.controller = function() {
 
 AboutSection.view = function(ctrl, active, inactive) {
 	return [
-		m('h2.about-title', "My Journey to Web Development"),
+		m('h2.text-align-center', "My Journey to Web Development"),
 		m('.active-widget', [
 			m('.about-active', [
 				m('.active-copy', [
@@ -48446,7 +48446,7 @@ require('./about.js')
 m.mount(document.getElementById('header-section'), m.component(Header));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
 m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker))
-m.mount(document.getElementById('work-mount'), m.component(Work));
+m.mount(document.getElementById('work-section'), m.component(Work));
 
 },{"./Header.js":195,"./about.js":196,"./contact-form.js":198,"./twitter-worker.js":199,"./work.js":200,"mithril":107}],198:[function(require,module,exports){
 var m = require('mithril')
@@ -48592,6 +48592,7 @@ Work.controller = function() {
 
 Work.view = function(ctrl) {
 	return [
+		m('h2.text-align-center', "Projects I Have Worked on"),
 		m('.work-component-wrapper', [
 			m('a.next-slide.right', { onclick: Work.vm.slideRight}, [
 				m('img', {src: "./assets/forward-arrow.png" })

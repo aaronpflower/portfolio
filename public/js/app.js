@@ -8,4 +8,4 @@ require('./about.js')
 m.mount(document.getElementById('header-section'), m.component(Header));
 m.mount(document.getElementById('contact-form'), m.component(ContactForm));
 m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker))
-m.mount(document.getElementById('work-mount'), m.component(Work));
+m.mount(document.getElementById('work-section'), m.component(Work));

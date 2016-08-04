@@ -24,7 +24,7 @@ AboutSection.controller = function() {
 
 AboutSection.view = function(ctrl, active, inactive) {
 	return [
-		m('h2.about-title', "My Journey to Web Development"),
+		m('h2.text-align-center', "My Journey to Web Development"),
 		m('.active-widget', [
 			m('.about-active', [
 				m('.active-copy', [
