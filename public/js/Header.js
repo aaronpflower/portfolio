@@ -11,24 +11,23 @@ require('../../dist/assets/fog.svg')
 require('../../dist/assets/cloud.svg')
 require('../../dist/assets/partly-cloudy-sun.svg')
 require('../../dist/assets/partly-cloudy-night.svg')
-require('../../dist/assets/boulder.svg')
+var boulderSVG = require('../../dist/assets/boulder.svg')
 
 
 var Header = {};
 
-Header.Model = {
+Header.API = {
 	getCurrentConditions: function() {
 		return m.request({
 			dataType: "jsonp",
 			url: "https://api.forecast.io/forecast/963c2a286c46883b606d0962897eeef7/40.0150,-105.2705"
 		})
 	},
-	pageY: 0,
-	pageHeight: window.innnerHeight
 };
 
 Header.vm = (function() {
 	var vm = {};
+
 	vm.scrollToAnchor = function(e) {
 		var aboutSection = document.getElementById('about-section')
 		var workSection = document.getElementById('work-section')
@@ -45,11 +44,6 @@ Header.vm = (function() {
 	return vm
 }());
 
-window.addEventListener("scroll", function(e) {
-	Header.Model.pageY = Math.max(e.pageY || window.pageYOffset, 0)
-	Header.Model.innnerHeight = window.innnerHeight
-	m.redraw()
-});
 
 Header.controller = function() {
 	var that = this;
@@ -61,7 +55,9 @@ Header.controller = function() {
 	this.conditionsScroll = m.prop();
 	this.whoamiScroll = m.prop();
 	this.meImgScroll = m.prop();
-	Header.Model.getCurrentConditions().then(function(data) {	
+	this.pageY = m.prop();
+	this.pageHeight = m.prop();
+	Header.API.getCurrentConditions().then(function(data) {	
 		var iconMap = Data.conditionsIcons.map(function(condition, i) {
 			if (condition.icon === data.currently.icon) {
 				that.currentIcon(condition.img)
@@ -70,21 +66,23 @@ Header.controller = function() {
 		that.currentTemp(data.currently.apparentTemperature);
 		that.currentSummary(data.currently.summary)
 	})
+	window.addEventListener("scroll", function(e) {
+		that.pageY(Math.max(e.pageY || window.pageYOffset, 0))
+		that.pageHeight(window.innnerHeight)
+		m.redraw()
+	})
 }
 
-Header.view = function(ctrl) {
-	var pageY = Header.Model.pageY;
-	var begin = pageY / 31 | 0;
-	
+Header.view = function(ctrl) {	
 	var handleScroll = (function() {
-		if (begin > 3) {
+		if (ctrl.pageY() > 200) {
 			ctrl.navWrapperScroll("nav-wrapper-scroll");
 			ctrl.navItemWrapperScroll("nav-item-wrapper-scroll");
 			ctrl.conditionsScroll("conditions-scroll");
 			ctrl.whoamiScroll("whoami-scroll");
 			ctrl.meImgScroll("me-img-scroll");
 		} 
-		if (begin < 3) {
+		if (ctrl.pageY() < 200) {
 			ctrl.navWrapperScroll("");
 			ctrl.navItemWrapperScroll("");
 			ctrl.conditionsScroll("");
@@ -107,7 +105,7 @@ Header.view = function(ctrl) {
 		]),
 		m('div.current-weather-component', [
 			m('.current-icon', m.trust(require(ctrl.currentIcon()))),
-			m(".boulder-svg", m.trust(require('../../dist/assets/boulder.svg'))),
+			m(".boulder-svg", m.trust(boulderSVG)),
 			m('ul.nav-item-wrapper', { class: ctrl.navItemWrapperScroll() }, [
 				m('li.about-li#about-li', [
 					m('a#about', { onclick: Header.vm.scrollToAnchor }, "About")

@@ -2237,19 +2237,22 @@
 var Data = {
 	about: {
 		activeData: {
-			date: "The Early Years",
+			date: "Weather, Baseball and Running",
+			img: '../../assets/about-placeholder.jpg',
 			header: "Meteorological and Baseball Enthusiast",
 			body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faucibus enim ultricies at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. "
 		},
 		inactiveData: [
 			{
-				date: "The Big Switch",
+				date: "Making Pizzas to Code",
+				img: '../../assets/about-placeholder.jpg',
 				header: "Running to Quality Assurance",
 				body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis maximus metus, vel faud id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
 		
 			},
 			{
-				date: "Moving On Up",
+				date: "Gaining Experience",
+				img: '../../assets/about-placeholder.jpg',
 				header: "Quality Assurance to Web Development",
 				body: "s at. Curabitur blandit est eget mi vulputate, suscipit gravida mi iaculis. Etiam nec risus id massa dignissim finibus id id ipsum. Vivamus sed bibendum ante. Curabitur ultricies magna vel turpis pulvinar finibus. Integer ultrices magna lorem, et luctus nisi faucibus non. In ut tempor sapien. Aenean non risus sit amet massa lacinia congue. Nullam vel laoreet lacus. Etiam augue sapien, porttitor gravida augue sed, interdum pellentesque nulla. Donec dignissim tellus ac enim bibendum suscipit. Donec eleifend et eros tempus vehicula."
 			}
@@ -2338,33 +2341,45 @@ AboutSection.controller = function() {
 	this.activeDate = m.prop(activeData.date)
 	this.activeHeader = m.prop(activeData.header)
 	this.activeBody = m.prop(activeData.body)
+	this.activeImg = m.prop(activeData.img)
 	this.swap = function(swapToIndex) {
 		activeData = inactiveData.splice(swapToIndex, 1, activeData)[0];
 		that.activeDate(activeData.date)
 		that.activeHeader(activeData.header)
 		that.activeBody(activeData.body)
+		that.activeImg(activeData.img)
 		m.redraw()
 	}
 };
 
 AboutSection.view = function(ctrl, active, inactive) {
 	return [
-		m('h3', ctrl.activeDate()),
-		m('p', ctrl.activeHeader()),
-		m('p', ctrl.activeBody()),
-		m('.more-about', [
-			inactive.map(function(season, i) {
-				return m('.about-wrapper', [ 
-					m('.season-date', { 
-						key: season.date, 
-						onclick: ctrl.swap.bind(this, i)
-					}, [
-						m('.date-circle', [
-							m('h3', season.date)
+		m('h2.about-title', "My Journey to Web Development"),
+		m('.active-widget', [
+			m('.about-active', [
+				m('.active-copy', [
+					m('h3', ctrl.activeDate()),
+					m('p', ctrl.activeHeader()),
+					m('p', ctrl.activeBody())
+				]),
+				m('.active-img', [
+					m('img', {src: ctrl.activeImg() })
+				])
+			]),
+			m('.about-inactive', [
+				inactive.map(function(season, i) {
+					return m('.about-wrapper', [ 
+						m('.season-date', { 
+							key: season.date, 
+							onclick: ctrl.swap.bind(this, i)
+						}, [
+							m('.inactive-item', [
+								m('h3', season.date)
+							])
 						])
 					])
-				])
-			})
+				})
+			])
 		])
 	]
 }
