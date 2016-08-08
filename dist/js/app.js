@@ -48322,14 +48322,14 @@ Header.controller = function() {
 
 Header.view = function(ctrl) {	
 	var handleScroll = (function() {
-		if (ctrl.pageY() > 200) {
+		if (ctrl.pageY() > 150) {
 			ctrl.headerTopScroll("header-top-scroll");
 			ctrl.navItemWrapperScroll("nav-item-wrapper-scroll");
 			ctrl.conditionsScroll("conditions-scroll");
 			ctrl.whoamiScroll("whoami-scroll");
 			ctrl.meImgScroll("me-img-wrapper-scroll");
 		} 
-		if (ctrl.pageY() < 200) {
+		if (ctrl.pageY() < 150) {
 			ctrl.headerTopScroll("");
 			ctrl.navItemWrapperScroll("");
 			ctrl.conditionsScroll("");
@@ -48441,12 +48441,12 @@ var Header = require('./Header.js');
 var ContactForm = require('./contact-form.js');
 var TwitterWorker = require('./twitter-worker.js');
 var Work = require('./work.js')
-require('./about.js')
 
 m.mount(document.getElementById('header-section'), m.component(Header));
-m.mount(document.getElementById('contact-form'), m.component(ContactForm));
-m.mount(document.getElementById('twitter-worker'), m.component(TwitterWorker))
+require('./about.js')
 m.mount(document.getElementById('work-section'), m.component(Work));
+m.mount(document.getElementById('contact-mount'), m.component(ContactForm));
+m.mount(document.getElementById('twitter-mount'), m.component(TwitterWorker));
 
 },{"./Header.js":195,"./about.js":196,"./contact-form.js":198,"./twitter-worker.js":199,"./work.js":200,"mithril":107}],198:[function(require,module,exports){
 var m = require('mithril')
@@ -48488,28 +48488,30 @@ ContactForm.controller = function() {
 
 ContactForm.view = function(ctrl) {
 	return [
-		m('div.contact-component', [
-			m('h1.section-title', "Contact"),
-			m('form', [
-				m('input.form-input[type="text"]', {
-					oninput: m.withAttr('value', ContactForm.vm.senderName),
-					placeholder: 'Enter name...'
-				}),
-				m('input.form-input[type="text"]', {
-					oninput: m.withAttr('value', ContactForm.vm.senderEmail),
-					placeholder: 'Enter email...'
-				}),
-				m('input.form-input[type="text"]', {
-					oninput: m.withAttr('value', ContactForm.vm.emailSubject),
-					placeholder: 'Enter subject...'
-				}),
-				m('textarea.form-textarea', {
-					oninput: m.withAttr('value', ContactForm.vm.emailBody),
-					placeholder: 'Enter email body...'
-				}),
-				m('button.form-button[type="button"]', { onclick: ContactForm.vm.sendData }, "Send")
-			])
-		]) 
+		m('h1', "Contact"),
+		m('form', [
+			m('input.form-input[type="text"]', {
+				oninput: m.withAttr('value', ContactForm.vm.senderName),
+				placeholder: 'Enter name...'
+			}),
+			m('.form-line'),
+			m('input.form-input[type="text"]', {
+				oninput: m.withAttr('value', ContactForm.vm.senderEmail),
+				placeholder: 'Enter email...'
+			}),
+			m('.form-line'),
+			m('input.form-input[type="text"]', {
+				oninput: m.withAttr('value', ContactForm.vm.emailSubject),
+				placeholder: 'Enter subject...'
+			}),
+			m('.form-line'),
+			m('textarea.form-textarea', {
+				oninput: m.withAttr('value', ContactForm.vm.emailBody),
+				placeholder: 'Enter email body...'
+			}),
+			m('.form-line'),
+			m('button.form-button[type="button"]', { onclick: ContactForm.vm.sendData }, "Send")
+		])
 	] 
 }
 
@@ -48531,7 +48533,7 @@ TwitterWorker.vm = (function() {
 			try { 
 				if (data) {
 					vm.currentTweet(data);
-					m.redraw(true)
+					m.redraw()
 				}
 			} catch (e) {
 				alert("There is a problem: ", e);

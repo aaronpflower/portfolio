@@ -48017,7 +48017,7 @@ TwitterWorker.vm = (function() {
 			try { 
 				if (data) {
 					vm.currentTweet(data);
-					m.redraw(true)
+					m.redraw()
 				}
 			} catch (e) {
 				alert("There is a problem: ", e);

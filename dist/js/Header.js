@@ -2555,14 +2555,14 @@ Header.controller = function() {
 
 Header.view = function(ctrl) {	
 	var handleScroll = (function() {
-		if (ctrl.pageY() > 200) {
+		if (ctrl.pageY() > 150) {
 			ctrl.headerTopScroll("header-top-scroll");
 			ctrl.navItemWrapperScroll("nav-item-wrapper-scroll");
 			ctrl.conditionsScroll("conditions-scroll");
 			ctrl.whoamiScroll("whoami-scroll");
 			ctrl.meImgScroll("me-img-wrapper-scroll");
 		} 
-		if (ctrl.pageY() < 200) {
+		if (ctrl.pageY() < 150) {
 			ctrl.headerTopScroll("");
 			ctrl.navItemWrapperScroll("");
 			ctrl.conditionsScroll("");

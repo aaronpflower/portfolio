@@ -1,66 +1,64 @@
-.form-mount
-	width 100%
-	height 55%
-
-.contact-component
+.contact-mount
 	display flex
 	flex-flow column nowrap
 	justify-content center
 	align-items center
-	height 100%
+	flex 1 1 auto
 	width 100%
-	max-width $content-width
-	margin auto
+
 form	
 	display flex
 	flex-flow column nowrap
 	justify-content space-around
 	align-items center
+	flex 1 1 100%
 	width 100%
-	height 90%
 
 .form-input
-	width 50%
-	height 40px
-	max-width 250px
+	flex 1 1 100%
+	width 100%
 	background-color transparent
 	border none
-	border-bottom 1px solid $white
 	text-align center
 	color $white
 	margin 15px 0px
-	
+
+
+.form-line
+	height 1px 
+	background black
+	background radial-gradient(circle, $offWhite, rgba(0,0,0,0))
+	width 55%
+	max-width 400px
+
 .form-input::placeholder,
 .form-textarea::placeholder
 	text-align center
 	height 100%
 	color $white
 	font-size 1.5em
-
+	align-self flex-end
 .form-input::value,
 .form-textarea::value
 	font-size 1.5em
 	
 .form-textarea
-	width 80%
-	height 120px
-	max-width 300px
+	flex 1 1 100%
+	width 100%
 	background-color transparent
 	border none
-	border-bottom 1px solid $white
 	color $white
 	
 .form-button
-	width 75%
-	height 65px
+	width 220px
+	flex 1 1 auto
 	margin-top 25px
-	max-width 250px
 	background-color $offWhite
 	color $blueGray
 	outline none
 	border 1px solid $blueGray
 	transition all .3s ease-in
-	font-size 1.3em
+	font-size 20px
 
 .form-button:hover
 	background-color $blueGray
@@ -74,26 +72,24 @@ form
 	flex-flow column nowrap
 	justify-content center
 	align-items center
+	flex 1 1 auto
 	width 100%
-	height 10%
 
 .name-container
-	width 100%
-	height 50%
 	display flex
 	justify-content center
 	align-items flex-end
+	flex 1 1 100%
+	width 100%
 	p
 		font-size .5em
 	
-
 .icons-container
 	display flex
 	justify-content center
-	align-content center
+	align-items flex-end
+	flex 1 1 100%
 	width 100%
-	height 50%
-	// z-index 102
 
 .icon-item
 	display flex

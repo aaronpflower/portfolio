@@ -1,35 +1,3 @@
-@keyframes nav-animation-reset
-	0%
-		transform translate(0%, 0%)
-		opacity 1
-		background-color $blue4
-	1%
-		opacity 0
-	50%
-		transform translate(0%, 85%)
-		opacity 0
-	75%
-		transform translate(0%, 85%)
-	95%
-		opacity .5
-		transform translate(0%, 85%)
-		background-color $blue4
-	100%
-		transform translate(0%, 85%)
-		opacity 1
-		background-color $white
-		
-@keyframes nav-animation-go
-	0%
-		transform translate(0%, 85%)
-		opacity 1
-	50%
-		transform translate(0%, 85%)
-		opacity 0
-	100%
-		transform translate(0%, 0%)
-		opacity 1
-
 @keyframes whoami-scroll
 	0%
 		transform translate(0%, 15%)
@@ -55,7 +23,7 @@
 @keyframes header-top-scroll
 	0%
 		background transparent
-	95%
+	90%
 		background transparent
 	100%
 		background $white
@@ -71,15 +39,19 @@
 	0%
 		transform scale(1)
 		opacity 1
-	5%
+		top 100%
+	30%
 		opacity 0
 		transform scale(1)
+		top 50%
 	85%
 		opacity 0
 		transform scale(.1)
+		top 0%
 	100%
 		opacity 1
 		transform scale(.4)
+		top 0%
 	
 @keyframes nav-item-wrapper-scroll
 	0%
@@ -90,7 +62,7 @@
 		opacity 0
 		top auto
 		background none
-	75%
+	85%
 		top 16vh
 		opacity 0
 		background none
@@ -127,7 +99,6 @@
 	left 0px
 	margin auto
 	text-align center
-	transition all .5s ease-in
 	transform scale(1) translate(0%, 15%)
 	color $white
 	letter-spacing 1px
@@ -164,7 +135,6 @@
 	left 0px
 	margin auto
 	text-align center
-	transition all .5s ease-in
 	transform scale(1) translate(0%, 40%)
 	color $white
 	letter-spacing 1px
@@ -252,19 +222,20 @@
 	left 0px
 	bottom 0px
 	width 100%
+	
 
 .me-img-wrapper-scroll
 	position fixed
 	height 9vh
-	top 0px
+	top 0%
 	bottom auto
 	transform scale(.4)
 	z-index 101
 	animation me-scroll .5s ease-out
 	opacity 1
-	
+
 .me-img
-	width 150px
+	width 80px
 	max-width 265px
 	border-top 4px solid $ltGreen
 	border-left 4px solid $ltGreen
@@ -273,6 +244,8 @@
 	border-radius 50%
 	z-index 101
 	transition opacity scale .5s ease-in
+	@media $screen-lg
+		width 150px
 
 
 	

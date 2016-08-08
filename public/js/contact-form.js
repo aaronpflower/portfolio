@@ -37,28 +37,30 @@ ContactForm.controller = function() {
 
 ContactForm.view = function(ctrl) {
 	return [
-		m('div.contact-component', [
-			m('h1.section-title', "Contact"),
-			m('form', [
-				m('input.form-input[type="text"]', {
-					oninput: m.withAttr('value', ContactForm.vm.senderName),
-					placeholder: 'Enter name...'
-				}),
-				m('input.form-input[type="text"]', {
-					oninput: m.withAttr('value', ContactForm.vm.senderEmail),
-					placeholder: 'Enter email...'
-				}),
-				m('input.form-input[type="text"]', {
-					oninput: m.withAttr('value', ContactForm.vm.emailSubject),
-					placeholder: 'Enter subject...'
-				}),
-				m('textarea.form-textarea', {
-					oninput: m.withAttr('value', ContactForm.vm.emailBody),
-					placeholder: 'Enter email body...'
-				}),
-				m('button.form-button[type="button"]', { onclick: ContactForm.vm.sendData }, "Send")
-			])
-		]) 
+		m('h1', "Contact"),
+		m('form', [
+			m('input.form-input[type="text"]', {
+				oninput: m.withAttr('value', ContactForm.vm.senderName),
+				placeholder: 'Enter name...'
+			}),
+			m('.form-line'),
+			m('input.form-input[type="text"]', {
+				oninput: m.withAttr('value', ContactForm.vm.senderEmail),
+				placeholder: 'Enter email...'
+			}),
+			m('.form-line'),
+			m('input.form-input[type="text"]', {
+				oninput: m.withAttr('value', ContactForm.vm.emailSubject),
+				placeholder: 'Enter subject...'
+			}),
+			m('.form-line'),
+			m('textarea.form-textarea', {
+				oninput: m.withAttr('value', ContactForm.vm.emailBody),
+				placeholder: 'Enter email body...'
+			}),
+			m('.form-line'),
+			m('button.form-button[type="button"]', { onclick: ContactForm.vm.sendData }, "Send")
+		])
 	] 
 }
 
