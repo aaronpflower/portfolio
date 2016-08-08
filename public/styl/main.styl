@@ -5,7 +5,8 @@ $white = #fafafa
 $offWhite = #fefbf7
 
 // palette 1
-$gray = #594F4F
+// $gray = #594F4F
+$darkBlue = #213033
 $blueGray = #547980
 $greenBlue = #45ADA8
 $ltGreen = #9DE0AD
@@ -91,8 +92,8 @@ svg
 	position relative
 	
 .header-container
-	background-color $blueGray
-	height 100vh
+	background-color $darkBlue
+	height 85vh
 	border-bottom 4px solid $ltGreen
 
 .about-container,
@@ -103,7 +104,7 @@ svg
 	height 89vh
 	max-width 1400px
 	margin auto
-	color $gray
+	color $darkBlue
 	h2 
 		text-align center
 
@@ -124,3 +125,21 @@ svg
 .header-bottom
 	height 66.6%
 	width 100%
+
+.overlay-bg
+	display flex
+	flex-flow column nowrap
+	justify-content center
+	align-items center
+	align-content center
+	overflow hidden
+	width 100%
+	height 100%
+	position absolute
+	top 0
+	bottom 0
+	right 0
+	left 0
+	transition all .5s ease-in
+	background-color rgba(0, 0, 0, 0.6)
+	opacity 1

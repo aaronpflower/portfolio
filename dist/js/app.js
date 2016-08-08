@@ -48338,6 +48338,7 @@ Header.view = function(ctrl) {
 		}
 	}());
 	return [
+		m('.header-bg-img'),
 		m('.header-top', { class: ctrl.headerTopScroll() }, [
 			m('.whoami', { class: ctrl.whoamiScroll() }, [
 				m('h2', "Aaron Flower"),
@@ -48355,13 +48356,19 @@ Header.view = function(ctrl) {
 			m(".boulder-svg", m.trust(boulderSVG)),
 			m('ul.nav-item-wrapper', { class: ctrl.navItemWrapperScroll() }, [
 				m('li.about-li#about-li', [
-					m('a#about', { onclick: Header.vm.scrollToAnchor }, "About")
+					m('a#about', { onclick: Header.vm.scrollToAnchor }, "About", [
+						m('.li-line')
+					])
 				]),
 				m('li.work-li#work-li', [
-					m('a#work', { onclick: Header.vm.scrollToAnchor }, "Work")
+					m('a#work', { onclick: Header.vm.scrollToAnchor }, "Work", [
+						m('.li-line')
+					])
 				]),
 				m('li.contact-li#contact-li', [
-					m('a#contact', { onclick: Header.vm.scrollToAnchor }, "Contact")
+					m('a#contact', { onclick: Header.vm.scrollToAnchor }, "Contact", [
+						m('.li-line')
+					])
 				])
 			]),
 			m('.me-img-wrapper', { class: ctrl.meImgScroll() }, [
