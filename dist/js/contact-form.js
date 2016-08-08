@@ -2260,8 +2260,21 @@ ContactForm.vm = (function() {
 		vm.senderEmail = m.prop(),
 		vm.emailSubject = m.prop(),
 		vm.emailBody = m.prop(),
+		vm.buttonText = m.prop("Send"),
 		vm.sendData = function() {
-			ContactForm.API.sendEmail()
+			if (typeof vm.senderName != undefined && typeof vm.sendEmail != undefined && typeof vm.emailSubject != undefined && vm.emailBody != undefined) {
+				vm.buttonText("Please Wait")
+				ContactForm.API.sendEmail()
+				.then(function(res) {
+					console.log(res.statusCode)
+					if (res.statusCode == 202) {
+						vm.buttonText("Thank You")
+					} 
+					else {
+						vm.buttonText("An Error Occurred")
+					}
+				})
+			}
 		};
 	}
 	return vm
@@ -2295,7 +2308,7 @@ ContactForm.view = function(ctrl) {
 				placeholder: 'Enter email body...'
 			}),
 			m('.form-line'),
-			m('button.form-button[type="button"]', { onclick: ContactForm.vm.sendData }, "Send")
+			m('button.form-button[type="button"]', { onclick: ContactForm.vm.sendData }, ContactForm.vm.buttonText())
 		])
 	] 
 }

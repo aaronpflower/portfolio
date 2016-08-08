@@ -16,6 +16,7 @@ var SendEmailController = {
 		request.body = requestBody
 		sg.API(request, function (response) {
 			console.log(response)
+			res.send(response)
 		})
 	}
 }

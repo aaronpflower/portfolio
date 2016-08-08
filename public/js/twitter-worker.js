@@ -14,12 +14,10 @@ TwitterWorker.vm = (function() {
 			try { 
 				if (data) {
 					vm.currentTweet(data);
-					m.redraw()
+					m.redraw(true)
 				}
 			} catch (e) {
 				alert("There is a problem: ", e);
-			} finally {
-				console.log(data)
 			}
 		});
 	};
@@ -28,15 +26,13 @@ TwitterWorker.vm = (function() {
 
 TwitterWorker.controller = function() {
 	TwitterWorker.vm.init();
-	this.currentTweet = m.prop(TwitterWorker.vm.currentTweet());
-
 };
 
 TwitterWorker.view = function(ctrl) {
 	return [
 		 m('div.tweet-wrapper', [
 			m('h2', "Twitter Intrests"), 
-			m('p.tweet', ctrl.currentTweet())
+			m('p.tweet', TwitterWorker.vm.currentTweet())
 		])
 	]
 }
